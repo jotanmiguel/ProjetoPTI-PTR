@@ -1,7 +1,7 @@
 # ProjetoPTI-PTR
 Projeto das cadeiras de PTI/PTR. Grupo 10
 
-Bases de dados:
+Bases de dados: </br>
     Produto (Id, nome, preco) </br>
     Fornecedor (Supplier Id) </br>
     Cliente (Cliente Id, morada) </br>
