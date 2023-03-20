@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% block content %}
+	<h1> Resultados: </h1>
+	{% if searched %}
+		<p>Procurou por {{searched}}</p>
+		{% for produto in produtos %}
+			{{produto}} - {{produto.price}} - {{produto.date}}
+		{% endfor %}
+
+
+	{% else %}
+	<p>Esqueceu-se de procurar!</p>
+	{% endif %}
+{% endblock %}
