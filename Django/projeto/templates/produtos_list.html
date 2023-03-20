@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+    <h1>Produtos</h1>
+    <ul>
+    {% for produto in produtos_list %}
+        <li><strong>{{ produto }}</strong></li>
+        <ul>
+            <li>{{ produto.price }}</li>
+            <li>{{ produto.date }}</li>
+        </ul>
+    {% endfor %}
+    </ul>
+
+{% endblock %}
