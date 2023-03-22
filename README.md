@@ -7,6 +7,7 @@ Correr o projeto:
 3. Criar um novo terminal e verificar se -> (VirtualEnv) C:\Users\...
 4. cd .\Django\ 
 5. py manage.py runserver
+6. 127.0.0.1:8000
 
 Bases de dados: </br>
 -Produto (Id, nome, preco) </br>
@@ -16,4 +17,8 @@ Bases de dados: </br>
 -Encomenda (Id, Cliente id, fornecedor, morada, quantidade, preco, data) </br>
 
 API:
+
+Front-End:
+
+Back-End:
 
