@@ -14,10 +14,10 @@ Projeto das cadeiras de PTI/PTR. Grupo 10
 
 ## Design
 - [x] 1. Especificação API usando o padrão OpenAPI, em formato YAML ou JSON
-- [ ] 2. Especificar requisitos NF - escalabilidade
-- [ ] 3. Especificar requisitos NF - segurança
-- [ ] 4. Especificar requisitos NF - tolerância a faltas
-- [ ] 5. Design da arquitetura distribuída </br>
+- [x] 2. Especificar requisitos NF - escalabilidade
+- [x] 3. Especificar requisitos NF - segurança
+- [x] 4. Especificar requisitos NF - tolerância a faltas
+- [x] 5. Design da arquitetura distribuída </br>
   - [ ] 5.1. Aplicação do conceito em relação aos load balancers </br>
   - [ ] 5.2. Aplicação do conceito em relação aos web servers </br>
   - [ ] 5.3. Aplicação do conceito em relação às bases de dados
