@@ -16,28 +16,28 @@ Projeto das cadeiras de PTI/PTR. Grupo 10
 2. Especificar requisitos NF - escalabilidade
 3. Especificar requisitos NF - segurança
 4. Especificar requisitos NF - tolerância a faltas
-5. Design da arquitetura distribuída
-	5.1. Aplicação do conceito em relação aos load balancers
-	5.2. Aplicação do conceito em relação aos web servers
+5. Design da arquitetura distribuída </br>
+	5.1. Aplicação do conceito em relação aos load balancers </br>
+	5.2. Aplicação do conceito em relação aos web servers </br>
 	5.3. Aplicação do conceito em relação às bases de dados
 6. [GitHub](https://github.com/jotanmiguel/ProjetoPTI-PTR) - uso com branches individuais e releases
 
 ## Arquitetura distribuída e tolerância a faltas
-7. Implementação da arquitetura distribuída (implementação de instâncias e configuração de redes)
-	7.1. Implementação dos balanceadores de carga
-	7.2. Implementação dos servers
+7. Implementação da arquitetura distribuída (implementação de instâncias e configuração de redes) </br>
+	7.1. Implementação dos balanceadores de carga </br>
+	7.2. Implementação dos servers </br>
 	7.3. Implementação das bases de dados
 8. Configuração dos balanceadores de carga e mecanismos de escalabilidade
-9. Configuração de mecanismos de tolerância a faltas e verificação de saúde
-	9.1.. Teste de tolerância a faltas nos balanceadores de carga
-	9.2. Teste de tolerância a faltas nos webservers
+9. Configuração de mecanismos de tolerância a faltas e verificação de saúde </br>
+	9.1.. Teste de tolerância a faltas nos balanceadores de carga </br>
+	9.2. Teste de tolerância a faltas nos webservers </br>
 	9.3. Teste de tolerância a faltas nas bases de dados
 	
 ## Segurança
 10. Implementação de mecanismo de Autenticação e autorização (Auth0)
-11. Canais seguros, DNS e configuração de firewall
-	11.1. Uso de TLS com certificado assinado por uma Autoridade Certificadora (AC)
-	11.2. Nome de domínio registado e associado ao IP estático
+11. Canais seguros, DNS e configuração de firewall</br>
+	11.1. Uso de TLS com certificado assinado por uma </br>Autoridade Certificadora (AC)
+	11.2. Nome de domínio registado e associado ao IP estático </br>
 	11.3. Configurações de firewall
 12. Configurar uso de APIs externas
 13. Gestão de credenciais e IPs na instalação
