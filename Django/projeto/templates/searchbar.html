@@ -1,15 +1,49 @@
-{% extends 'index.html' %}
+{% load static %}
 
-{% block content %}
-	<h1> Resultados: </h1>
-	{% if searched %}
-		<p>Procurou por {{searched}}</p>
-		{% for produto in produtos %}
-			{{produto}} - {{produto.price}} - {{produto.date}}
-		{% endfor %}
+<head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Aviato | E-commerce template</title>
 
 
-	{% else %}
-	<p>Esqueceu-se de procurar!</p>
-	{% endif %}
-{% endblock %}
+    <!-- theme meta -->
+    <meta name="theme-name" content="aviato" />
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+    
+    <!-- Themefisher Icon font -->
+    <link rel="stylesheet" href="/static/plugins/themefisher-font/style.css">
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
+    
+    <!-- Animate css -->
+    <link rel="stylesheet" href="/static/plugins/animate/animate.css">
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" href="/staticplugins/slick/slick.css">
+    <link rel="stylesheet" href="/static/plugins/slick/slick-theme.css">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+	{% include 'navbar.html' %}
+	{% block content %}
+		<h1> Resultados: </h1>
+		{% if searched %}
+			<p>Procurou por {{searched}}</p>
+			{% for produto in produtos %}
+				<br>{{produto}} - {{produto.price}} - {{produto.date}}
+				
+			{% endfor %}
+
+
+		{% else %}
+		<p>Esqueceu-se de procurar!</p>
+		{% endif %}
+	{% endblock %}
+</body>

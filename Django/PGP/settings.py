@@ -86,9 +86,9 @@ DATABASES = {
             'ENGINE': 'djongo', 
             'NAME': 'projeto',
             'CLIENT' : {
-                'host' : 'mongodb+srv://Teste:teste123@teste.yhbszsg.mongodb.net/test',
-                'username' : 'Teste',
-                'password' : 'teste123',
+                'host' : 'mongodb+srv://PGP:dbPGP@cluster0.py5tlqj.mongodb.net/test',
+                'username' : 'PGP',
+                'password' : 'dbPGP',
             }
         }
 }

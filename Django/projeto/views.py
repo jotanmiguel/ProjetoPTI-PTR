@@ -7,7 +7,7 @@ def index(request):
 
 def searchbar(request):
     if request.method == "POST":
-        searched = request.POST['searched']
+        searched = request.POST.get('searched')
         produtos = Produto.objects.filter(name__contains=searched)
         return render(request, 'searchbar.html',
         {'searched':searched,
