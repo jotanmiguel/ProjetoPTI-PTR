@@ -1,3 +1,6 @@
 {
-    "liveServer.settings.port": 5501
+    "liveServer.settings.port": 5501,
+    "yaml.schemas": {
+        "openapi:v3": "file:///c%3A/Users/joaom/OneDrive/Ambiente%20de%20Trabalho/Faculdade/Projetos/ProjetoPTI-PTR/Django/projeto/API/PTR010-MercadoOnline-0.1.0-resolved.yaml"
+    }
 }

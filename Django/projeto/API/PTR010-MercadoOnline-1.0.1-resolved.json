@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.0",
+  "openapi": "3.0.3",
   "info": {
     "title": "Mercado Online",
     "description": "API do Mercado Online para o projeto das cadeiras de PGP, PTI e PTR do Grupo 10.\nAutores:\nDaniela Farinha, Diogo Esteves, João Ascenso, João Oliveira e Miguel Faísco.   ",
@@ -11,7 +11,7 @@
       "name": "Apache 2.0",
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version": "1.0.0"
+    "version": "1.0.1"
   },
   "externalDocs": {
     "description": "Find out more about Swagger",
@@ -53,10 +53,10 @@
     }
   ],
   "paths": {
-    "/product": {
+    "/products": {
       "put": {
         "tags": [
-          "Product"
+          "Products"
         ],
         "summary": "Update an existing product",
         "operationId": "updateProduct",
@@ -107,19 +107,19 @@
         ]
       }
     },
-    "/product/findByStatus": {
+    "/product/findByCategories": {
       "get": {
         "tags": [
           "Product"
         ],
-        "summary": "Finds Products by status",
+        "summary": "Finds Products by categories",
         "description": "Multiple status values can be provided with comma separated strings",
-        "operationId": "findProductByStatus",
+        "operationId": "findProductByCategories",
         "parameters": [
           {
-            "name": "status",
+            "name": "categories",
             "in": "query",
-            "description": "Status values that need to be considered for filter",
+            "description": "",
             "required": true,
             "style": "form",
             "explode": true,
