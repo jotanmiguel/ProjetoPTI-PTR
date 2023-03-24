@@ -62,7 +62,7 @@ Conceitos:
 - 2 bases de dados, 1 principal, outra secundária;
 
 # API
-Versão mais recente da [API](https://app.swaggerhub.com/apis/PTR010/MercadoOnline/1.0.0#/)
+Versão mais recente da [API](https://app.swaggerhub.com/apis/PTR010/MercadoOnline/0.1.0#/)
 O que é preciso Fazer? :
 - [ ] Continuar o desenvolvimento da API;
 - [ ] Hierarquia de categorias;
@@ -94,8 +94,6 @@ Conceitos:
   - [ ] Google Cloud Platform
   - [ ] Amazon Web Services
   - [ ] Microsoft Azure
-
-
 
 # Firewalls
 Conceitos:
