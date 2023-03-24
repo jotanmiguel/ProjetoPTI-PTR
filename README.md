@@ -52,31 +52,37 @@ Projeto das cadeiras de PTI/PTR. Grupo 10
 
 # Bases de dados
 Ideia para a base de dados (incompleto):
-- **Produto** (Id, nome, preco)
+- **Produto** (Id, nome, preco, categoria)
 - **Fornecedor** (Supplier Id)
 - **Cliente** (Cliente Id, morada)
 - **Utilizador** (Id, nome, nif, telefone, tipo)
 - **Encomenda** (Id, Cliente id, fornecedor, morada, quantidade, preco, data)
 
 Conceitos:
-- Redundância pode ser ativa-passiva
+- 2 bases de dados, 1 principal, outra secundária;
 
 # API
 Versão mais recente da [API](https://app.swaggerhub.com/apis/PTR010/MercadoOnline/1.0.0#/)
 O que é preciso Fazer? :
-- Continuar o desenvolvimento da API;
+- [ ] Continuar o desenvolvimento da API;
+- [ ] Hierarquia de categorias;
+- 
 
 # Front-End
 
 # Back-End
 
 # Balenceadores de Carga
+- [ ] Identificar protocolos a usar (mais do que um a identificar);
+- [ ] Trocar o http por https;
+- [ ] Fazer o guião sobre balenciadores de carga;
 
 # Servidor
 Conceitos:
 - Máximo de 2 instâncias
 - Réplicas podem ser escaladas
 - Monitorização dos níveis de carga ativamente
+- Mínimo 2 servidores
 
 # Redes
 Conceitos:
@@ -84,14 +90,19 @@ Conceitos:
 - Cada balanceador deve estar conectado a uma sub-rede interna e a uma externa
 
 # Serviços Cloud
-Serviços permitidos:
-- Google Cloud Platform
-- Amazon Web Services
-- Microsoft Azure
+- Escolher um destes serviços permitidos:
+  - [ ] Google Cloud Platform
+  - [ ] Amazon Web Services
+  - [ ] Microsoft Azure
+
+
 
 # Firewalls
 Conceitos:
-- Firewalls para cada rede e máquina virtual usada
+- [ ] Firewalls para cada rede e máquina virtual usada
+
+# Escalabilidade
+- [ ] Mecanismos de escalabilidade;
 
 # Links uteis
 - [Orientações gerais](https://12factor.net)
