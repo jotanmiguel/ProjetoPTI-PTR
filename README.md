@@ -52,6 +52,7 @@ Projeto das cadeiras de PTI/PTR. Grupo 10
 
 # Bases de dados
 Ideia para a base de dados (incompleto):
+- **Categoria** (Id, nome, categoria pai)
 - **Produto** (Id, nome, preco, categoria)
 - **Fornecedor** (Supplier Id)
 - **Cliente** (Cliente Id, morada)
@@ -65,7 +66,7 @@ Conceitos:
 Versão mais recente da [API](https://app.swaggerhub.com/apis/PTR010/MercadoOnline/0.1.0#/)
 O que é preciso Fazer? :
 - [ ] Continuar o desenvolvimento da API;
-- [ ] Hierarquia de categorias;
+- [x] Hierarquia de categorias(Incompleto e básico, mas já existe);
 - 
 
 # Front-End
