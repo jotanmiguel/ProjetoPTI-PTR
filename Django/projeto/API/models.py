@@ -1,4 +1,4 @@
-from django.db import models
+from djongo import models
 
 # Create your models here.
 # Clientes
@@ -20,7 +20,7 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     image = models.ImageField(upload_to='products/', null=True, blank=True)
-    suplier = models.ForeignKey('projeto.Suplier',on_delete=models.CASCADE)
+    suplier = models.ForeignKey('Suplier', on_delete=models.CASCADE)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -51,11 +51,14 @@ class Stock(models.Model):
 # Categorias de produtos    
 class Category(models.Model):
     name = models.CharField(max_length=255)
-    parent_category = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE)
+    parent_category = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
     
     def __str__(self):
         return self.name
     
+    def get_children(self):
+        return Category.objects.filter(parent_category=self)
+
 # Fornecedores de produtos
 class Suplier(models.Model):
     id = models.AutoField(primary_key=True)
