@@ -52,6 +52,7 @@ Projeto das cadeiras de PTI/PTR. Grupo 10
 
 # Bases de dados
 Ideia para a base de dados (incompleto):
+- **Categoria** (Id, nome, categoria pai)
 - **Produto** (Id, nome, preco, categoria)
 - **Fornecedor** (Supplier Id)
 - **Cliente** (Cliente Id, morada)
@@ -61,20 +62,23 @@ Ideia para a base de dados (incompleto):
 Conceitos:
 - 2 bases de dados, 1 principal, outra secundária;
 
-# API
+# API (João Oliveira)
 Versão mais recente da [API](https://app.swaggerhub.com/apis/PTR010/MercadoOnline/0.1.0#/)
 O que é preciso Fazer? :
-- [ ] Continuar o desenvolvimento da API;
-- [ ] Hierarquia de categorias;
-- 
+- [x] Continuar o desenvolvimento da API(Em desenvolvimento);
+- [x] Hierarquia de categorias(Incompleto e básico, mas já existe);
+- [x] Integrar API com o Front-End; 
 
-# Front-End
+Bugs:
+- Objetos inseridos em coleções que contenham chaves estrangeiras não são inseridos na base de dados, devido a um erro da pagina admin do django (Inserir dados manualmente através de requests pelo postman);
 
-# Back-End
+# Front-End (Daniela)
 
-# Balenceadores de Carga
+# Back-End (João Oliveira e Diogo)
+
+# Balenceadores de Carga (Miguel)
 - [ ] Identificar protocolos a usar (mais do que um a identificar);
-- [ ] Trocar o http por https;
+- [x] Trocar o http por https;
 - [ ] Fazer o guião sobre balenciadores de carga;
 
 # Servidor
