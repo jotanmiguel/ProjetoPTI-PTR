@@ -65,12 +65,9 @@ Conceitos:
 # API (João Oliveira)
 Versão mais recente da [API](https://app.swaggerhub.com/apis/PTR010/MercadoOnline/0.1.0#/)
 O que é preciso Fazer? :
-- [x] Continuar o desenvolvimento da API(Em desenvolvimento);
-- [x] Hierarquia de categorias(Incompleto e básico, mas já existe);
-- [x] Integrar API com o Front-End; 
-
-Bugs:
-- Objetos inseridos em coleções que contenham chaves estrangeiras não são inseridos na base de dados, devido a um erro da pagina admin do django (Inserir dados manualmente através de requests pelo postman);
+- [ ] Continuar o desenvolvimento da API;
+- [ ] Hierarquia de categorias;
+- 
 
 # Front-End (Daniela)
 

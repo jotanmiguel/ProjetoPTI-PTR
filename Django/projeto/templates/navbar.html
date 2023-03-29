@@ -67,7 +67,7 @@
                                     class="tf-ion-ios-search-strong"></i> Procura</a>
                             <ul class="dropdown-menu search-dropdown">
                                 <li>
-                                    <form method="POST" action="{% url 'searchbar' %}">
+                                    <form method="POST" action="{% url 'search' %}">
 										{% csrf_token %}
 										<input type="search" class="form-control" type="search" name="searched" placeholder="Procura...">
 									</form>

@@ -8,3 +8,6 @@ node_modules
 package-lock.json
 yarn.lock
 netlify
+Django/PGP/__pycache__/*
+Django/projeto/migrations/__pycache__/*
+*.pyc

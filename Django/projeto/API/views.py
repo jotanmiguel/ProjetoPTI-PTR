@@ -1,25 +1,84 @@
 from django.shortcuts import render
-from .models import Produto
+from .models import Customer, Product, Order, Stock, Suplier, Cart, CartItem, Category, Review
+from .serializers import CustomerSerializer, ProductSerializer, OrderSerializer, StockSerializer, SuplierSerializer, OrderProductSerializer, CategorySerializer, CartSerializer, CartItemSerializer, ReviewSerializer
+from rest_framework import generics
 
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
 
-def searchbar(request):
+def search(request):
     if request.method == "POST":
         searched = request.POST.get('searched')
-        produtos = Produto.objects.filter(name__contains=searched)
+        produtos = Product.objects.filter(name__contains=searched)
         return render(request, 'searchbar.html',
         {'searched':searched,
         'produtos':produtos})
+    elif request.method == "GET":
+        return render(request, 'searchbar.html', {})
     else:
         return render(request, 'search.html', {})
 
 def all_produtos(request):
-    produtos_list = Produto.objects.all()
+    produtos_list = Product.objects.all()
     return render(request, 'produtos_list.html',
     {'produtos_list':produtos_list})
 
-
 def base(request):
     return render(request, 'base.html')
+
+class CustomerList(generics.ListCreateAPIView):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
+
+class CustomerDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
+
+class ProductList(generics.ListCreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+class OrderList(generics.ListCreateAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+class StockList(generics.ListCreateAPIView):
+    queryset = Stock.objects.all()
+    serializer_class = StockSerializer
+
+class StockDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Stock.objects.all()
+    serializer_class = StockSerializer
+
+class SuplierList(generics.ListCreateAPIView):
+    queryset = Suplier.objects.all()
+    serializer_class = SuplierSerializer
+
+class SuplierDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Suplier.objects.all()    
+    serializer_class = SuplierSerializer
+    
+class CartList(generics.ListCreateAPIView):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer
+    
+class CartDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer
+    
+class CategoryList(generics.ListCreateAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    
+class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
