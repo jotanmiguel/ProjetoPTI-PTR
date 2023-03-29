@@ -66,8 +66,10 @@ Conceitos:
 Versão mais recente da [API](https://app.swaggerhub.com/apis/PTR010/MercadoOnline/0.1.0#/)
 O que é preciso Fazer? :
 - [ ] Continuar o desenvolvimento da API;
-- [ ] Hierarquia de categorias;
-- 
+- [ ] Hierarquia de categorias (Incompleto; não funciona, mas já está iniciado);
+
+Bugs:
+- Pagina admin não funciona para tabelas com chaves estrangeiras (ex: Categoria);
 
 # Front-End (Daniela)
 
