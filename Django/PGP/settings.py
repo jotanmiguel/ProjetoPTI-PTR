@@ -73,6 +73,8 @@ TEMPLATES = [
     },
 ]
 
+MEDIA_ROOT =  BASE_DIR / 'media'
+
 WSGI_APPLICATION = 'PGP.wsgi.application'
 
 

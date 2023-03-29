@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import include, path
-from .views import index, search, all_produtos, base, CustomerList, CustomerDetail, ProductList, ProductDetail, OrderList, OrderDetail, StockList, StockDetail
+from .views import index, search, all_produtos, base, CustomerList, CustomerDetail, ProductList, ProductDetail, OrderList, OrderDetail, StockList, StockDetail, CartList, CartDetail, SuplierList, SuplierDetail, CategoryDetail, CategoryList
 
 urlpatterns = [
     path('', index, name="index"),
@@ -15,5 +15,11 @@ urlpatterns = [
     path('orders/', OrderList.as_view(), name='order-list'),
     path('orders/<int:pk>/', OrderDetail.as_view(), name='order-detail'),
     path('stocks/', StockList.as_view(), name='stock-list'),
-    path('stocks/<int:pk', StockDetail.as_view(), name='stock-detail'),
+    path('stocks/<int:pk>', StockDetail.as_view(), name='stock-detail'),
+    path('supliers/', SuplierList.as_view(), name='supplier-list'),
+    path('supliers/<int:pk>', SuplierDetail.as_view(), name='supplier-detail'),
+    path('carts/', CartList.as_view(), name='cart-list'),
+    path('carts/<int:pk>', CartDetail.as_view(), name='cart-detail'),
+    path('categories/', CategoryList.as_view(), name='category-list'),
+    path('categories/<int:pk>', CategoryDetail.as_view(), name='category-detail'),
 ]
