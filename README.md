@@ -59,7 +59,11 @@ Ideia para a base de dados (incompleto):
 - **Utilizador** (Id, nome, nif, telefone, tipo)
 - **Encomenda** (Id, Cliente id, fornecedor, morada, quantidade, preco, data)
 
+O que é preciso Fazer? :
 - [ ] diagrama da base de dados;
+- [ ] adicionar tabelas que faltam;
+- [ ] adicionar atributos que faltam;
+- [ ] editar atributos que estão errados;
 
 Conceitos:
 - 2 bases de dados, 1 principal, outra secundária;
