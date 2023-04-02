@@ -59,14 +59,20 @@ Ideia para a base de dados (incompleto):
 - **Utilizador** (Id, nome, nif, telefone, tipo)
 - **Encomenda** (Id, Cliente id, fornecedor, morada, quantidade, preco, data)
 
+- [ ] diagrama da base de dados;
+
 Conceitos:
 - 2 bases de dados, 1 principal, outra secundária;
 
 # API (João Oliveira)
-Versão mais recente da [API](https://app.swaggerhub.com/apis/PTR010/MercadoOnline/0.1.0#/)
+Versão mais recente da [API](https://app.swaggerhub.com/apis/PTR010/MercadoOnline/0.2.0#/)
 O que é preciso Fazer? :
 - [ ] Continuar o desenvolvimento da API;
 - [ ] Hierarquia de categorias (Incompleto; não funciona, mas já está iniciado);
+- [ ] Remover "tabela" tags do Swagger, e outras que não façam sentido;
+- [ ] Adicionar a cada endpoint mais atributos, e corrigir os que já existem;
+- [ ] Adicionar os metodos Delete e Put;
+- [ ] Atualizar a api com novos endpoints;
 
 Bugs:
 - Pagina admin não funciona para tabelas com chaves estrangeiras (ex: Categoria);
@@ -74,6 +80,7 @@ Bugs:
 # Front-End (Daniela)
 
 # Back-End (João Oliveira e Diogo)
+- [ ] Diagrama de classes;
 
 # Balenceadores de Carga (Miguel)
 - [ ] Identificar protocolos a usar (mais do que um a identificar);
