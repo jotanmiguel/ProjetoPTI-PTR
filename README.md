@@ -63,9 +63,9 @@ Ideia para a base de dados (incompleto):
 
 O que é preciso Fazer? :
 - [ ] diagrama da base de dados;
-- [ ] adicionar tabelas que faltam;
-- [ ] adicionar atributos que faltam;
-- [ ] editar atributos que estão errados;
+- [x] adicionar tabelas que faltam;
+- [x] adicionar atributos que faltam;
+- [x] editar atributos que estão errados;
 
 Conceitos:
 - 2 bases de dados, 1 principal, outra secundária;
