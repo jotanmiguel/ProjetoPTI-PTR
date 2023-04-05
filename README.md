@@ -54,12 +54,16 @@ Projeto das cadeiras de PTI/PTR. Grupo 10
 Ideia para a base de dados (incompleto):
 - **Categoria** (categoryId, name, description, atributes, parentCategoriesIds);
 - **Product** (productId, name, description, image, price, productionDate, categoriesIds, supliersIds, productionUnitsIds);
-- **Fornecedor** (suplierId, name, adress, nif, phone, email, productionUnitsIds, productsIds);
-- **Cliente** (clientId, firstName, lastName, shippingAddress, billingAddress);
+- **Fornecedor** (suplierId, userId, name, adress, nif, phone, email);
+- **Cliente** (clientId, userId, firstName, lastName, shippingAddress, billingAddress);
 - **Utilizador** (userId, username, password, email, role, nif, phone)
 - **Encomenda** (Id, clientId, orderDate, deliveryDate, status, products, totalCost, shippingAddress)
 - **Stock** (stockId, suplierId, productId, productionUnitIds, quantity, lastUpdated);
-- **Unidade de Produção** (productionUnitId, name, adress);
+- **Unidade de Produção** (productionUnitId, suplierId, name, adress);
+- **Atributo** (Id, name, description, type, values);
+- **encomenda_produto** (id, orderId, productId, quantity);
+- **produto_atributo** (id, productId, attributeId, value);
+- **atributo** (id, name, datatype);
 
 O que é preciso Fazer? :
 - [x] diagrama da base de dados;
