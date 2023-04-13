@@ -50,7 +50,7 @@ Projeto das cadeiras de PTI/PTR. Grupo 10
 - [ ] 17. Testes de carga
 - [ ] 18. Testes de vulnerabilidades
 
-# Bases de dados
+# Bases de dados (J. Oliveira e Diogo)
 Ideia para a base de dados (incompleto):
 - **Categoria** (categoryId, name, description, atributes, parentCategoriesIds);
 - **Product** (productId, name, description, image, price, productionDate, categoriesIds, supliersIds, productionUnitsIds);
@@ -74,7 +74,7 @@ O que é preciso Fazer? :
 Conceitos:
 - 2 bases de dados, 1 principal, outra secundária;
 
-# API (João Oliveira)
+# API (J. Oliveira)
 Versão mais recente da [API](https://app.swaggerhub.com/apis/PTR010/MercadoOnline/0.2.0#/)
 O que é preciso Fazer? :
 - [ ] Continuar o desenvolvimento da API;
@@ -110,11 +110,14 @@ Conceitos:
 - Cada balanceador deve estar conectado a uma sub-rede interna e a uma externa
 
 # Serviços Cloud
-- Escolher um destes serviços permitidos:
-  - [ ] Google Cloud Platform
-  - [ ] Amazon Web Services
-  - [ ] Microsoft Azure
-
+- [ ] Escolher e Configurar as instancias.
+- [ ] Configurar as instancias para que sejam escaláveis.
+- [ ] Configurar as instancias para que sejam tolerantes a faltas.
+- [ ] Criar as subredes necessárias para a aplicação.
+- [ ] Configurar os loadbalancers.
+- [ ] Configurar os servidores.
+- [ ] Configurar as bases de dados.
+ 
 # Firewalls
 Conceitos:
 - [ ] Firewalls para cada rede e máquina virtual usada
