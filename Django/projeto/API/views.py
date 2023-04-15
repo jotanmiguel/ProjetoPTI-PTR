@@ -7,6 +7,12 @@ from rest_framework import generics
 def index(request):
     return render(request, 'index.html')
 
+def login(request):
+    return render(request, 'login.html')
+
+def registar(request):
+    return render(request, 'registar.html')
+
 def search(request):
     if request.method == "POST":
         searched = request.POST.get('searched')

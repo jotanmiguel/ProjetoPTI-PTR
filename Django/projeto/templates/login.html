@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+
+        <!-- Basic Page Needs
+        ================================================== -->
+        <meta charset="utf-8">
+        <title>Loja10</title>
+
+
+        <!-- theme meta -->
+        <meta name="theme-name" content="aviato" />
+        
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+        
+        <!-- Themefisher Icon font -->
+        <link rel="stylesheet" href="/static/plugins/themefisher-font/style.css">
+        <!-- bootstrap.min css -->
+        <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
+        
+        <!-- Animate css -->
+        <link rel="stylesheet" href="/static/plugins/animate/animate.css">
+        <!-- Slick Carousel -->
+        <link rel="stylesheet" href="/staticplugins/slick/slick.css">
+        <link rel="stylesheet" href="/static/plugins/slick/slick-theme.css">
+        
+        <!-- Main Stylesheet -->
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    </head>
+
+    <body id="body">
+    {% include 'navbar.html' %}
+    <div class="col-xs-12" style="height:60px;"></div> 
+
+    <div class="row d-flex justify-content-center " >
+        <div class="col-md-10 col-md-offset-4">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-lg-5">
+            <div class="card" style="border-radius: 15px;">
+                <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-5">Login</h2>
+
+                <form>
+
+                    <div>
+                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                    <label class="form-label" for="form3Example1cg">Nome de utilizador</label>
+                    </div>
+
+                    <div>
+                    <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                    <label class="form-label" for="form3Example4cg">Palavra-passe</label>
+                    </div>
+
+                    <div>
+                    <button type="button"
+                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Entrar</button>
+                    </div>
+
+                    <p class="text-center text-muted mt-5 mb-0">Ainda não tem conta? <a href="{% url 'registar' %}"
+                        class="fw-bold text-body"><u>Registe-se aqui</u></a></p>
+
+                </form>
+
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+            <!-- 
+        Essential Scripts
+        =====================================-->
+        
+        <!-- Main jQuery -->
+        <script src="plugins/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap 3.1 -->
+        <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+        <!-- Bootstrap Touchpin -->
+        <script src="plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+        <!-- Instagram Feed Js -->
+        <script src="plugins/instafeed/instafeed.min.js"></script>
+        <!-- Video Lightbox Plugin -->
+        <script src="plugins/ekko-lightbox/dist/ekko-lightbox.min.js"></script>
+        <!-- Count Down Js -->
+        <script src="plugins/syo-timer/build/jquery.syotimer.min.js"></script>
+    
+        <!-- slick Carousel -->
+        <script src="plugins/slick/slick.min.js"></script>
+        <script src="plugins/slick/slick-animation.min.js"></script>
+    
+        <!-- Google Mapl -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
+        <script type="text/javascript" src="plugins/google-map/gmap.js"></script>
+    
+        <!-- Main Js File -->
+        <script src="js/script.js"></script>
+        
+    
+    
+    </body>
+
+
+
+
+</html>

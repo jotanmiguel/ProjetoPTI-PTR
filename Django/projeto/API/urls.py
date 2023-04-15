@@ -1,11 +1,13 @@
 
 from django.contrib import admin
 from django.urls import include, path
-from .views import index, search, all_produtos, base, CustomerList, CustomerDetail, ProductList, ProductDetail, OrderList, OrderDetail, StockList, StockDetail, CartList, CartDetail, SuplierList, SuplierDetail, CategoryDetail, CategoryList
+from .views import index, search, login, registar, all_produtos, base, CustomerList, CustomerDetail, ProductList, ProductDetail, OrderList, OrderDetail, StockList, StockDetail, CartList, CartDetail, SuplierList, SuplierDetail, CategoryDetail, CategoryList
 
 urlpatterns = [
     path('', index, name="index"),
     path('search/', search, name = 'search'),
+    path('login/', login, name = 'login'),
+    path('registar', registar, name='registar'),
     path('produtos_list/', all_produtos, name="produtos_list"),
     path('base/',base, name="base"),
     path('customers/', CustomerList.as_view(), name='customer-list'),

@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+
+        <!-- Basic Page Needs
+        ================================================== -->
+        <meta charset="utf-8">
+        <title>Loja10</title>
+
+
+        <!-- theme meta -->
+        <meta name="theme-name" content="aviato" />
+        
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+        
+        <!-- Themefisher Icon font -->
+        <link rel="stylesheet" href="/static/plugins/themefisher-font/style.css">
+        <!-- bootstrap.min css -->
+        <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
+        
+        <!-- Animate css -->
+        <link rel="stylesheet" href="/static/plugins/animate/animate.css">
+        <!-- Slick Carousel -->
+        <link rel="stylesheet" href="/staticplugins/slick/slick.css">
+        <link rel="stylesheet" href="/static/plugins/slick/slick-theme.css">
+        
+        <!-- Main Stylesheet -->
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    </head>
+
+    <body id="body">
+    {% include 'navbar.html' %}
+
+        <div>
+            <div class="col-md-10 col-md-offset-3">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body p-5">
+                    <h2 class="text-uppercase text-center mb-5">Criar a conta</h2>
+
+                    <form>
+
+                        <div class="form-outline mb-4">
+                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                        <label class="form-label" for="form3Example1cg">!</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                        <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
+                        <label class="form-label" for="form3Example3cg">!</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                        <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                        <label class="form-label" for="form3Example4cg">!</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                        <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
+                        <label class="form-label" for="form3Example4cdg">!</label>
+                        </div>
+
+                        <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+                            <h6 class="mb-0 me-4">?</h6>
+          
+                            <div class="form-check form-check-inline mb-0 me-4">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
+                                value="option2" />
+                              <label class="form-check-label" for="maleGender">?</label>
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
+                              value="option1" />
+                            <label class="form-check-label" for="femaleGender">?</label>
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
+                                value="option3" />
+                              <label class="form-check-label" for="otherGender">?</label>
+                            </div>
+          
+                          </div>
+                        <div class="form-check d-flex justify-content-center mb-5">
+                        <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
+                        <label class="form-check-label" for="form2Example3g">
+                            I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                        </label>
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                        <button type="button"
+                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                        </div>
+
+                        <p class="text-center text-muted mt-5 mb-0">Já tem uma conta? <a href="#!"
+                            class="fw-bold text-body"><u> Faça login aqui</u></a></p>
+
+                    </form>
+
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+                <!-- 
+        Essential Scripts
+        =====================================-->
+        
+        <!-- Main jQuery -->
+        <script src="plugins/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap 3.1 -->
+        <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+        <!-- Bootstrap Touchpin -->
+        <script src="plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+        <!-- Instagram Feed Js -->
+        <script src="plugins/instafeed/instafeed.min.js"></script>
+        <!-- Video Lightbox Plugin -->
+        <script src="plugins/ekko-lightbox/dist/ekko-lightbox.min.js"></script>
+        <!-- Count Down Js -->
+        <script src="plugins/syo-timer/build/jquery.syotimer.min.js"></script>
+    
+        <!-- slick Carousel -->
+        <script src="plugins/slick/slick.min.js"></script>
+        <script src="plugins/slick/slick-animation.min.js"></script>
+    
+        <!-- Google Mapl -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
+        <script type="text/javascript" src="plugins/google-map/gmap.js"></script>
+    
+        <!-- Main Js File -->
+        <script src="js/script.js"></script>
+        
+    
+    
+    </body>
+
+
+
+
+</html>
