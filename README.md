@@ -64,12 +64,15 @@ Ideia para a base de dados (incompleto):
 - **encomenda_produto** (id, orderId, productId, quantity);
 - **produto_atributo** (id, productId, attributeId, value);
 - **atributo** (id, name, datatype);
+- **veiculos** (???)
 
 O que é preciso Fazer? :
 - [x] diagrama da base de dados;
 - [x] adicionar tabelas que faltam;
 - [x] adicionar atributos que faltam;
 - [x] editar atributos que estão errados;
+- [ ] redesenhar algumas das tabelas;
+- [ ] adicionar tabela veiculos;
 
 Conceitos:
 - 2 bases de dados, 1 principal, outra secundária;
