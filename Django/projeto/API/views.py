@@ -13,6 +13,9 @@ def login(request):
 def registar(request):
     return render(request, 'registar.html')
 
+def carrinho(request):
+    return render(request, 'carrinho.html')
+
 def search(request):
     if request.method == "POST":
         searched = request.POST.get('searched')
