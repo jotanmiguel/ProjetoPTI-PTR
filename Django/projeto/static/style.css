@@ -483,8 +483,6 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   font-size: 10px;
 }
 .commonSelect select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
   cursor: pointer;
   border: none;
   padding: 0;
@@ -2018,8 +2016,6 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   border-radius: 0;
   display: block;
   padding: 6px 10px 5px 100px;
-  -moz-appearance: none;
-  -webkit-appearance: none;
   height: 50px;
 }
 .checkout-form .checkout-country-code .form-group {
@@ -2338,3 +2334,35 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   color: #555;
 }
 /*# sourceMappingURL=style.css.map */
+
+
+.card-header {
+  padding: .5rem 1rem;
+  margin-bottom: 0;
+  background-color: rgba(0,0,0,.03);
+  border-bottom: none;
+}
+
+.btn-light:focus {
+  color: #212529;
+  background-color: #e2e6ea;
+  border-color: #dae0e5;
+  box-shadow: 0 0 0 0.2rem rgba(216,217,219,.5);
+}
+
+.form-control{
+
+height: 50px;
+border: 2px solid #eee;
+border-radius: 6px;
+font-size: 14px;
+}
+
+.form-control:focus {
+color: #495057;
+background-color: #fff;
+border-color: #039be5;
+outline: 0;
+box-shadow: none;
+
+}

@@ -1,0 +1,205 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+
+        <!-- Basic Page Needs
+        ================================================== -->
+        <meta charset="utf-8">
+        <title>Loja10</title>
+
+
+        <!-- theme meta -->
+        <meta name="theme-name" content="aviato" />
+        
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+
+        
+        <!-- Themefisher Icon font -->
+        <link rel="stylesheet" href="/static/plugins/themefisher-font/style.css">
+        <!-- bootstrap.min css -->
+        <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
+        
+        <!-- Animate css -->
+        <link rel="stylesheet" href="/static/plugins/animate/animate.css">
+        <!-- Slick Carousel -->
+        <link rel="stylesheet" href="/staticplugins/slick/slick.css">
+        <link rel="stylesheet" href="/static/plugins/slick/slick-theme.css">
+        
+        <!-- Main Stylesheet -->
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    </head>
+
+    <body id="body">
+    {% include 'navbar.html' %}
+    <div class="col-xs-12" style="height:50px;"></div> 
+
+    <div class="container d-flex justify-content-center mt-5 mb-5">
+
+            
+
+        <div class="row g-3">
+
+          <div class="col-md-5" style="margin-left:50px;">  
+            <div class="card">
+
+              <div class="accordion" id="accordionExample">
+                
+                <div class="card">
+                  <div class="card-header p-0" id="headingTwo">
+                    <h2 class="mb-0">
+                      <button class="btn btn-light btn-block text-left collapsed p-3 rounded-0 border-bottom-custom" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <div class="d-flex align-items-center justify-content-between">
+
+                          <span>Paypal</span>
+                          <img src="https://i.imgur.com/7kQEsHU.png" width="30">
+                          
+                        </div>
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                      <input type="text" class="form-control" placeholder="Paypal email">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header p-0">
+                    <h2 class="mb-0">
+                      <button class="btn btn-light btn-block text-left p-3 rounded-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <div class="d-flex align-items-center justify-content-between">
+
+                          <span>Credit card</span>
+                          <div class="icons">
+                            <img src="https://i.imgur.com/2ISgYja.png" width="30">
+                            <img src="https://i.imgur.com/W1vtnOV.png" width="30">
+                            <img src="https://i.imgur.com/35tC99g.png" width="30">
+                            <img src="https://i.imgur.com/2ISgYja.png" width="30">
+                          </div>
+                          
+                        </div>
+                      </button>
+                    </h2>
+                  </div>
+
+                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body payment-card-body">
+                      
+                      <span class="font-weight-normal card-text">Card Number</span>
+                      <div class="input">
+
+                        <i class="fa fa-credit-card"></i>
+                        <input type="text" class="form-control" placeholder="0000 0000 0000 0000">
+                        
+                      </div> 
+
+                      <div class="row mt-3 mb-3">
+
+                        <div class="col-md-6">
+
+                          <span class="font-weight-normal card-text">Expiry Date</span>
+                          <div class="input">
+
+                            <i class="fa fa-calendar"></i>
+                            <input type="text" class="form-control" placeholder="MM/YY">
+                            
+                          </div> 
+                          
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                          <span class="font-weight-normal card-text">CVC/CVV</span>
+                          <div class="input">
+
+                            <i class="fa fa-lock"></i>
+                            <input type="text" class="form-control" placeholder="000">
+                            
+                          </div> 
+                          
+                        </div>
+                        
+
+                      </div>
+
+                      <span class="text-muted certificate-text"><i class="fa fa-lock"></i> Your transaction is secured with ssl certificate</span>
+                     
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+              
+            </div>
+
+            </div>
+            <div class="col-md-4" style="float: right;background-color: lightgray;padding:10px 15px;border-radius: 5px;margin: 20px 20px 0px 0px; ">
+                <div class="card mb-4">
+                  <div class="card-header py-3">
+                    <h5 class="mb-0">Sumário</h5>
+                  </div>
+                  <div class="card-body">
+                      <ul class="list-group list-group-flush">
+                          <li
+                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                            Sub-Total
+                            <span>9.99€</span>
+                          </li>
+                          <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                            Custo de envio estimado:
+                            <span>0.00€</span>
+                          </li>
+                          <li
+                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                            <div>
+                              <strong>Total</strong>
+                            </div>
+                            <span><strong>9.99€</strong></span>
+                          </li>
+                        </ul>
+        
+                    <button type="button" class="btn btn-success btn-lg btn-block">
+                      Comprar
+                    </button>
+                  </div>
+                </div>
+              </div>
+          
+        </div>
+        
+
+      </div>
+      <div class="col-md-1">
+        <button onclick="window.location.href='http://127.0.0.1:8000/carrinho/';" type="button" class="btn btn-primary btn-lg btn-block">
+            Voltar
+        </button>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+</html>

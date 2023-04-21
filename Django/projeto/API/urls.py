@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import include, path
-from .views import index, search, login, registar, carrinho, all_produtos, base, CustomerList, CustomerDetail, ProductList, ProductDetail, OrderList, OrderDetail, StockList, StockDetail, CartList, CartDetail, SuplierList, SuplierDetail, CategoryDetail, CategoryList
+from .views import index, search, login, registar, carrinho, mPagamento, teste, all_produtos, base, CustomerList, CustomerDetail, ProductList, ProductDetail, OrderList, OrderDetail, StockList, StockDetail, CartList, CartDetail, SuplierList, SuplierDetail, CategoryDetail, CategoryList
 
 urlpatterns = [
     path('', index, name="index"),
@@ -9,6 +9,8 @@ urlpatterns = [
     path('login/', login, name = 'login'),
     path('registar/', registar, name='registar'),
     path('carrinho/', carrinho, name='carrinho'),
+    path('pagamento/', mPagamento, name='mPagamento'),
+    path('teste/', teste, name="teste"),
     path('produtos_list/', all_produtos, name="produtos_list"),
     path('base/',base, name="base"),
     path('customers/', CustomerList.as_view(), name='customer-list'),
