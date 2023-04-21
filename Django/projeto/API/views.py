@@ -19,9 +19,6 @@ def carrinho(request):
 def mPagamento(request):
     return render(request, 'mPagamento.html')
 
-def teste(request):
-    return render(request, 'teste.html')
-
 def search(request):
     if request.method == "POST":
         searched = request.POST.get('searched')
