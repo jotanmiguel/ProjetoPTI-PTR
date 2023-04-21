@@ -27,6 +27,7 @@
     
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
 
@@ -40,7 +41,7 @@
 
         <div class="row g-3">
 
-          <div class="col-md-5" style="margin-left:50px;">  
+          <div class="col-md-5" style="margin-left:50px;background-color: lightgray;padding:10px 15px;border-radius: 5px;">  
             <div class="card">
 
               <div class="accordion" id="accordionExample">
@@ -48,7 +49,7 @@
                 <div class="card">
                   <div class="card-header p-0" id="headingTwo">
                     <h2 class="mb-0">
-                      <button class="btn btn-light btn-block text-left collapsed p-3 rounded-0 border-bottom-custom" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      <button class="accordion-button collapsed btn btn-block text-left collapsed p-3 rounded-0 border-bottom-custom" data-bs-toggle="collapse" data-bs-target="#collapseTwo" type="button" aria-expanded="false" aria-controls="collapseTwo">
                         <div class="d-flex align-items-center justify-content-between">
 
                           <span>Paypal</span>
@@ -68,7 +69,7 @@
                 <div class="card">
                   <div class="card-header p-0">
                     <h2 class="mb-0">
-                      <button class="btn btn-light btn-block text-left p-3 rounded-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      <button class="accordion-button btn btn-light btn-block text-left p-3 rounded-0" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         <div class="d-flex align-items-center justify-content-between">
 
                           <span>Credit card</span>
@@ -124,9 +125,6 @@
                         
 
                       </div>
-
-                      <span class="text-muted certificate-text"><i class="fa fa-lock"></i> Your transaction is secured with ssl certificate</span>
-                     
                     </div>
                   </div>
                 </div>
@@ -176,8 +174,7 @@
         <button onclick="window.location.href='http://127.0.0.1:8000/carrinho/';" type="button" class="btn btn-primary btn-lg btn-block">
             Voltar
         </button>
-      </div>
-
+       </div>
 
 
 
