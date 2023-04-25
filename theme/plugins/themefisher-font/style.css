@@ -2514,4 +2514,6 @@
 .tf-dribbble:before {
   content: "\e063";
 }
-
+.tf-door-open:before {
+   content: "\f308"; 
+}
