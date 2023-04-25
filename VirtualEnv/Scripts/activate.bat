@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\joaom\OneDrive\Ambiente de Trabalho\Faculdade\Projetos\ProjetoPTI-PTR\VirtualEnv
+set VIRTUAL_ENV=C:\Users\migue\Documents\GitHub\ProjetoPTI-PTR\VirtualEnv
 
 if not defined PROMPT set PROMPT=$P$G
 

@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\joaom\OneDrive\Ambiente de Trabalho\Faculdade\Projetos\ProjetoPTI-PTR\VirtualEnv"
+VIRTUAL_ENV="C:\Users\migue\Documents\GitHub\ProjetoPTI-PTR\VirtualEnv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
