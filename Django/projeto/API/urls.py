@@ -2,10 +2,16 @@
 from django.contrib import admin
 from django.urls import include, path
 from .views import index, search, login, registar, carrinho, mPagamento, all_produtos, base, CustomerList, CustomerDetail, ProductList, ProductDetail, OrderList, OrderDetail, StockList, StockDetail, CartList, CartDetail, SuplierList, SuplierDetail, CategoryDetail, CategoryList
+from django.contrib import admin
+
+from . import views
+
 
 urlpatterns = [
     path('', index, name="index"),
     path('search/', search, name = 'search'),
+    #path('login/', views.LoginView.as_view()),
+    path('accounts/', include("django.contrib.auth.urls")),
     path('login/', login, name = 'login'),
     path('registar/', registar, name='registar'),
     path('carrinho/', carrinho, name='carrinho'),

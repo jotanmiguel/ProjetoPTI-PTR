@@ -42,20 +42,24 @@
                 <div class="card-body p-5">
                 <h2 class="text-uppercase text-center mb-5">Login</h2>
 
-                <form>
-
+                <form method="post">
+                    {% csrf_token %}
                     <div>
+                        <!--
                     <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
-                    <label class="form-label" for="form3Example1cg">Nome de utilizador</label>
+                    <label class="form-label" for="form3Example1cg">Nome de utilizador</label>-->
+                    {{ form.username }}                    
                     </div>
 
                     <div>
+                        <!--
                     <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
-                    <label class="form-label" for="form3Example4cg">Palavra-passe</label>
+                    <label class="form-label" for="form3Example4cg">Palavra-passe</label>-->
+                    {{ form.password }}
                     </div>
 
                     <div>
-                    <button type="button"
+                    <button type="submit"
                         class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Entrar</button>
                     </div>
 
@@ -63,6 +67,7 @@
                         class="fw-bold text-body"><u>Registe-se aqui</u></a></p>
 
                 </form>
+                
 
                 </div>
             </div>

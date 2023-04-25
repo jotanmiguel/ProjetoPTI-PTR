@@ -1,9 +1,11 @@
     <!-- Start Top Header Bar -->
+
+
     <section class="top-header">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-xs-12 col-sm-4">
-                    <!-- Search -->
+                    <!-- Search -->    <div class="col-xs-12" style="height:10px;"></div> 
                     <div class="col-md-10">
                         <a href="{% url 'index' %}">
                             <!-- replace logo here -->
@@ -12,7 +14,7 @@
                                 <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-size="40"
                                     font-family="AustinBold, Austin" font-weight="bold">
                                     <g id="Group" transform="translate(-108.000000, -297.000000)" fill="#000000">
-                                        <text id="AVIATO">
+                                        <text id="LOJA10">
                                             <tspan x="108.94" y="325">LOJA10</tspan>
                                         </text>
                                     </g>
@@ -35,12 +37,20 @@
                 </div>
                 <div class="col-md-4 col-xs-12 col-sm-4">
                     <!-- Cart -->
-                    <ul class="top-menu text-right list-inline">
-                        <li>
-                            <a href="{% url 'login' %}" class="toggle">
+                    <ul class="top-menu text-end list-inline">
+                        <div class="col-xs-12" style="height:10px;"></div> 
+                        <li class="list-inline-item">
+                            {% if user.is_authenticated %}
+                            <a href="{% url 'logout' %}" class="toggle">
+                                <i class="tf-door-open"></i>Sair</a>
+
+                            {% else %}
+                            <a href="http://127.0.0.1:8000/accounts/login/" class="toggle">
                                 <i class="tf-ion-android-person"></i>Entrar</a>
+                            {% endif %}
+
                         </li>
-                        <li class="dropdown cart-nav dropdown-slide">
+                        <li class="dropdown cart-nav dropdown-slide list-inline-item">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
                                     class="tf-ion-android-cart"></i>Carrinho</a>
                             <div class="dropdown-menu cart-dropdown">
@@ -76,7 +86,7 @@
 
     
                         <!-- Languages -->
-                        <li class="commonSelect">
+                        <li class="commonSelect list-inline-item">
                             <select class="form-control">
                                 <option>PT</option>
                                 <option>EN</option>
@@ -90,4 +100,3 @@
             </div>
         </div>
     </section><!-- End Top Header Bar -->
-    
