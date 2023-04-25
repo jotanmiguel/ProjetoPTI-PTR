@@ -1,12 +1,15 @@
-from djongo import models
+from django.db import models
+import uuid
 
 # Create your models here.
 # Clientes
 class Customer(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=200, blank=True)
     email = models.EmailField(max_length=254, blank=True)
     phone_number = models.CharField(max_length=20, blank=True)
     address = models.CharField(max_length=200, blank=True)
+    password = models.CharField(max_length=200, blank=True) 
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)     
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)   

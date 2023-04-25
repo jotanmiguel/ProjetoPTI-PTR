@@ -2,6 +2,7 @@
 from django.contrib import admin
 from django.urls import include, path
 from .views import index, search, login, registar, carrinho, mPagamento, all_produtos, base, CustomerList, CustomerDetail, ProductList, ProductDetail, OrderList, OrderDetail, StockList, StockDetail, CartList, CartDetail, SuplierList, SuplierDetail, CategoryDetail, CategoryList
+from . import views
 
 urlpatterns = [
     path('', index, name="index"),

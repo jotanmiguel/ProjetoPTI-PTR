@@ -2,7 +2,8 @@ from django.shortcuts import render
 from .models import Customer, Product, Order, Stock, Suplier, Cart, CartItem, Category, Review
 from .serializers import CustomerSerializer, ProductSerializer, OrderSerializer, StockSerializer, SuplierSerializer, OrderProductSerializer, CategorySerializer, CartSerializer, CartItemSerializer, ReviewSerializer
 from rest_framework import generics
-
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -11,7 +12,19 @@ def login(request):
     return render(request, 'login.html')
 
 def registar(request):
-    return render(request, 'registar.html')
+    if request.method == "POST":
+       name = request.POST.get("username") 
+       email = request.POST.get("email")
+       password = request.POST.get("pw")
+       morada = request.POST.get("address")
+
+       a = Customer.objects.create(name=name,email=email,address=morada,password=password)
+       Customer.save(a)
+    else:
+        return render(request, 'registar.html')
+
+    return render(request, 'index.html')
+
 
 def carrinho(request):
     return render(request, 'carrinho.html')
@@ -38,6 +51,7 @@ def all_produtos(request):
 
 def base(request):
     return render(request, 'base.html')
+
 
 class CustomerList(generics.ListCreateAPIView):
     queryset = Customer.objects.all()

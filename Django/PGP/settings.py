@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-from django.db import close_old_connections
+# from django.db import close_old_connections
 
-def close_connections(**kwargs):
-    close_old_connections()
+# def close_connections(**kwargs):
+#     close_old_connections()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "projeto.apps.ProjetoConfig",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'projeto',
 ]
 
 MIDDLEWARE = [
@@ -93,14 +93,14 @@ DATABASES = {
             'ENGINE': 'djongo', 
             'NAME': 'projeto',
             'CLIENT' : {
-                'host' : 'mongodb+srv://PGP:dbPGP@cluster0.py5tlqj.mongodb.net/test',
-                'username' : 'PGP',
-                'password' : 'dbPGP',
+                'host' : 'mongodb+srv://dbnew:dbnew@cluster0.piznqbl.mongodb.net/test',
+                'username' : 'dbnew',
+                'password' : 'dbnew',
             }
         }
 }
 
-close_connections()
+#close_connections()
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
