@@ -6,6 +6,9 @@ from .API.models import Product, Customer, Order, OrderProduct, Stock, Suplier, 
 # Objetos que tenham foreign key, devem ser registrados antes dos objetos que as utilizam
 class ProductAdmin(admin.ModelAdmin):
     search_fields = ['name', 'name']
+    prepopulated_fields = {
+        'slug': ['name'],
+    }
     readonly_fields = ['created_at', 'updated_at']
     raw_id_fields = ['suplier', 'category']
     

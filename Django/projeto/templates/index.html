@@ -98,7 +98,7 @@
               <h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">Sabores do Ano <br> 2023</h1>
                         <h5 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">22 produtos LOJA10, provados e aprovados pelos consumidores.</h5>
                         <p> <br> </p>
-              <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".8" class="btn" href="shop.html">Ver produtos</a>
+              <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".8" class="btn" href="{% url 'shop' %}">Ver produtos</a>
             </div>
           </div>
         </div>
@@ -550,6 +550,8 @@
     
         <!-- Main Js File -->
         <script src="js/script.js"></script>
+        
+        <script src="https://unpkg.com/htmx.org@1.7.0"></script>
         
     
     

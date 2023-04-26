@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Customer, Product, Order, Stock, Suplier, Cart, CartItem, Category, Review
 from .serializers import CustomerSerializer, ProductSerializer, OrderSerializer, StockSerializer, SuplierSerializer, OrderProductSerializer, CategorySerializer, CartSerializer, CartItemSerializer, ReviewSerializer
 from django.contrib.auth import login, logout
@@ -11,6 +11,7 @@ from rest_framework import status
 from rest_framework import views
 from rest_framework.response import Response
 from . import serializers
+from .cart import Carrinho
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -49,6 +50,19 @@ def registar(request):
 
     return render(request, 'index.html')
 
+def shop(request):
+    products = Product.objects.all()
+    return render(request, 'shop.html', {'products' : products})
+
+def product(request, slug):
+    product = Product.objects.get(slug=slug)
+
+    return render(request, 'product.html', {'product': product})
+
+def add_to_cart(request, product_id):
+    cart = Carrinho(request)
+    cart.add(product_id)
+    return render(request, 'menu_cart.html')
 
 def carrinho(request):
     return render(request, 'carrinho.html')
@@ -67,11 +81,6 @@ def search(request):
         return render(request, 'searchbar.html', {})
     else:
         return render(request, 'search.html', {})
-
-def all_produtos(request):
-    produtos_list = Product.objects.all()
-    return render(request, 'produtos_list.html',
-    {'produtos_list':produtos_list})
 
 def base(request):
     return render(request, 'base.html')
