@@ -32,7 +32,7 @@ def registar(request):
         fornecedores = Suplier.objects.values_list("name", flat=True)
 
         if name in clientes or name in fornecedores:
-           return render(request, 'registar.html') 
+           return render(request, 'registar.html')
         else:
             if tipo=="Cliente":
                 a = Customer.objects.create(name=name,email=email,address=morada,password=password)
