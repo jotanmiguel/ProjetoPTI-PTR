@@ -11,6 +11,7 @@ from rest_framework import status
 from rest_framework import views
 from rest_framework.response import Response
 from . import serializers
+from django.contrib.auth.models import User
 
 # Create your views here.
 def index(request):
@@ -21,13 +22,22 @@ def login(request):
 
 def registar(request):
     if request.method == "POST":
-       name = request.POST.get("username") 
-       email = request.POST.get("email")
-       password = request.POST.get("pw")
-       morada = request.POST.get("address")
+        name = request.POST.get("username") 
+        email = request.POST.get("email")
+        password = request.POST.get("pw")
+        morada = request.POST.get("address")
+        tipo = request.POST.get("type")
 
-       a = Customer.objects.create(name=name,email=email,address=morada,password=password)
-       Customer.save(a)
+        if tipo=="Cliente":
+            a = Customer.objects.create(name=name,email=email,address=morada,password=password)
+            Customer.save(a)
+        else:
+            a = Suplier.objects.create(name=name,email=email,address=morada,password=password)
+            Suplier.save(a)
+
+        user = User.objects.create_user(name, email, password)
+        user.save()
+
     else:
         return render(request, 'registar.html')
 
