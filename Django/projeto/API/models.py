@@ -4,7 +4,7 @@ import uuid
 # Create your models here.
 # Clientes
 class Customer(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     name = models.CharField(max_length=200, blank=True)
     email = models.EmailField(max_length=254, blank=True)
     phone_number = models.CharField(max_length=20, blank=True)
@@ -24,8 +24,8 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     image = models.ImageField(upload_to='products/', null=True, blank=True)
-    suplier = models.ForeignKey('Suplier', on_delete=models.CASCADE)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    #suplier = models.ForeignKey('Suplier', on_delete=models.CASCADE)
+    #category = models.ForeignKey('Category', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     

@@ -10,7 +10,7 @@ class ProductAdmin(admin.ModelAdmin):
         'slug': ['name'],
     }
     readonly_fields = ['created_at', 'updated_at']
-    raw_id_fields = ['suplier', 'category']
+    #raw_id_fields = ['suplier', 'category']
     
 class categoryAdmin(admin.ModelAdmin):
     list_display = ['name']
