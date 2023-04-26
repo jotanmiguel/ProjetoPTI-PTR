@@ -28,15 +28,21 @@ def registar(request):
         morada = request.POST.get("address")
         tipo = request.POST.get("type")
 
-        if tipo=="Cliente":
-            a = Customer.objects.create(name=name,email=email,address=morada,password=password)
-            Customer.save(a)
-        else:
-            a = Suplier.objects.create(name=name,email=email,address=morada,password=password)
-            Suplier.save(a)
+        clientes = Customer.objects.values_list("name", flat=True)
+        fornecedores = Suplier.objects.values_list("name", flat=True)
 
-        user = User.objects.create_user(name, email, password)
-        user.save()
+        if name in clientes or name in fornecedores:
+           return render(request, 'registar.html') 
+        else:
+            if tipo=="Cliente":
+                a = Customer.objects.create(name=name,email=email,address=morada,password=password)
+                Customer.save(a)
+            else:
+                a = Suplier.objects.create(name=name,email=email,address=morada,password=password)
+                Suplier.save(a)
+
+            user = User.objects.create_user(name, email, password)
+            user.save()
 
     else:
         return render(request, 'registar.html')
