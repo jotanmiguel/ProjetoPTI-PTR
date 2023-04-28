@@ -25,6 +25,7 @@
         
         <!-- Main Stylesheet -->
         <link rel="stylesheet" href="{% static 'style.css' %}">
+        <script src="https://unpkg.com/htmx.org@1.7.0"></script>
 
     </head>
 
@@ -40,10 +41,21 @@
                         <h1 class="text-2xl">{{ product.name }}</h1>
 
                         <p class="mt-1 text-gray-400">${{ product.price }}</p>
-                    <a>Add to cart</a>
+                    <a href="#"
+                    class="col-md-2 btn btn-success"
+                    hx-get="{% url 'add_to_cart' product.slug %}"
+                    hx-target="#menu-cart-button"
+                    hx-swap="outerHTML"
+                    >
+                    Adicionar ao Carrinho</a>
+
             </div>
         </div>
         {% endblock %}
-        <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+        <div class="ms-5 mt-5">
+            <button onclick="window.location.href='http://127.0.0.1:8000/shop/';" type="button" class="btn btn-primary btn-lg btn-block">
+                Voltar
+            </button>
+        </div>
     </body>
 </html>

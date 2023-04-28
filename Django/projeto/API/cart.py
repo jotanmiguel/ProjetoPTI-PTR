@@ -22,21 +22,20 @@ class Carrinho(object):
         self.session[settings.CART_SESSION_ID] = self.cart
         self.session.modified = True
     
-    def add(self, product_id, quantity=1, update_quantity=False):
-        product_id = str(product_id)
+    def add(self, product_slug, quantity=1, update_quantity=False):
 
-        if product_id not in self.cart:
-            self.cart[product_id] = {'quantity': 1, 'id': product_id}
+        if product_slug not in self.cart:
+            self.cart[product_slug] = {'quantity': 1, 'slug': product_slug}
         
         if update_quantity:
-            self.cart[product_id]['quantity'] += int(quantity)
+            self.cart[product_slug]['quantity'] += int(quantity)
 
-            if self.cart[product_id]['quantity'] == 0:
-                self.remove(product_id)
+            if self.cart[product_slug]['quantity'] == 0:
+                self.remove(product_slug)
             
         self.save()
     
-    def remove(self, product_id):
-        if product_id in self.cart:
-            del self.cart[product_id]
+    def remove(self, product_slug):
+        if product_slug in self.cart:
+            del self.cart[product_slug]
             self.save()

@@ -56,12 +56,11 @@ def shop(request):
 
 def product(request, slug):
     product = Product.objects.get(slug=slug)
-
     return render(request, 'product.html', {'product': product})
 
-def add_to_cart(request, product_id):
+def add_to_cart(request, product_slug):
     cart = Carrinho(request)
-    cart.add(product_id)
+    cart.add(product_slug)
     return render(request, 'menu_cart.html')
 
 def carrinho(request):
