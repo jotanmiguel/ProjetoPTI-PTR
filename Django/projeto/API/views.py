@@ -12,6 +12,15 @@ from rest_framework import views
 from rest_framework.response import Response
 from . import serializers
 from django.contrib.auth.models import User
+import requests
+import json
+
+from rest_framework import status
+from rest_framework.decorators import api_view
+from django.views.decorators.csrf import requires_csrf_token
+from rest_framework.response import Response
+
+
 
 # Create your views here.
 def index(request):
@@ -20,12 +29,14 @@ def index(request):
 def login(request):
     return render(request, 'login.html')
 
+@api_view(['GET','POST'])
+@requires_csrf_token
 def registar(request):
     if request.method == "POST":
-        name = request.POST.get("username") 
+        name = request.POST.get("name") 
         email = request.POST.get("email")
-        password = request.POST.get("pw")
-        morada = request.POST.get("address")
+        password = request.POST.get("password")
+        address = request.POST.get("address")
         tipo = request.POST.get("type")
 
         clientes = Customer.objects.values_list("name", flat=True)
@@ -35,11 +46,15 @@ def registar(request):
            return render(request, 'registar.html')
         else:
             if tipo=="Cliente":
-                a = Customer.objects.create(name=name,email=email,address=morada,password=password)
-                Customer.save(a)
+                serializer = CustomerSerializer(data=request.data)
+                if serializer.is_valid():
+                    serializer.save()
+
             else:
-                a = Suplier.objects.create(name=name,email=email,address=morada,password=password)
-                Suplier.save(a)
+                serializer = CustomerSerializer(data=request.data)
+                if serializer.is_valid():
+                    serializer.save()
+
 
             user = User.objects.create_user(name, email, password)
             user.save()

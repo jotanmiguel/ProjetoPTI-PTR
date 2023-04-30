@@ -1,8 +1,9 @@
 
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
 from .views import index, search, login, registar, carrinho, mPagamento, all_produtos, base, CustomerList, CustomerDetail, ProductList, ProductDetail, OrderList, OrderDetail, StockList, StockDetail, CartList, CartDetail, SuplierList, SuplierDetail, CategoryDetail, CategoryList
 from . import views
+
 
 
 urlpatterns = [
@@ -17,7 +18,7 @@ urlpatterns = [
     path('produtos_list/', all_produtos, name="produtos_list"),
     path('base/',base, name="base"),
     path('customers/', CustomerList.as_view(), name='customer-list'),
-    path('customers/<int:pk>/', CustomerDetail.as_view(), name='customer-detail'),
+    path('customers/<str:pk>/', CustomerDetail.as_view(), name='customer-detail'),
     path('products/', ProductList.as_view(), name='product-list'),
     path('products/<int:pk>/', ProductDetail.as_view(), name='product-detail'),
     path('orders/', OrderList.as_view(), name='order-list'),
