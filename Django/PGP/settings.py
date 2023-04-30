@@ -33,6 +33,9 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+SESSION_COOKIE_AGE = 86400
+CART_SESSION_ID = 'cart'
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -78,6 +81,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'projeto.API.context_processors.cart',
             ],
         },
     },

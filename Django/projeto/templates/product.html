@@ -1,0 +1,61 @@
+{% load static %}
+<html>
+    <head>
+
+        <!-- Basic Page Needs
+        ================================================== -->
+        <meta charset="utf-8">
+        <title>Loja10</title>
+
+
+        <!-- theme meta -->
+        <meta name="theme-name" content="aviato" />
+        
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.png" />
+        
+        <!-- Themefisher Icon font -->
+        <link rel="stylesheet" href="/static/plugins/themefisher-font/style.css">
+        <!-- bootstrap.min css -->
+        <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
+        
+        <!-- Animate css -->
+        <link rel="stylesheet" href="/static/plugins/animate/animate.css">
+        <link rel="stylesheet" href="/static/plugins/slick/slick-theme.css">
+        
+        <!-- Main Stylesheet -->
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+
+    </head>
+
+
+    <body>
+        {% include 'navbar.html' %}
+        {% block content %}
+        <div class="max-w-6xl mx-auto flex flex-wrap py-6 px-6 xl:px-0">
+        <div class="row d-flex justify-content-center " >
+            <div class="row d-flex justify-content-center align-items-center">
+
+                <div class="card" style="border-radius: 15px;">
+                        <h1 class="text-2xl">{{ product.name }}</h1>
+
+                        <p class="mt-1 text-gray-400">${{ product.price }}</p>
+                    <a href="#"
+                    class="col-md-2 btn btn-success"
+                    hx-get="{% url 'add_to_cart' product.slug %}"
+                    hx-target="#menu-cart-button"
+                    hx-swap="outerHTML"
+                    >
+                    Adicionar ao Carrinho</a>
+
+            </div>
+        </div>
+        {% endblock %}
+        <div class="ms-5 mt-5">
+            <button onclick="window.location.href='http://127.0.0.1:8000/shop/';" type="button" class="btn btn-primary btn-lg btn-block">
+                Voltar
+            </button>
+        </div>
+    </body>
+</html>
