@@ -52,7 +52,7 @@ def registar(request):
                     serializer.save()
 
             else:
-                serializer = CustomerSerializer(data=request.data)
+                serializer = SuplierSerializer(data=request.data)
                 if serializer.is_valid():
                     serializer.save()
 
