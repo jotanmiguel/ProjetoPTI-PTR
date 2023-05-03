@@ -33,26 +33,43 @@
     <body>
         {% include 'navbar.html' %}
         {% block content %}
-        <div class="max-w-6xl mx-auto flex flex-wrap py-6 px-6 xl:px-0">
-        <div class="row d-flex justify-content-center " >
-            <div class="row d-flex justify-content-center align-items-center">
+        <div class="row">
+            <div class="product-item col-md-3" style="margin:7px 0px 7px 20px; border: 3px solid rgb(212, 217, 223);border-radius: 10px;">
+                <div class="product-thumb">
+                    <img class="img-responsive" src="/static/images/shop/products/product-2.jpg" alt="product-img" style="border-bottom: 1px solid grey;" />
+                    <div class="preview-meta">
+                        <ul>
+                            <li>
+                                <a href="{% url 'product' product.slug %}"><i class="tf-ion-ios-search-strong"></i></a>
+                            </li>
+                            <li>
+                                <a href="#!"><i class="tf-ion-android-cart"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <span class="d-flex justify-content-center"><a href="{% url 'product' product.slug %}">{{ product.name }}</a></span>
+            
+                <p class="d-flex justify-content-center">{{ product.price }}€</p>
+                
 
-                <div class="card" style="border-radius: 15px;">
-                        <h1 class="text-2xl">{{ product.name }}</h1>
+            </div>
+            <div class="col-md-6 d-flex flex-wrap align-content-center" style="margin: 60px 0px 36px 0px;background-color: rgb(212, 217, 223);border-radius: 10px;">
 
-                        <p class="mt-1 text-gray-400">${{ product.price }}</p>
-                    <a href="#"
-                    class="col-md-2 btn btn-success"
+                <p class="">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo minus eveniet velit, labore nobis laudantium alias temporibus harum voluptates voluptatem quam laboriosam itaque quas vero praesentium quod maxime aliquid facilis!</p>
+            </div>
+            <div class="col-md-2 d-flex flex-wrap align-content-center">
+                 <a href="#"
+                    class="btn btn-success align-content-center"
                     hx-get="{% url 'add_to_cart' product.slug %}"
                     hx-target="#menu-cart-button"
                     hx-swap="outerHTML"
                     >
                     Adicionar ao Carrinho</a>
-
             </div>
         </div>
         {% endblock %}
-        <div class="ms-5 mt-5">
+        <div>
             <button onclick="window.location.href='http://127.0.0.1:8000/shop/';" type="button" class="btn btn-primary btn-lg btn-block">
                 Voltar
             </button>

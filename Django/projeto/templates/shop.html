@@ -1,4 +1,5 @@
 {% load static %}
+{% load poll_extras %}
 <html>
     <head>
 
@@ -34,15 +35,22 @@
 
         {% block content %}
 
-        <div class="row d-flex justify-content-center " >
-            <div class="row d-flex justify-content-center align-items-center">
+        <section class="products section bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="title text-center">
+                        <h2>Produtos</h2>
+                    </div>
+                </div>
+                <div class="col-md-12 d-flex flex-wrap justify-content-center">
+                    {% for product in products %}
+                    {% include 'product_list_item.html' %}
+                    {% endfor %}
 
-                <div class="card" style="border-radius: 15px;">
-                    <div class="card-body p-5">
-                    <h2 class="text-uppercase text-center mb-5">Produtos</h2>
-                {% for product in products %}
-                        {% include 'product_list_item.html' %}
-                {% endfor %}
+                </div>
+
+            </div>
+        </section>
         {% endblock %}
         <script src="https://unpkg.com/htmx.org@1.7.0"></script>
     </body>
