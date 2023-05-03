@@ -54,13 +54,17 @@
                 
 
             </div>
-            <div class="col-md-6 d-flex flex-wrap align-content-center" style="margin: 60px 0px 36px 0px;background-color: rgb(212, 217, 223);border-radius: 10px;">
-
-                <p class="">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo minus eveniet velit, labore nobis laudantium alias temporibus harum voluptates voluptatem quam laboriosam itaque quas vero praesentium quod maxime aliquid facilis!</p>
+            <div class="col-md-6" style="margin: 60px 0px 36px 0px;background-color: rgb(212, 217, 223);border-radius: 10px;">
+                <div class="title text-center">
+                    <h2>Carateristicas</h2>
+                </div>
+                <div class="content">
+                    <p>{{ product.description }}</p>                    
+                </div>
             </div>
-            <div class="col-md-2 d-flex flex-wrap align-content-center">
+            <div class="col-md-2 d-flex flex-wrap align-content-center content">
                  <a href="#"
-                    class="btn btn-success align-content-center"
+                    class="btn btn-success"
                     hx-get="{% url 'add_to_cart' product.slug %}"
                     hx-target="#menu-cart-button"
                     hx-swap="outerHTML"
