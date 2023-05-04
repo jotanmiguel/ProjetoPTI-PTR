@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import include, path
-from .views import index, search, login, registar, shop, product, add_to_cart, adicionar_produto, carrinho, mPagamento, base, CustomerList, CustomerDetail, ProductList, ProductDetail, OrderList, OrderDetail, StockList, StockDetail, CartList, CartDetail, SuplierList, SuplierDetail, CategoryDetail, CategoryList
+from .views import index, search, login, registar, shop, product, add_to_cart, adicionar_produto, conta, alterar_password, carrinho, mPagamento, base, CustomerList, CustomerDetail, ProductList, ProductDetail, OrderList, OrderDetail, StockList, StockDetail, CartList, CartDetail, SuplierList, SuplierDetail, CategoryDetail, CategoryList
 from . import views
 
 
@@ -18,6 +18,8 @@ urlpatterns = [
     path('shop/<slug:slug>/', product, name='product'),
     path('add_to_cart/<slug:slug>/', add_to_cart, name='add_to_cart'),
     path('adicionar_produto/', adicionar_produto, name='adicionar_produto'),
+    path('conta', conta, name='conta'),
+    path('alterar_password', alterar_password, name='alterar_password'),
     path('carrinho/', carrinho, name='carrinho'),
     path('pagamento/', mPagamento, name='mPagamento'),
     path('base/',base, name="base"),

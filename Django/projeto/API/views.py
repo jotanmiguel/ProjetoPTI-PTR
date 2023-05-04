@@ -94,6 +94,12 @@ def adicionar_produto(request):
             serializer.save()
     return render(request, 'add_produto.html')
 
+def conta(request):
+    return render(request,'conta.html')
+
+def alterar_password(request):
+    return render(request,'alterar_password.html')
+
 def carrinho(request):
     return render(request, 'carrinho.html')
 
