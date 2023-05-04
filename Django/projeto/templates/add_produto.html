@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Loja10</title>
+
+
+    <!-- theme meta -->
+    <meta name="theme-name" content="aviato" />
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.png" />
+    
+    <!-- Themefisher Icon font -->
+    <link rel="stylesheet" href="/static/plugins/themefisher-font/style.css">
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
+    
+    <!-- Animate css -->
+    <link rel="stylesheet" href="/static/plugins/animate/animate.css">
+    <link rel="stylesheet" href="/static/plugins/slick/slick-theme.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+    <body id="body">
+    {% include 'navbar.html' %}
+
+        <div>
+            <div class="col-md-12 col-md-offset-3">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-12 col-lg-7 col-xl-5">
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body p-5">
+                    <h2 class="text-uppercase text-center mb-5">Adicionar Produto</h2>
+
+                    <form action="{% url 'adicionar_produto' %} "method="post">
+                        {% csrf_token %}
+
+                        <div class="form-outline mb-4">
+                        <input type="text" name="name" id="textString" class="name-produto form-control form-control-lg" />
+                        <label class="form-label" for="form3Example1cg">Nome</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                        <input type="text" name="slug" id="textSlug" class="form-control form-control-lg" readonly />
+                        <label class="form-label" for="form3Example1cg">Slug</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                        <input type="text" name="description" id="form3Example3cg" class="form-control form-control-lg" />
+                        <label class="form-label" for="form3Example3cg">Descrição</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                        <input type="text" name="price" id="form3Example4cdg" class="form-control form-control-lg" />
+                        <label class="form-label" for="form3Example4cdg">Preço</label>
+                        </div>
+                        
+
+                        <div class="d-flex justify-content-center">
+                        <button type="submit"
+                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body", value="Add">Adicionar Produto</button>
+                        </div>
+
+                        <p class="text-center text-muted mt-5 mb-0">Já tem uma conta? <a href="http://127.0.0.1:8000/accounts/login/"
+                            class="fw-bold text-body"><u> Faça login aqui</u></a></p>
+
+                    </form>
+
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </body>
+
+<script>
+    document.getElementById("textString").addEventListener("input", function () {
+  let theSlug = string_to_slug(this.value);
+  document.getElementById("textSlug").value = theSlug;
+});
+
+function string_to_slug(str) {
+  str = str.replace(/^\s+|\s+$/g, ""); // trim
+  str = str.toLowerCase();
+
+  // remove accents, swap ñ for n, etc
+  var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
+  var to = "aaaaeeeeiiiioooouuuunc------";
+  for (var i = 0, l = from.length; i < l; i++) {
+    str = str.replace(new RegExp(from.charAt(i), "g"), to.charAt(i));
+  }
+
+  str = str
+    .replace(/[^a-z0-9 -]/g, "") // remove invalid chars
+    .replace(/\s+/g, "-") // collapse whitespace and replace by -
+    .replace(/-+/g, "-"); // collapse dashes
+
+  return str;
+}
+
+</script>
+
+
+</html>

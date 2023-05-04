@@ -16,6 +16,8 @@ from django.contrib.auth.models import User
 import requests
 import json
 
+from django.utils.text import slugify
+
 from rest_framework import status
 from rest_framework.decorators import api_view
 from django.views.decorators.csrf import requires_csrf_token
@@ -77,6 +79,20 @@ def add_to_cart(request, product_slug):
     cart = Carrinho(request)
     cart.add(product_slug)
     return render(request, 'menu_cart.html')
+
+@api_view(['GET','POST'])
+@requires_csrf_token
+def adicionar_produto(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        slug = name
+        description = request.POST.get("description")
+        price = request.POST.get("price")
+        
+        serializer = ProductSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+    return render(request, 'add_produto.html')
 
 def carrinho(request):
     return render(request, 'carrinho.html')
