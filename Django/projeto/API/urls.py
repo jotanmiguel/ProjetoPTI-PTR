@@ -1,7 +1,8 @@
 
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from django.urls import include, path
-from .views import index, search, login, registar, shop, product, add_to_cart, adicionar_produto, conta, alterar_password, carrinho, mPagamento, base, CustomerList, CustomerDetail, ProductList, ProductDetail, OrderList, OrderDetail, StockList, StockDetail, CartList, CartDetail, SuplierList, SuplierDetail, CategoryDetail, CategoryList
+from .views import index, search, login, registar, shop, product, add_to_cart, adicionar_produto, conta, PasswordsChangeView, password_success, carrinho, mPagamento, base, CustomerList, CustomerDetail, ProductList, ProductDetail, OrderList, OrderDetail, StockList, StockDetail, CartList, CartDetail, SuplierList, SuplierDetail, CategoryDetail, CategoryList
 from . import views
 
 
@@ -19,7 +20,8 @@ urlpatterns = [
     path('add_to_cart/<slug:slug>/', add_to_cart, name='add_to_cart'),
     path('adicionar_produto/', adicionar_produto, name='adicionar_produto'),
     path('conta', conta, name='conta'),
-    path('alterar_password', alterar_password, name='alterar_password'),
+    path('password/', PasswordsChangeView.as_view(template_name='registration/change-password.html')),
+    path('password_success', password_success, name="password_success"),
     path('carrinho/', carrinho, name='carrinho'),
     path('pagamento/', mPagamento, name='mPagamento'),
     path('base/',base, name="base"),

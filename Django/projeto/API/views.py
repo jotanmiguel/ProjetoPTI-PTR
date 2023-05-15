@@ -2,6 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from .models import Customer, Product, Order, Stock, Suplier, Cart, CartItem, Category, Review
 from .serializers import CustomerSerializer, ProductSerializer, OrderSerializer, StockSerializer, SuplierSerializer, OrderProductSerializer, CategorySerializer, CartSerializer, CartItemSerializer, ReviewSerializer
 from django.contrib.auth import login, logout
+from .forms import PasswordChangingForm
+from django.contrib.auth.views import PasswordChangeView
+from django.urls import reverse_lazy
 
 from rest_framework import generics
 from django.http import HttpResponseRedirect
@@ -104,9 +107,6 @@ def adicionar_produto(request):
 def conta(request):
     return render(request,'conta.html')
 
-def alterar_password(request):
-    return render(request,'alterar_password.html')
-
 def carrinho(request):
     return render(request, 'carrinho.html')
 
@@ -196,3 +196,10 @@ class LoginView(views.APIView):
         user = serializer.validated_data['user']
         login(request, user)
         return Response(None, status=status.HTTP_202_ACCEPTED)
+
+class PasswordsChangeView(PasswordChangeView):
+    form_class = PasswordChangingForm
+    success_url = reverse_lazy('password_success')
+
+def password_success(request):
+    return render(request, 'registration/password_success.html', {})
