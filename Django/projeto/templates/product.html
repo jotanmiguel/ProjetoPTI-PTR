@@ -36,17 +36,7 @@
         <div class="row">
             <div class="product-item col-md-3" style="margin:7px 0px 7px 20px; border: 3px solid rgb(212, 217, 223);border-radius: 10px;">
                 <div class="product-thumb">
-                    <img class="img-responsive" src="/static/images/shop/products/product-2.jpg" alt="product-img" style="border-bottom: 1px solid grey;" />
-                    <div class="preview-meta">
-                        <ul>
-                            <li>
-                                <a href="{% url 'product' product.slug %}"><i class="tf-ion-ios-search-strong"></i></a>
-                            </li>
-                            <li>
-                                <a href="#!"><i class="tf-ion-android-cart"></i></a>
-                            </li>
-                        </ul>
-                    </div>
+                    <img class="img-responsive" src="{{ product.file.url }}" alt="product-img" style="border-bottom: 1px solid grey;height: auto;object-fit: contain;" />
                 </div>
                 <span class="d-flex justify-content-center"><a href="{% url 'product' product.slug %}">{{ product.name }}</a></span>
             

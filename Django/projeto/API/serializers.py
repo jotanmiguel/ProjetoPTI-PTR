@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework.serializers import Serializer, FileField
 from .models import Customer, Product, Order, Stock, Suplier, OrderProduct, Category, Cart, CartItem, Review
 from django.contrib.auth import authenticate
 

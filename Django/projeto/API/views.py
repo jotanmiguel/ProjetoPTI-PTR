@@ -10,6 +10,7 @@ from rest_framework import permissions
 from rest_framework import status
 from rest_framework import views
 from rest_framework.response import Response
+from rest_framework.viewsets import ViewSet
 from . import serializers
 from .cart import Carrinho
 from django.contrib.auth.models import User
@@ -17,6 +18,7 @@ import requests
 import json
 
 from django.utils.text import slugify
+from django.core.files.storage import FileSystemStorage
 
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -85,13 +87,18 @@ def add_to_cart(request, product_slug):
 def adicionar_produto(request):
     if request.method == "POST":
         name = request.POST.get("name")
-        slug = name
+        slug = request.POST.get("slug")
+        image = request.FILES["image"]
         description = request.POST.get("description")
         price = request.POST.get("price")
+        produto = Product.objects.create(name=name, slug=slug, file=image, description=description, price=price)
+        product_path = produto.file.path
+
         
         serializer = ProductSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
+        return render(request, "add_produto.html", {"product_path":product_path})
     return render(request, 'add_produto.html')
 
 def conta(request):

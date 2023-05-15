@@ -40,7 +40,7 @@
                     <div class="card-body p-5">
                     <h2 class="text-uppercase text-center mb-5">Adicionar Produto</h2>
 
-                    <form action="{% url 'adicionar_produto' %} "method="post">
+                    <form action="{% url 'adicionar_produto' %}" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
 
                         <div class="form-outline mb-4">
@@ -50,17 +50,23 @@
 
                         <div class="form-outline mb-4">
                         <input type="text" name="slug" id="textSlug" class="form-control form-control-lg" readonly />
-                        <label class="form-label" for="form3Example1cg">Slug</label>
+                        <label class="form-label" for="form3Example2cg">Slug</label>
                         </div>
 
                         <div class="form-outline mb-4">
-                        <input type="text" name="description" id="form3Example3cg" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Example3cg">Descrição</label>
+                        <input type="file" name="image" accept="image/png, image/jpeg" id="file" class="form-control-sm"/>
+                        <label class="form-label" for="form3Example3cg">Imagem do Produto</label>
+                        </div>
+
+
+                        <div class="form-outline mb-4">
+                        <input type="text" name="description" id="form3Example4cg" class="form-control form-control-lg" />
+                        <label class="form-label" for="form3Example4cg">Descrição</label>
                         </div>
 
                         <div class="form-outline mb-4">
-                        <input type="text" name="price" id="form3Example4cdg" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Example4cdg">Preço</label>
+                        <input type="text" name="price" id="form3Example5cdg" class="form-control form-control-lg" />
+                        <label class="form-label" for="form3Example5cdg">Preço</label>
                         </div>
                         
 
