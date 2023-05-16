@@ -32,18 +32,25 @@
 <body>
 	{% include 'navbar.html' %}
 	{% block content %}
-		<h1> Resultados: </h1>
 		{% if searched %}
-			<p>Procurou por {{searched}}</p>
-			{% for produto in produtos %}
-				<br>{{produto}} - {{produto.price}} - {{produto.date}}
-				
-			{% endfor %}
-
-
-		{% else %}
-		<p>Esqueceu-se de procurar!</p>
-		{% endif %}
-	{% endblock %}
+            <section class="products section bg-gray">
+                <div class="container">
+                    <div class="row">
+                        <div class="title text-center">
+                            <h2>Resultados</h2>
+                        </div>
+                        <p>Procurou por {{searched}}</p>
+                    </div>
+                    <div class="col-md-12 d-flex flex-wrap justify-content-center">
+                        {% for product in products %}
+                        {% include 'product_list_item.html' %}
+                        {% endfor %}
+    
+                    </div>
+    
+                </div>
+            </section>
+            {% endif %}
+            {% endblock %}
     <script src="https://unpkg.com/htmx.org@1.7.0"></script>
 </body>

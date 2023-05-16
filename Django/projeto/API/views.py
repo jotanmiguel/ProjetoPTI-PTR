@@ -116,6 +116,10 @@ def conta(request):
 def registration_success(request):
     return render(request, 'registration_success.html')
 
+
+def login_success(request):
+    return render(request, 'login_success.html')
+
 def carrinho(request):
     return render(request, 'carrinho.html')
 
@@ -125,10 +129,10 @@ def mPagamento(request):
 def search(request):
     if request.method == "POST":
         searched = request.POST.get('searched')
-        produtos = Product.objects.filter(name__contains=searched)
+        products = Product.objects.filter(name__contains=searched)
         return render(request, 'searchbar.html',
         {'searched':searched,
-        'produtos':produtos})
+        'products':products})
     elif request.method == "GET":
         return render(request, 'searchbar.html', {})
     else:
