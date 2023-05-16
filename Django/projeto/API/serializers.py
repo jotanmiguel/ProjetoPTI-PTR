@@ -132,10 +132,10 @@ class LoginSerializer(serializers.Serializer):
             if not user:
                 # If we don't have a regular user, raise a ValidationError
                 msg = 'Access denied: wrong username or password.'
-                raise serializers.ValidationError(msg, code='authorization')
+                raise serializers.ValidationError(msg)
         else:
             msg = 'Both "username" and "password" are required.'
-            raise serializers.ValidationError(msg, code='authorization')
+            raise serializers.ValidationError(msg)
         # We have a valid user, put it in the serializer's validated_data.
         # It will be used in the view.
         attrs['user'] = user

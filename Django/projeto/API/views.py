@@ -45,6 +45,7 @@ def registar(request):
         email = request.POST.get("email")
         password = request.POST.get("password")
         address = request.POST.get("address")
+        zipCode = request.POST.get("zipCode")
         tipo = request.POST.get("type")
 
         clientes = Customer.objects.values_list("name", flat=True)
@@ -57,15 +58,20 @@ def registar(request):
                 serializer = CustomerSerializer(data=request.data)
                 if serializer.is_valid():
                     serializer.save()
+                    user = User.objects.create_user(name, email, password)
+                    user.save()
+                    return render(request, 'registration_success.html')
 
             else:
                 serializer = SuplierSerializer(data=request.data)
                 if serializer.is_valid():
                     serializer.save()
+                    user = User.objects.create_user(name, email, password)
+                    user.save()
+                    return render(request, 'registration_success.html')
 
 
-            user = User.objects.create_user(name, email, password)
-            user.save()
+
 
     else:
         return render(request, 'registar.html')
@@ -106,6 +112,9 @@ def adicionar_produto(request):
 
 def conta(request):
     return render(request,'conta.html')
+
+def registration_success(request):
+    return render(request, 'registration_success.html')
 
 def carrinho(request):
     return render(request, 'carrinho.html')
@@ -192,10 +201,11 @@ class LoginView(views.APIView):
     def post(self, request, format=None):
         serializer = serializers.LoginSerializer(data=self.request.data,
             context={ 'request': self.request })
-        serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data['user']
-        login(request, user)
-        return Response(None, status=status.HTTP_202_ACCEPTED)
+        if serializer.is_valid():
+            user = serializer.validated_data['user']
+            login(request, user)
+            return Response(None, status=status.HTTP_202_ACCEPTED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class PasswordsChangeView(PasswordChangeView):
     form_class = PasswordChangingForm
