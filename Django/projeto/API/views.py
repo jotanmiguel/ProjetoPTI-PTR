@@ -61,8 +61,6 @@ def registar(request):
                     serializer.save()
                     user = User.objects.create_user(name, email, password)
                     user.save()
-                    my_group = Group.objects.get(name='Customers') 
-                    my_group.user_set.add(user)
                     return render(request, 'registration_success.html')
 
             else:
