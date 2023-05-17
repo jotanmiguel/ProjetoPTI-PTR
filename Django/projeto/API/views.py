@@ -5,6 +5,7 @@ from django.contrib.auth import login, logout
 from .forms import PasswordChangingForm
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
+from django.contrib.auth.models import Group
 
 from rest_framework import generics
 from django.http import HttpResponseRedirect
@@ -29,13 +30,13 @@ from django.views.decorators.csrf import requires_csrf_token
 from rest_framework.response import Response
 
 
-
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
 
 def login(request):
     return render(request, 'login.html')
+
 
 @api_view(['GET','POST'])
 @requires_csrf_token
@@ -60,6 +61,8 @@ def registar(request):
                     serializer.save()
                     user = User.objects.create_user(name, email, password)
                     user.save()
+                    my_group = Group.objects.get(name='Customers') 
+                    my_group.user_set.add(user)
                     return render(request, 'registration_success.html')
 
             else:
@@ -68,6 +71,8 @@ def registar(request):
                     serializer.save()
                     user = User.objects.create_user(name, email, password)
                     user.save()
+                    my_group = Group.objects.get(name='Supliers') 
+                    my_group.user_set.add(user)
                     return render(request, 'registration_success.html')
 
 
