@@ -2515,3 +2515,6 @@
   content: "\e063";
 }
 
+.tf-door-open:before{
+  content: "\F308";
+}
