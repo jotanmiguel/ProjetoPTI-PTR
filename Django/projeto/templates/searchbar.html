@@ -39,8 +39,20 @@
                         <div class="title text-center">
                             <h2>Resultados</h2>
                         </div>
+                        <div class="col-md-12 d-flex flex-wrap justify-content-center">
+                            <div class="form-outline mb-4">
+                                <select onchange="if (this.value) window.location.href=this.value;" name="category" class="form-control form-control-lg">
+                                  <option value="#">Escolha a categoria...</option>
+                                  <option value="http://127.0.0.1:8000/materialEscritorio">Material de Escritório</option>
+                                  <option value="http://127.0.0.1:8000/desporto">Desporto</option>
+                                  <option value="http://127.0.0.1:8000/informatica">Informática</option>
+                                  <option value="http://127.0.0.1:8000/roupa">Roupa</option>
+                                </select>
+                                </div>
+                        </div>
                         <p>Procurou por {{searched}}</p>
                     </div>
+
                     <div class="col-md-12 d-flex flex-wrap justify-content-center">
                         {% for product in products %}
                         {% include 'product_list_item.html' %}

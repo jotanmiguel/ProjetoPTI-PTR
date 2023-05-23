@@ -36,59 +36,8 @@
 
     {% include 'navbar.html' %}
     
-    <!-- Main Menu Section -->
-    <section class="menu">
-        <nav class="navbar navigation">
-            <div class="container">
-                <!-- Navbar Links -->
-                <div id="navbar" class="navbar-collapse collapse text-center">
-                    <ul class="nav navbar-nav">
-    
-                        <!-- Home -->
-                        <li class="dropdown ">
-                            <a href="{% url 'index' %}">LOJA10</a>
-                        </li><!-- / Home -->
-    
-    
-                        <!-- Elements -->
-                        <!-- Blog -->
-                        <li class="dropdown dropdown-slide">
-                            <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
-                                role="button" aria-haspopup="true" aria-expanded="false">Produtos <span
-                                    class="tf-ion-ios-arrow-down"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="blog-left-sidebar.html">Mercearia</a></li>
-                                <li><a href="blog-right-sidebar.html">Lacticinios</a></li>
-                                <li><a href="blog-full-width.html">Peixaria e Talho</a></li>
-                                <li><a href="blog-grid.html">Frutas e Legumes</a></li>
-                                <li><a href="blog-single.html">Congelados</a></li>
-                            </ul>
-                        </li><!-- / Blog -->
-    
-                            <!-- Home -->
-                            <li class="dropdown ">
-                                <a href="index.html">Folhetos e Campanhas</a>
-                            </li><!-- / Home -->
-    
-                        <!-- Shop -->
-                        <li class="dropdown dropdown-slide">
-                            <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
-                                role="button" aria-haspopup="true" aria-expanded="false">Lojas <span
-                                    class="tf-ion-ios-arrow-down"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="typography.html">Centro</a></li>
-                                <li><a href="buttons.html">Norte</a></li>
-                                <li><a href="alerts.html">Sul</a></li>
-                            </ul>
-                        </li><!-- / Blog -->
-                    </ul><!-- / .nav .navbar-nav -->
-    
-                </div>
-                <!--/.navbar-collapse -->
-            </div><!-- / .container -->
-        </nav>
-    </section>
-    
+    <br>
+
     <div class="hero-slider">
       <div class="slider-item th-fullpage hero-area" style="background-image: url(/static/images/slider/slider-1.png);">
         <div class="container">
@@ -103,6 +52,57 @@
           </div>
         </div>
       </div>
+
+
+      {% block content %}
+
+      <section class="products section bg-gray">
+          <div class="container">
+              <div class="row">
+                  <div class="title text-center">
+                      <h2>Categorias</h2>
+                  </div>
+              </div>
+              <div class="col-md-12 d-flex flex-wrap justify-content-center">
+                  <div class="product-item col-md-1" style="margin-right: 40px;">
+                  <div class="">
+                      <a href="{% url 'matEscritorio' %}"><img class="img-responsive" src="/media/cadeiraEscritorio.jpg" alt="product-img" style="width: 100px;height: auto;object-fit: contain;padding:10px;border: 3px solid rgb(212, 217, 223);border-radius: 50px;" /></a>
+                  </div>
+                  <div class="text-center">
+                  <span>Material de Escritório</span></div>
+                  </div>
+                  <div class="product-item col-md-1" style="margin-right: 40px;">
+                  <div class="">
+                      <a href="{% url 'desporto' %}"><img class="img-responsive" src="/media/bolaFutebol.jpg" alt="product-img"  style="width: 100px;height: auto;object-fit: contain;padding:10px;border: 3px solid rgb(212, 217, 223);border-radius: 50px;" /></a>
+                  </div>
+                  <div class="text-center">
+                      <span>Desporto</span></div>
+                  </div>
+                  <div class="product-item col-md-1" style="margin-right: 40px;">
+                  <div class="">
+                      <a href="{% url 'informatica' %}"><img class="img-responsive" src="/media/laptop.jpg" alt="product-img"  style="width: 100px;height: auto;object-fit: contain;padding:10px;border: 3px solid rgb(212, 217, 223);border-radius: 50px;" /></a>
+                  </div>
+                  <div class="text-center">
+                      <span>Informática</span></div>
+                  </div>
+                  <div class="product-item col-md-1" style="margin-right: 40px;">
+                  <div class="">
+                      <a href="{% url 'roupa' %}"><img class="img-responsive" src="/media/roupa.jpg" alt="product-img"  style="width: 100px;height: auto;object-fit: contain;padding:10px;border: 3px solid rgb(212, 217, 223);border-radius: 50px;" /></a>
+                  </div>
+                  <div class="text-center">
+                      <span>Roupa</span></div>
+                  </div>
+  
+          </div>
+      </section>
+      {% endblock %}
+
+
+
+
+
+
+
       <div class="slider-item th-fullpage hero-area" style="background-image: url(/static/images/slider/slider-3.jpg);">
         <div class="container">
           <div class="row">

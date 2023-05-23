@@ -32,7 +32,8 @@ from rest_framework.response import Response
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    products = Product.objects.all()
+    return render(request, 'index.html', {'products' : products})
 
 def login(request):
     return render(request, 'login.html')
@@ -99,11 +100,13 @@ def add_to_cart(request, product_slug):
 def adicionar_produto(request):
     if request.method == "POST":
         name = request.POST.get("name")
+        category = request.POST.get("category")
         slug = request.POST.get("slug")
         image = request.FILES["image"]
         description = request.POST.get("description")
         price = request.POST.get("price")
-        produto = Product.objects.create(name=name, slug=slug, file=image, description=description, price=price)
+        date = request.POST.get("proDate")
+        produto = Product.objects.create(name=name, category=category, slug=slug, file=image, description=description, price=price, date=date)
         product_path = produto.file.path
 
         
@@ -122,6 +125,22 @@ def registration_success(request):
 
 def login_success(request):
     return render(request, 'login_success.html')
+
+def desporto(request):
+    products = Product.objects.all()
+    return render(request, 'desporto.html', {'products' : products})
+
+def matEscritorio(request):
+    products = Product.objects.all()
+    return render(request, 'matEscritorio.html', {'products' : products})
+
+def informatica(request):
+    products = Product.objects.all()
+    return render(request, 'informatica.html', {'products' : products})
+
+def roupa(request):
+    products = Product.objects.all()
+    return render(request, 'roupa.html', {'products' : products})
 
 def carrinho(request):
     return render(request, 'carrinho.html')
