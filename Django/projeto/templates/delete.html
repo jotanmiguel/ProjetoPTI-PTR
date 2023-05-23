@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Loja10</title>
+
+
+    <!-- theme meta -->
+    <meta name="theme-name" content="aviato" />
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.png" />
+    
+    <!-- Themefisher Icon font -->
+    <link rel="stylesheet" href="/static/plugins/themefisher-font/style.css">
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
+    
+    <!-- Animate css -->
+    <link rel="stylesheet" href="/static/plugins/animate/animate.css">
+    <link rel="stylesheet" href="/static/plugins/slick/slick-theme.css">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+    <body id="body">
+    {% include 'navbar.html' %}
+    <div class="title text-center">
+        <h2>Confirmar remoção de produto</h2>
+        <br>
+        <p>Tem a certeza que deseja remover o produto {{ product.name }}?</p>
+
+        <form action="" method="post">
+        <div class="form-outline mb-4">
+        {% csrf_token %}
+            <input type="submit" value="Delete" class="btn btn-danger">
+        </form>
+    </div>  
+    
+    
+    </body>
+
+
+
+
+</html>

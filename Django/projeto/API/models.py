@@ -20,6 +20,7 @@ class Customer(models.Model):
 
 # Produtos
 class Product(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     name = models.CharField(max_length=200)
     category = models.CharField(max_length=200)
     slug = models.CharField(max_length=200)

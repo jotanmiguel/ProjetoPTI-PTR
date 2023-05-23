@@ -7,7 +7,9 @@ from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import Group
 
+from django.shortcuts import redirect
 from rest_framework import generics
+from django.template import loader
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from rest_framework import permissions
@@ -162,6 +164,16 @@ def search(request):
 
 def base(request):
     return render(request, 'base.html')
+
+def delete(request, id):
+  product = Product.objects.get(id=id)
+  if request.method == 'POST':
+        # delete the band from the database
+        product.delete()
+        # redirect to the bands list
+        return redirect('shop')
+
+  return render(request, 'delete.html', {'product': product})
 
 
 class CustomerList(generics.ListCreateAPIView):
