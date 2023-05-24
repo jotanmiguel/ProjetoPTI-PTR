@@ -54,6 +54,11 @@
                         </div>
 
                         <div class="form-outline mb-4">
+                            <input type="text" name="phone_number" id="form3Example2cg" class="form-control form-control-lg" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="9" required />
+                            <label class="form-label" for="form3Example2cg">Número de Telemovel</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
                         <input type="password" name="password" id="form3Example3cg" class="form-control form-control-lg" required />
                         <label class="form-label" for="form3Example3cg">Palavra-Passe</label>
                         </div>

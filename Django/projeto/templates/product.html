@@ -53,20 +53,20 @@
                     <p>{{ product.description }}</p>                    
                 </div>
             </div>
-            {% if request.user|has_group:"Customers" %} 
-            <div class="col-md-2 d-flex flex-wrap align-content-center content">
-                 <a href="#"
-                    class="btn btn-success"
-                    hx-get="{% url 'add_to_cart' product.slug %}"
-                    hx-target="#menu-cart-button"
-                    hx-swap="outerHTML"
-                    >
-                    Adicionar ao Carrinho</a>
-            </div>
-            {% else %}
+            {% if request.user|has_group:"Supliers" %}
             <div class="col-md-2 d-flex flex-wrap align-content-center content">
                 <a href="/delete/{{ product.id }}" class="btn btn-danger">Remover Produto</a>
            </div>
+            {% else %}
+            <div class="col-md-2 d-flex flex-wrap align-content-center content">
+                <a href="#"
+                   class="btn btn-success"
+                   hx-get="{% url 'add_to_cart' product.slug %}"
+                   hx-target="#menu-cart-button"
+                   hx-swap="outerHTML"
+                   >
+                   Adicionar ao Carrinho</a>
+            </div>
            {% endif %}
 
         </div>

@@ -47,6 +47,7 @@ def registar(request):
     if request.method == "POST":
         name = request.POST.get("name") 
         email = request.POST.get("email")
+        phone_number = request.POST.get("phone_number")
         password = request.POST.get("password")
         address = request.POST.get("address")
         zipCode = request.POST.get("zipCode")
