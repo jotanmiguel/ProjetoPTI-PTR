@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-0dj6vr4&4vo=8#3_97hb2v$0_5=zbj+$816@l9-$r-6)z642wd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [ 'www.loja10.pt', '127.0.0.1']
 
 
 # Application definition
@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
     'drf_yasg',
+    'rest_framework',
     'projeto',
 ]
 
