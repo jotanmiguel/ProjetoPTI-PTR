@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-import os
 # from django.db import close_old_connections
 
 # def close_connections(**kwargs):
@@ -88,9 +87,7 @@ TEMPLATES = [
     },
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
-
+MEDIA_ROOT =  BASE_DIR / 'media'
 
 WSGI_APPLICATION = 'PGP.wsgi.application'
 
