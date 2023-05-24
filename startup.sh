@@ -19,5 +19,30 @@ pip3 install pillow
 
 pip3 install "pymongo[srv]"
 
+echo '#!/bin/bash
+
+cd Django
+python3 manage.py runserver 0.0.0.0:8000' > django-app-run.sh
+
+sudo chmod +x ProjetoPTI-PTR/django-app-run.sh
+
+echo '[Unit]
+Description=Django Development Server
+After=network.target
+
+[Service]
+WorkingDirectory=/home/pgpddjjm/ProjetoPTI-PTR
+ExecStart=/bin/bash -c "source /home/pgpddjjm/ProjetoPTI-PTR/VirtualEnv/Scripts/activate && /usr/bin/python3 /home/pgpddjjm/ProjetoPTI-PTR/Django/manage.py runserver 0.0.0.0:8000"
+
+[Install]
+WantedBy=multi-user.target
+' | sudo tee /etc/systemd/system/django.service
+
+
+sudo systemctl enable django.service
+
+sudo systemctl start django.service
+
+
 #run the django server
 python3 ProjetoPTI-PTR/Django/manage.py runserver
