@@ -120,7 +120,9 @@ def adicionar_produto(request):
     return render(request, 'add_produto.html')
 
 def conta(request):
-    return render(request,'conta.html')
+    Suppliers = Suplier.objects.all()
+    Customers = Customer.objects.all()
+    return render(request,'conta.html', {"Suppliers":Suppliers,"Customers":Customers})
 
 def registration_success(request):
     return render(request, 'registration_success.html')

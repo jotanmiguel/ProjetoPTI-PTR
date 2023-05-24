@@ -42,21 +42,88 @@
 
                     <form action="http://127.0.0.1:8000/password/" method="post">
                         {% csrf_token %}
+                        {% for supplier in Suppliers %}
+                        {% if supplier.name == user.username %}
 
                         <div class="form-outline mb-4">
-                        <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" value="{{ user.username }}" readonly />
-                        <label class="form-label" for="form3Example1cg">Nome de Utilizador</label>
-                        </div>
-
+                            <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" value="{{ supplier.name }}" readonly />
+                            <label class="form-label" for="form3Example1cg">Nome de Utilizador</label>
+                            </div>
+    
+                            <div class="form-outline mb-4">
+                                <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" value="{{ supplier.email }}" readonly />
+                                <label class="form-label" for="form3Example1cg">Email</label>
+                            </div>
+    
+                            <div class="form-outline mb-4">
+                                <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" value="{{ supplier.phone_number }}" readonly />
+                                <label class="form-label" for="form3Example1cg">Número de telemovel</label>
+                            </div>
+    
+                            <div class="form-outline mb-4">
+                                <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" value="{{ supplier.address }}" readonly />
+                                <label class="form-label" for="form3Example1cg">Morada</label>
+                            </div>
+    
+                            <div class="form-outline mb-4">
+                                <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" value="{{ supplier.zipCode }}" readonly />
+                                <label class="form-label" for="form3Example1cg">Código Postal</label>
+                            </div>
+    
+    
+    
+                            <div class="form-outline mb-4">
+                            <input type="password" name="password" id="form3Example3cg" class="form-control form-control-lg" value="....." readonly />
+                            <label class="form-label" for="form3Example3cg">Palavra-passe</label>
+                            </div>
+    
+                            <div class="d-flex justify-content-center">
+                            <button type="submit"
+                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Alterar Palavra-passe</button>
+                            </div>
+                        {% endif %}
+                        {% endfor %}
+                        {% for customer in Customers %}
+                        {% if customer.name == user.username %}
                         <div class="form-outline mb-4">
-                        <input type="password" name="password" id="form3Example3cg" class="form-control form-control-lg" value="....." readonly />
-                        <label class="form-label" for="form3Example3cg">Palavra-passe</label>
-                        </div>
+                            <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" value="{{ customer.name }}" readonly />
+                            <label class="form-label" for="form3Example1cg">Nome de Utilizador</label>
+                            </div>
+    
+                            <div class="form-outline mb-4">
+                                <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" value="{{ customer.email }}" readonly />
+                                <label class="form-label" for="form3Example1cg">Email</label>
+                            </div>
+    
+                            <div class="form-outline mb-4">
+                                <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" value="{{ customer.phone_number }}" readonly />
+                                <label class="form-label" for="form3Example1cg">Número de telemovel</label>
+                            </div>
+    
+                            <div class="form-outline mb-4">
+                                <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" value="{{ customer.address }}" readonly />
+                                <label class="form-label" for="form3Example1cg">Morada</label>
+                            </div>
+    
+                            <div class="form-outline mb-4">
+                                <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" value="{{ customer.zipCode }}" readonly />
+                                <label class="form-label" for="form3Example1cg">Código Postal</label>
+                            </div>
+    
+    
+    
+                            <div class="form-outline mb-4">
+                            <input type="password" name="password" id="form3Example3cg" class="form-control form-control-lg" value="....." readonly />
+                            <label class="form-label" for="form3Example3cg">Palavra-passe</label>
+                            </div>
+    
+                            <div class="d-flex justify-content-center">
+                            <button type="submit"
+                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Alterar Palavra-passe</button>
+                            </div>
+                            {% endif %}
+                            {% endfor %}                        
 
-                        <div class="d-flex justify-content-center">
-                        <button type="submit"
-                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Alterar Palavra-passe</button>
-                        </div>
 
                     </form>
 
