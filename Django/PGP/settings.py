@@ -33,8 +33,8 @@ ALLOWED_HOSTS = [ 'www.loja10.pt', '127.0.0.1']
 
 
 # Application definition
-SESSION_COOKIE_AGE = 86400
-CART_SESSION_ID = 'cart'
+#SESSION_COOKIE_AGE = 86400
+#CART_SESSION_ID = 'cart'
 
 
 INSTALLED_APPS = [
@@ -81,7 +81,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'projeto.API.context_processors.cart',
+                #'projeto.API.context_processors.cart',
             ],
         },
     },

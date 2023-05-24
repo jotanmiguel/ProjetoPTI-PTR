@@ -2,6 +2,8 @@ from .models import Product
 from django.conf import settings
 
 class Carrinho(object):
+
+    """
     def __init__(self, request):
         self.session = request.session
         cart = self.session.get(settings.CART_SESSION_ID)
@@ -39,3 +41,4 @@ class Carrinho(object):
         if product_slug in self.cart:
             del self.cart[product_slug]
             self.save()
+    """
