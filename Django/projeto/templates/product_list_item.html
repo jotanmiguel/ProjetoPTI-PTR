@@ -1,6 +1,6 @@
-<div class="product-item col-md-3" style="margin:7px; border:2px solid grey;border-radius: 10px;">
+<div class="product-item col-md-3" style="margin:7px; border:2px solid grey;border-radius: 10px;background-color: rgb(143, 143, 143);">
     <div class="product-thumb">
-        <img class="img-responsive" src="/static/images/shop/products/product-2.jpg" alt="product-img" style="border-bottom: 1px solid grey;" />
+        <img class="img-responsive" src="{{ product.file.url }}" alt="product-img" style="border-bottom: 1px solid grey;height: auto;object-fit: contain;" />
         <div class="preview-meta">
             <ul>
                 <li>
@@ -14,7 +14,7 @@
     </div>
     <span class="d-flex justify-content-center"><a href="{% url 'product' product.slug %}">{{ product.name }}</a></span>
 
-    <p class="d-flex justify-content-center">{{ product.price }}€</p>
+    <span class="d-flex justify-content-center">{{ product.price }}€</span>
 </div>
 
 

@@ -1,5 +1,5 @@
     <!-- Start Top Header Bar -->
-
+    {% load auth_extras %}
 
     <section class="top-header">
         <div class="container">
@@ -26,6 +26,7 @@
                     </div>
 
                 </div>
+                
 
                 <div class="col-md-4 offset-md-2">
                     <!-- Site Logo -->
@@ -44,7 +45,9 @@
                         <li class="list-inline-item">
                             {% if user.is_authenticated %}
                             <a href="{% url 'logout' %}" class="toggle">
-                                <i class="tf-door-open"></i>Sair</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-open-fill" viewBox="0 0 16 16">
+                                    <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
+                                  </svg>Sair</a>
 
                             {% else %}
                             <a href="http://127.0.0.1:8000/accounts/login/" class="toggle">
@@ -52,6 +55,12 @@
                             {% endif %}
 
                         </li>
+                        {% if request.user|has_group:"Supliers" %} 
+                        <li class="list-inline-item">
+                        <a href="{% url 'adicionar_produto' %}" class="toggle">
+                            <i class="tf-ion-ios-plus"></i>Adicionar Produto</a>
+                        </li>
+                        {% else %}
                         <li class="dropdown cart-nav dropdown-slide list-inline-item">
                             {% include 'menu_cart.html' %}
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
@@ -85,12 +94,19 @@
                                 </ul>
                             </div>
     
-                        </li><!-- / Cart -->
+                        </li><!-- / Cart -->                        
+                        {% endif %}
+
                         <li class="list-inline-item">
                             {% if user.is_authenticated %}
                             <a href="{% url 'conta' %}" class="toggle">
                                 <i class="tf-ion-android-person"></i>Conta</a>
-
+                                {% if request.user|has_group:"Suplier" %}
+                                <a href="{% url 'adicionar_produto' %}" class="toggle">
+                                    <i class="tf-ion-android-person"></i>Adicionar Produto</a>
+                                {% else %}
+                                <a></a>
+                                {% endif %}
                             {% else %}
                             <a></a>
                             {% endif %}

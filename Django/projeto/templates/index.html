@@ -36,59 +36,8 @@
 
     {% include 'navbar.html' %}
     
-    <!-- Main Menu Section -->
-    <section class="menu">
-        <nav class="navbar navigation">
-            <div class="container">
-                <!-- Navbar Links -->
-                <div id="navbar" class="navbar-collapse collapse text-center">
-                    <ul class="nav navbar-nav">
-    
-                        <!-- Home -->
-                        <li class="dropdown ">
-                            <a href="{% url 'index' %}">LOJA10</a>
-                        </li><!-- / Home -->
-    
-    
-                        <!-- Elements -->
-                        <!-- Blog -->
-                        <li class="dropdown dropdown-slide">
-                            <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
-                                role="button" aria-haspopup="true" aria-expanded="false">Produtos <span
-                                    class="tf-ion-ios-arrow-down"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="blog-left-sidebar.html">Mercearia</a></li>
-                                <li><a href="blog-right-sidebar.html">Lacticinios</a></li>
-                                <li><a href="blog-full-width.html">Peixaria e Talho</a></li>
-                                <li><a href="blog-grid.html">Frutas e Legumes</a></li>
-                                <li><a href="blog-single.html">Congelados</a></li>
-                            </ul>
-                        </li><!-- / Blog -->
-    
-                            <!-- Home -->
-                            <li class="dropdown ">
-                                <a href="index.html">Folhetos e Campanhas</a>
-                            </li><!-- / Home -->
-    
-                        <!-- Shop -->
-                        <li class="dropdown dropdown-slide">
-                            <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
-                                role="button" aria-haspopup="true" aria-expanded="false">Lojas <span
-                                    class="tf-ion-ios-arrow-down"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="typography.html">Centro</a></li>
-                                <li><a href="buttons.html">Norte</a></li>
-                                <li><a href="alerts.html">Sul</a></li>
-                            </ul>
-                        </li><!-- / Blog -->
-                    </ul><!-- / .nav .navbar-nav -->
-    
-                </div>
-                <!--/.navbar-collapse -->
-            </div><!-- / .container -->
-        </nav>
-    </section>
-    
+    <br>
+
     <div class="hero-slider">
       <div class="slider-item th-fullpage hero-area" style="background-image: url(/static/images/slider/slider-1.png);">
         <div class="container">
@@ -103,6 +52,57 @@
           </div>
         </div>
       </div>
+
+
+      {% block content %}
+
+      <section class="products section bg-gray">
+          <div class="container">
+              <div class="row">
+                  <div class="title text-center">
+                      <h2>Categorias</h2>
+                  </div>
+              </div>
+              <div class="col-md-12 d-flex flex-wrap justify-content-center">
+                  <div class="product-item col-md-1" style="margin-right: 40px;">
+                  <div class="">
+                      <a href="{% url 'matEscritorio' %}"><img class="img-responsive" src="/media/cadeiraEscritorio.jpg" alt="product-img" style="width: 100px;height: auto;object-fit: contain;padding:10px;border: 3px solid rgb(212, 217, 223);border-radius: 50px;" /></a>
+                  </div>
+                  <div class="text-center">
+                  <span>Material de Escritório</span></div>
+                  </div>
+                  <div class="product-item col-md-1" style="margin-right: 40px;">
+                  <div class="">
+                      <a href="{% url 'desporto' %}"><img class="img-responsive" src="/media/bolaFutebol.jpg" alt="product-img"  style="width: 100px;height: auto;object-fit: contain;padding:10px;border: 3px solid rgb(212, 217, 223);border-radius: 50px;" /></a>
+                  </div>
+                  <div class="text-center">
+                      <span>Desporto</span></div>
+                  </div>
+                  <div class="product-item col-md-1" style="margin-right: 40px;">
+                  <div class="">
+                      <a href="{% url 'informatica' %}"><img class="img-responsive" src="/media/laptop.jpg" alt="product-img"  style="width: 100px;height: auto;object-fit: contain;padding:10px;border: 3px solid rgb(212, 217, 223);border-radius: 50px;" /></a>
+                  </div>
+                  <div class="text-center">
+                      <span>Informática</span></div>
+                  </div>
+                  <div class="product-item col-md-1" style="margin-right: 40px;">
+                  <div class="">
+                      <a href="{% url 'roupa' %}"><img class="img-responsive" src="/media/roupa.jpg" alt="product-img"  style="width: 100px;height: auto;object-fit: contain;padding:10px;border: 3px solid rgb(212, 217, 223);border-radius: 50px;" /></a>
+                  </div>
+                  <div class="text-center">
+                      <span>Roupa</span></div>
+                  </div>
+  
+          </div>
+      </section>
+      {% endblock %}
+
+
+
+
+
+
+
       <div class="slider-item th-fullpage hero-area" style="background-image: url(/static/images/slider/slider-3.jpg);">
         <div class="container">
           <div class="row">
@@ -169,287 +169,7 @@
             </div>
         </div>
     </section>
-    
-    <section class="products section bg-gray">
-        <div class="container">
-            <div class="row">
-                <div class="title text-center">
-                    <h2>Trendy Products</h2>
-                </div>
-            </div>
-            <div class="row">
-                
-                <div class="col-md-4">
-                    <div class="product-item">
-                        <div class="product-thumb">
-                            <span class="bage">Sale</span>
-                            <img class="img-responsive" src="/static/images/shop/products/product-1.jpg" alt="product-img" />
-                            <div class="preview-meta">
-                                <ul>
-                                    <li>
-                                        <span  data-toggle="modal" data-target="#product-modal">
-                                            <i class="tf-ion-ios-search-strong"></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <a href="#!" ><i class="tf-ion-ios-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"><i class="tf-ion-android-cart"></i></a>
-                                    </li>
-                                </ul>
-                              </div>
-                        </div>
-                        <div class="product-content">
-                            <h4><a href="product-single.html">Reef Boardsport</a></h4>
-                            <p class="price">$200</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="product-item">
-                        <div class="product-thumb">
-                            <img class="img-responsive" src="/static/images/shop/products/product-2.jpg" alt="product-img" />
-                            <div class="preview-meta">
-                                <ul>
-                                    <li>
-                                        <span  data-toggle="modal" data-target="#product-modal">
-                                            <i class="tf-ion-ios-search-strong"></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <a href="#" ><i class="tf-ion-ios-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"><i class="tf-ion-android-cart"></i></a>
-                                    </li>
-                                </ul>
-                              </div>
-                        </div>
-                        <div class="product-content">
-                            <h4><a href="product-single.html">Rainbow Shoes</a></h4>
-                            <p class="price">$200</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="product-item">
-                        <div class="product-thumb">
-                            <img class="img-responsive" src="/static/images/shop/products/product-3.jpg" alt="product-img" />
-                            <div class="preview-meta">
-                                <ul>
-                                    <li>
-                                        <span  data-toggle="modal" data-target="#product-modal">
-                                            <i class="tf-ion-ios-search-strong"></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <a href="#" ><i class="tf-ion-ios-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"><i class="tf-ion-android-cart"></i></a>
-                                    </li>
-                                </ul>
-                              </div>
-                        </div>
-                        <div class="product-content">
-                            <h4><a href="product-single.html">Strayhorn SP</a></h4>
-                            <p class="price">$230</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="product-item">
-                        <div class="product-thumb">
-                            <img class="img-responsive" src="/static/images/shop/products/product-4.jpg" alt="product-img" />
-                            <div class="preview-meta">
-                                <ul>
-                                    <li>
-                                        <span  data-toggle="modal" data-target="#product-modal">
-                                            <i class="tf-ion-ios-search-strong"></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <a href="#" ><i class="tf-ion-ios-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"><i class="tf-ion-android-cart"></i></a>
-                                    </li>
-                                </ul>
-                              </div>
-                        </div>
-                        <div class="product-content">
-                            <h4><a href="product-single.html">Bradley Mid</a></h4>
-                            <p class="price">$200</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="product-item">
-                        <div class="product-thumb">
-                            <img class="img-responsive" src="/static/images/shop/products/product-5.jpg" alt="product-img" />
-                            <div class="preview-meta">
-                                <ul>
-                                    <li>
-                                        <span  data-toggle="modal" data-target="#product-modal">
-                                            <i class="tf-ion-ios-search-strong"></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <a href="#" ><i class="tf-ion-ios-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"><i class="tf-ion-android-cart"></i></a>
-                                    </li>
-                                </ul>
-                              </div>
-                        </div>
-                        <div class="product-content">
-                            <h4><a href="product-single.html">Rainbow Shoes</a></h4>
-                            <p class="price">$200</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="product-item">
-                        <div class="product-thumb">
-                            <img class="img-responsive" src="/static/images/shop/products/product-6.jpg" alt="product-img" />
-                            <div class="preview-meta">
-                                <ul>
-                                    <li>
-                                        <span  data-toggle="modal" data-target="#product-modal">
-                                            <i class="tf-ion-ios-search-strong"></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <a href="#" ><i class="tf-ion-ios-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"><i class="tf-ion-android-cart"></i></a>
-                                    </li>
-                                </ul>
-                              </div>
-                        </div>
-                        <div class="product-content">
-                            <h4><a href="product-single.html">Rainbow Shoes</a></h4>
-                            <p class="price">$200</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="product-item">
-                        <div class="product-thumb">
-                            <span class="bage">Sale</span>
-                            <img class="img-responsive" src="/static/images/shop/products/product-7.jpg" alt="product-img" />
-                            <div class="preview-meta">
-                                <ul>
-                                    <li>
-                                        <span  data-toggle="modal" data-target="#product-modal">
-                                            <i class="tf-ion-ios-search-strong"></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <a href="#" ><i class="tf-ion-ios-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"><i class="tf-ion-android-cart"></i></a>
-                                    </li>
-                                </ul>
-                              </div>
-                        </div>
-                        <div class="product-content">
-                            <h4><a href="product-single.html">Rainbow Shoes</a></h4>
-                            <p class="price">$200</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="product-item">
-                        <div class="product-thumb">
-                            <img class="img-responsive" src="/static/images/shop/products/product-8.jpg" alt="product-img" />
-                            <div class="preview-meta">
-                                <ul>
-                                    <li>
-                                        <span  data-toggle="modal" data-target="#product-modal">
-                                            <i class="tf-ion-ios-search-strong"></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <a href="#" ><i class="tf-ion-ios-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"><i class="tf-ion-android-cart"></i></a>
-                                    </li>
-                                </ul>
-                              </div>
-                        </div>
-                        <div class="product-content">
-                            <h4><a href="product-single.html">Rainbow Shoes</a></h4>
-                            <p class="price">$200</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="product-item">
-                        <div class="product-thumb">
-                            <img class="img-responsive" src="/static/images/shop/products/product-9.jpg" alt="product-img" />
-                            <div class="preview-meta">
-                                <ul>
-                                    <li>
-                                        <span  data-toggle="modal" data-target="#product-modal">
-                                            <i class="tf-ion-ios-search-strong"></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <a href="#" ><i class="tf-ion-ios-heart"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"><i class="tf-ion-android-cart"></i></a>
-                                    </li>
-                                </ul>
-                              </div>
-                        </div>
-                        <div class="product-content">
-                            <h4><a href="product-single.html">Rainbow Shoes</a></h4>
-                            <p class="price">$200</p>
-                        </div>
-                    </div>
-                </div>
-            
-            <!-- Modal -->
-            <div class="modal product-modal fade" id="product-modal">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i class="tf-ion-close"></i>
-                </button>
-                  <div class="modal-dialog " role="document">
-                    <div class="modal-content">
-                          <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-8 col-sm-6 col-xs-12">
-                                    <div class="modal-image">
-                                        <img class="img-responsive" src="/static/images/shop/products/modal-product.jpg" alt="product-img" />
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-6 col-xs-12">
-                                    <div class="product-short-details">
-                                        <h2 class="product-title">GM Pendant, Basalt Grey</h2>
-                                        <p class="product-price">$200</p>
-                                        <p class="product-short-description">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem iusto nihil cum. Illo laborum numquam rem aut officia dicta cumque.
-                                        </p>
-                                        <a href="cart.html" class="btn btn-main">Add To Cart</a>
-                                        <a href="product-single.html" class="btn btn-transparent">View Product Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-            </div><!-- /.modal -->
-    
-            </div>
-        </div>
-    </section>
+
     
     
     <!--

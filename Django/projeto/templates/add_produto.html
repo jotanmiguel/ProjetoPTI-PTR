@@ -40,7 +40,7 @@
                     <div class="card-body p-5">
                     <h2 class="text-uppercase text-center mb-5">Adicionar Produto</h2>
 
-                    <form action="{% url 'adicionar_produto' %} "method="post">
+                    <form action="{% url 'adicionar_produto' %}" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
 
                         <div class="form-outline mb-4">
@@ -49,18 +49,42 @@
                         </div>
 
                         <div class="form-outline mb-4">
+                        <select name="category" class="form-control form-control-lg">
+                          <option value="categoria">Escolha a categoria...</option>
+                          <option value="matEscritorio">Material de Escritório</option>
+                          <option value="desporto">Desporto</option>
+                          <option value="informatica">Informática</option>
+                          <option value="roupa">Roupa</option>
+                        </select>
+                        <label class="form-label" for="form3Example2cg">Categoria</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
                         <input type="text" name="slug" id="textSlug" class="form-control form-control-lg" readonly />
-                        <label class="form-label" for="form3Example1cg">Slug</label>
+                        <label class="form-label" for="form3Example3cg">Slug</label>
                         </div>
 
                         <div class="form-outline mb-4">
-                        <input type="text" name="description" id="form3Example3cg" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Example3cg">Descrição</label>
+                        <input type="file" name="image" accept="image/png, image/jpeg" id="file" class="form-control-sm"/>
+                        <label class="form-label" for="form3Example4cg">Imagem do Produto</label>
+                        </div>
+
+
+                        <div class="form-outline mb-4">
+                        <input type="text" name="description" id="form3Example4cg" class="form-control form-control-lg" />
+                        <label class="form-label" for="form3Example5cg">Descrição</label>
                         </div>
 
                         <div class="form-outline mb-4">
-                        <input type="text" name="price" id="form3Example4cdg" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Example4cdg">Preço</label>
+                        <input type="text" name="price" id="form3Example5cdg" class="form-control form-control-lg" />
+                        <label class="form-label" for="form3Example6cdg">Preço</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                        <input type="date" id="start" name="proDate"
+                        value="2023-07-22"
+                        min="2023-01-01" max="2030-12-31">
+                        <label class="form-label" for="form3Example7cg">Data de Produção</label>
                         </div>
                         
 
@@ -83,7 +107,8 @@
     </body>
 
 <script>
-    document.getElementById("textString").addEventListener("input", function () {
+  document.getElementById('start').valueAsDate = new Date();
+  document.getElementById("textString").addEventListener("input", function () {
   let theSlug = string_to_slug(this.value);
   document.getElementById("textSlug").value = theSlug;
 });

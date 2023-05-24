@@ -54,7 +54,9 @@
                 </div>
                 <div class="col-md-12 d-flex flex-wrap justify-content-center">
                     {% for product in products %}
+                    {% if product.category == "roupa" %}
                     {% include 'product_list_item.html' %}
+                    {% endif %}
                     {% endfor %}
 
                 </div>

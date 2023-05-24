@@ -44,30 +44,40 @@
                         {% csrf_token %}
 
                         <div class="form-outline mb-4">
-                        <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" />
+                        <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" required />
                         <label class="form-label" for="form3Example1cg">Nome de Utilizador</label>
                         </div>
 
                         <div class="form-outline mb-4">
-                        <input type="email" name="email" id="form3Example2cg" class="form-control form-control-lg" />
+                        <input type="email" name="email" id="form3Example2cg" class="form-control form-control-lg" required />
                         <label class="form-label" for="form3Example2cg">E-Mail</label>
                         </div>
 
                         <div class="form-outline mb-4">
-                        <input type="password" name="password" id="form3Example3cg" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Example3cg">Password</label>
+                            <input type="text" name="phone_number" id="form3Example2cg" class="form-control form-control-lg" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="9" required />
+                            <label class="form-label" for="form3Example2cg">Número de Telemovel</label>
                         </div>
 
                         <div class="form-outline mb-4">
-                        <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Example4cdg">Confirm Password</label>
+                        <input type="password" name="password" id="form3Example3cg" class="form-control form-control-lg" required />
+                        <label class="form-label" for="form3Example3cg">Palavra-Passe</label>
                         </div>
 
                         <div class="form-outline mb-4">
-                        <input type="text" name="address" id="form3Example5cdg" class="form-control form-control-lg" />
+                        <input type="password" id="form3Example4cdg" class="form-control form-control-lg" required />
+                        <label class="form-label" for="form3Example4cdg">Confirmar Palavra-Passe</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                        <input type="text" name="address" id="form3Example5cdg" class="form-control form-control-lg" required />
                         <label class="form-label" for="form3Example5cdg">Morada</label>
                         </div>
 
+                        <div class="form-outline mb-4">
+                            <input type="text" name="zipCode" id="form3Example5cdg" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="7" required />
+                            <label class="form-label" for="form3Example5cdg">Codigo-Postal</label>
+                        </div>
+                            
 
                         <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
 

@@ -2,14 +2,21 @@ from django.shortcuts import render, get_object_or_404
 from .models import Customer, Product, Order, Stock, Suplier, Cart, CartItem, Category, Review
 from .serializers import CustomerSerializer, ProductSerializer, OrderSerializer, StockSerializer, SuplierSerializer, OrderProductSerializer, CategorySerializer, CartSerializer, CartItemSerializer, ReviewSerializer
 from django.contrib.auth import login, logout
+from .forms import PasswordChangingForm
+from django.contrib.auth.views import PasswordChangeView
+from django.urls import reverse_lazy
+from django.contrib.auth.models import Group
 
+from django.shortcuts import redirect
 from rest_framework import generics
+from django.template import loader
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from rest_framework import permissions
 from rest_framework import status
 from rest_framework import views
 from rest_framework.response import Response
+from rest_framework.viewsets import ViewSet
 from . import serializers
 from .cart import Carrinho
 from django.contrib.auth.models import User
@@ -17,6 +24,7 @@ import requests
 import json
 
 from django.utils.text import slugify
+from django.core.files.storage import FileSystemStorage
 
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -24,13 +32,14 @@ from django.views.decorators.csrf import requires_csrf_token
 from rest_framework.response import Response
 
 
-
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    products = Product.objects.all()
+    return render(request, 'index.html', {'products' : products})
 
 def login(request):
     return render(request, 'login.html')
+
 
 @api_view(['GET','POST'])
 @requires_csrf_token
@@ -38,8 +47,10 @@ def registar(request):
     if request.method == "POST":
         name = request.POST.get("name") 
         email = request.POST.get("email")
+        phone_number = request.POST.get("phone_number")
         password = request.POST.get("password")
         address = request.POST.get("address")
+        zipCode = request.POST.get("zipCode")
         tipo = request.POST.get("type")
 
         clientes = Customer.objects.values_list("name", flat=True)
@@ -52,15 +63,22 @@ def registar(request):
                 serializer = CustomerSerializer(data=request.data)
                 if serializer.is_valid():
                     serializer.save()
+                    user = User.objects.create_user(name, email, password)
+                    user.save()
+                    return render(request, 'registration_success.html')
 
             else:
                 serializer = SuplierSerializer(data=request.data)
                 if serializer.is_valid():
                     serializer.save()
+                    user = User.objects.create_user(name, email, password)
+                    user.save()
+                    my_group = Group.objects.get(name='Supliers') 
+                    my_group.user_set.add(user)
+                    return render(request, 'registration_success.html')
 
 
-            user = User.objects.create_user(name, email, password)
-            user.save()
+
 
     else:
         return render(request, 'registar.html')
@@ -85,20 +103,47 @@ def add_to_cart(request, product_slug):
 def adicionar_produto(request):
     if request.method == "POST":
         name = request.POST.get("name")
-        slug = name
+        category = request.POST.get("category")
+        slug = request.POST.get("slug")
+        image = request.FILES["image"]
         description = request.POST.get("description")
         price = request.POST.get("price")
+        date = request.POST.get("proDate")
+        produto = Product.objects.create(name=name, category=category, slug=slug, file=image, description=description, price=price, date=date)
+        product_path = produto.file.path
+
         
         serializer = ProductSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
+        return render(request, "add_produto.html", {"product_path":product_path})
     return render(request, 'add_produto.html')
 
 def conta(request):
     return render(request,'conta.html')
 
-def alterar_password(request):
-    return render(request,'alterar_password.html')
+def registration_success(request):
+    return render(request, 'registration_success.html')
+
+
+def login_success(request):
+    return render(request, 'login_success.html')
+
+def desporto(request):
+    products = Product.objects.all()
+    return render(request, 'desporto.html', {'products' : products})
+
+def matEscritorio(request):
+    products = Product.objects.all()
+    return render(request, 'matEscritorio.html', {'products' : products})
+
+def informatica(request):
+    products = Product.objects.all()
+    return render(request, 'informatica.html', {'products' : products})
+
+def roupa(request):
+    products = Product.objects.all()
+    return render(request, 'roupa.html', {'products' : products})
 
 def carrinho(request):
     return render(request, 'carrinho.html')
@@ -109,10 +154,10 @@ def mPagamento(request):
 def search(request):
     if request.method == "POST":
         searched = request.POST.get('searched')
-        produtos = Product.objects.filter(name__contains=searched)
+        products = Product.objects.filter(name__contains=searched)
         return render(request, 'searchbar.html',
         {'searched':searched,
-        'produtos':produtos})
+        'products':products})
     elif request.method == "GET":
         return render(request, 'searchbar.html', {})
     else:
@@ -120,6 +165,16 @@ def search(request):
 
 def base(request):
     return render(request, 'base.html')
+
+def delete(request, id):
+  product = Product.objects.get(id=id)
+  if request.method == 'POST':
+        # delete the band from the database
+        product.delete()
+        # redirect to the bands list
+        return redirect('shop')
+
+  return render(request, 'delete.html', {'product': product})
 
 
 class CustomerList(generics.ListCreateAPIView):
@@ -185,7 +240,15 @@ class LoginView(views.APIView):
     def post(self, request, format=None):
         serializer = serializers.LoginSerializer(data=self.request.data,
             context={ 'request': self.request })
-        serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data['user']
-        login(request, user)
-        return Response(None, status=status.HTTP_202_ACCEPTED)
+        if serializer.is_valid():
+            user = serializer.validated_data['user']
+            login(request, user)
+            return Response(None, status=status.HTTP_202_ACCEPTED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class PasswordsChangeView(PasswordChangeView):
+    form_class = PasswordChangingForm
+    success_url = reverse_lazy('password_success')
+
+def password_success(request):
+    return render(request, 'registration/password_success.html', {})
