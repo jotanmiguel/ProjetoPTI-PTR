@@ -58,6 +58,9 @@
                 this.options = {
                     container: 'hiw-login-container',
                     language: 'pt',
+                    auth: {
+                        redirectUrl: "http://127.0.0.1:8000"
+                    },
                     mustAcceptTerms: true,
                     allowShowPassword: true,
                     additionalSignUpFields: [
@@ -113,6 +116,9 @@
                     this.getUserInfo(authResult.accessToken, function(error, profile) {
                         if (error) {
                             // Handle error
+                            console.log("inicio do erro")
+                            console.log(error)
+                            console.log("fim do erro")
                             return;
                         }
 
