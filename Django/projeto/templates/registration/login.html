@@ -27,12 +27,122 @@
         
         <!-- Main Stylesheet -->
         <link rel="stylesheet" href="{% static 'style.css' %}">
+
+        <!-- Auth0 Lock -->
+        <script src="https://cdn.auth0.com/js/lock/12.0.2/lock.min.js"></script>
     
     </head>
 
     <body id="body">
     {% include 'navbar.html' %}
 
+
+    <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div id="hiw-login-container"></div>
+          </div>
+        </div>
+    </div>
+
+    <script>
+
+        var Auth = (function() {
+
+            var wm = new WeakMap();
+            var privateStore = {};
+            var lock;
+            var options;
+
+            function Auth() {
+                this.options = {
+                    container: 'hiw-login-container',
+                    language: 'pt',
+                    mustAcceptTerms: true,
+                    allowShowPassword: true,
+                    additionalSignUpFields: [
+                        {
+                            name: "nome",
+                            placeholder: "o seu nome de utilizador"
+                        },
+                        {
+                            name: "numero",
+                            placeholder: "o seu número de telemovel"
+                        },
+                        {
+                            name: "morada",
+                            placeholder: "a sua morada"
+                        },
+                        {
+                            name: "codigo",
+                            placeholder: "o seu codigo postal"
+                        },
+                        {
+                            type: "select",
+                            name: "tipo",
+                            placeholder: "Cliente ou fornecedor?",
+                            options: [
+                            {value: "cliente", label: "Cliente"},
+                            {value: "fornecedor", label: "Fornecedor"}
+                            ]
+                        }
+                    ],
+                    theme: {
+                        primaryColor: '#31324F'
+                    }
+                };
+
+                this.lock = new Auth0Lock(
+                    "nL825O45PExkvhxEtgRoY28FtzK0ftp0",
+                    "loja-10.eu.auth0.com",
+                    this.options
+                );
+                wm.set(privateStore, {
+                    appName: "Loja 10"
+                });
+            }
+
+            Auth.prototype.getProfile = function() {
+                return wm.get(privateStore).profile;
+            };
+
+            Auth.prototype.authn = function() {
+                // Listen for the authentication event
+                this.lock.on("authenticated", function(authResult) {
+                    // Use the token in authResult to getUserInfo() and save it if necessary
+                    this.getUserInfo(authResult.accessToken, function(error, profile) {
+                        if (error) {
+                            // Handle error
+                            return;
+                        }
+
+                        // do not store Access Tokens unless absolutely necessary
+                        wm.set(privateStore, {
+                            accessToken: authResult.accessToken
+                        });
+
+                        wm.set(privateStore, {
+                            accessToken: authResult.accessToken
+                        });
+
+                        wm.set(privateStore, {
+                            profile: profile
+                        });
+                    });
+                });
+            }
+            return Auth;
+        }());
+
+        var authInstance = new Auth();
+        document.addEventListener('DOMContentLoaded', function() {
+            authInstance.lock.show();
+        });
+
+    </script>
+
+
+    <!--
     <div>
         <div class="col-md-12 col-md-offset-3">
         <div class="row d-flex justify-content-center align-items-center">
@@ -45,20 +155,28 @@
                 <form method="post">
                     {% csrf_token %}
                     <div class="form-outline mb-4">
-                        <!--
-                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
-                    <label class="form-label" for="form3Example1cg">Nome de utilizador</label>-->
 
+                    -->
+                    <!--
+                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                    <label class="form-label" for="form3Example1cg">Nome de utilizador</label>
+                    -->
+
+                    <!--
                     {{ form.username }}
                     <br>
                     <label class="form-label">Nome de Utilizador:</label>            
                     </div>
 
                     <div class="form-outline mb-4">
-                        <!--
+                    -->
+
+                    <!--
                     <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
-                    <label class="form-label" for="form3Example4cg">Palavra-passe</label>-->
+                    <label class="form-label" for="form3Example4cg">Palavra-passe</label>
+                    -->
                         
+                    <!--
                         {{ form.password }}
                     <br>
                     <label class="form-label">Palavra-passe: </label>
@@ -74,7 +192,6 @@
                         class="fw-bold text-body"><u>Registe-se aqui</u></a></p>
 
                 </form>
-                
 
                 </div>
             </div>
@@ -82,13 +199,8 @@
         </div>
         </div>
     </div>
+    -->
 
-
-    
-    
     </body>
-
-
-
 
 </html>

@@ -45,7 +45,7 @@ def login(request):
 @requires_csrf_token
 def registar(request):
     if request.method == "POST":
-        name = request.POST.get("name") 
+        name = request.POST.get("name")
         email = request.POST.get("email")
         phone_number = request.POST.get("phone_number")
         password = request.POST.get("password")
@@ -58,6 +58,7 @@ def registar(request):
 
         if name in clientes or name in fornecedores:
            return render(request, 'registar.html')
+        
         else:
             if tipo=="Cliente":
                 serializer = CustomerSerializer(data=request.data)
