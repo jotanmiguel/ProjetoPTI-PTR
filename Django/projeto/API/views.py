@@ -6,6 +6,7 @@ from .forms import PasswordChangingForm
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import Group
+from django.contrib import messages
 
 from django.shortcuts import redirect
 from rest_framework import generics
@@ -124,9 +125,37 @@ def conta(request):
     Customers = Customer.objects.all()
     return render(request,'conta.html', {"Suppliers":Suppliers,"Customers":Customers})
 
+def eliminar_conta(request):
+    if request.method == "POST":
+        username = request.POST.get('name')
+        clientes = Customer.objects.values_list("name", flat=True)
+        fornecedores = Suplier.objects.values_list("name", flat=True)
+        if username in clientes:
+            cliente = Customer.objects.get(name = username)
+            cliente.delete()
+        if username in fornecedores:
+            fornecedor = Suplier.objects.get(name = username)
+            fornecedor.delete()
+        try:
+            u = User.objects.get(username = username)
+            u.delete()
+            messages.success(request, "The user is deleted")            
+
+        except User.DoesNotExist:
+            messages.error(request, "User does not exist")    
+            return render(request, 'eliminar_conta.html')
+
+        except Exception as e: 
+            return render(request, 'eliminar_conta.html',{'err':e.message})
+        return render(request,'index.html')
+
+    return render(request, 'eliminar_conta.html')
+
 def registration_success(request):
     return render(request, 'registration_success.html')
 
+def hist_encomendas(request):
+    return render(request,'historicoEncomendas.html')
 
 def login_success(request):
     return render(request, 'login_success.html')

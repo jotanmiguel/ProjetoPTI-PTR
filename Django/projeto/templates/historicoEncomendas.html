@@ -1,0 +1,38 @@
+{% load static %}
+<html>
+    <head>
+
+        <!-- Basic Page Needs
+        ================================================== -->
+        <meta charset="utf-8">
+        <title>Loja10</title>
+
+
+        <!-- theme meta -->
+        <meta name="theme-name" content="aviato" />
+        
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.png" />
+        
+        <!-- Themefisher Icon font -->
+        <link rel="stylesheet" href="/static/plugins/themefisher-font/style.css">
+        <!-- bootstrap.min css -->
+        <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
+        
+        <!-- Animate css -->
+        <link rel="stylesheet" href="/static/plugins/animate/animate.css">
+        <link rel="stylesheet" href="/static/plugins/slick/slick-theme.css">
+        
+        <!-- Main Stylesheet -->
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    </head>
+
+
+    <body>
+        {% include 'navbar.html' %}
+        <div class="title text-center">
+            <h2>Aqui pode verificar o seu histórico de encomendas</h2>
+        <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+    </body>
+</html>

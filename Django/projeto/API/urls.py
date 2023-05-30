@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import include, path
-from .views import index, search, login, registar, shop, product, add_to_cart, adicionar_produto, conta, PasswordsChangeView, password_success, login_success, registration_success, desporto, matEscritorio, informatica, roupa, carrinho, mPagamento, base, delete, CustomerList, CustomerDetail, ProductList, ProductDetail, OrderList, OrderDetail, StockList, StockDetail, CartList, CartDetail, SuplierList, SuplierDetail, CategoryDetail, CategoryList
+from .views import index, search, login, registar, shop, product, add_to_cart, adicionar_produto, conta, eliminar_conta, hist_encomendas, PasswordsChangeView, password_success, login_success, registration_success, desporto, matEscritorio, informatica, roupa, carrinho, mPagamento, base, delete, CustomerList, CustomerDetail, ProductList, ProductDetail, OrderList, OrderDetail, StockList, StockDetail, CartList, CartDetail, SuplierList, SuplierDetail, CategoryDetail, CategoryList
 from . import views
 
 
@@ -32,6 +32,8 @@ urlpatterns = [
     path('carrinho/', carrinho, name='carrinho'),
     path('pagamento/', mPagamento, name='mPagamento'),
     path('base/',base, name="base"),
+    path('eliminar_conta', eliminar_conta, name="eliminar_conta"),
+    path('historico', hist_encomendas, name="historico"),
     path('delete/<str:id>', delete, name='delete'),
     path('customers/', CustomerList.as_view(), name='customer-list'),
     path('customers/<str:pk>/', CustomerDetail.as_view(), name='customer-detail'),
