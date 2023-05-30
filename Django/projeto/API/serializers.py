@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from rest_framework.serializers import Serializer, FileField
-from .models import Customer, Product, Order, Stock, Suplier, OrderProduct, Category, Cart, CartItem, Review
+from .models import Customer, Product, Order, Stock, Suplier, Category, Cart, CartItem, Review
 from django.contrib.auth import authenticate
 
 from rest_framework import serializers
@@ -34,10 +34,10 @@ class SuplierSerializer(serializers.ModelSerializer):
         model = Suplier
         fields = '__all__'
         
-class OrderProductSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = OrderProduct
-        fields = '__all__'
+#class OrderProductSerializer(serializers.ModelSerializer):
+ #   class Meta:
+  #      model = OrderProduct
+   #     fields = '__all__'
         
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Customer, Product, Order, Stock, Suplier, Cart, CartItem, Category, Review
-from .serializers import CustomerSerializer, ProductSerializer, OrderSerializer, StockSerializer, SuplierSerializer, OrderProductSerializer, CategorySerializer, CartSerializer, CartItemSerializer, ReviewSerializer
+from .serializers import CustomerSerializer, ProductSerializer, OrderSerializer, StockSerializer, SuplierSerializer, CategorySerializer, CartSerializer, CartItemSerializer, ReviewSerializer
 from django.contrib.auth import login, logout
 from .forms import PasswordChangingForm
 from django.contrib.auth.views import PasswordChangeView

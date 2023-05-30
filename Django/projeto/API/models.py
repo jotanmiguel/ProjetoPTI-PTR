@@ -38,16 +38,17 @@ class Product(models.Model):
     
 # Pedidos de produtos
 class Order(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)    
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    products = models.ManyToManyField(Product, through='OrderProduct')
+    products1 = models.ManyToManyField(Product)
     status = models.CharField(max_length=50, default='Created')
-    created_at = models.DateTimeField(auto_now_add=True)
+    #created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-class OrderProduct(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.IntegerField()
+#class OrderProduct(models.Model):
+ #   order = models.ForeignKey(Order, on_delete=models.CASCADE)
+  #  product = models.ForeignKey(Product, on_delete=models.CASCADE)
+   # quantity = models.IntegerField()
 
 # Inventário de produtos
 class Stock(models.Model):
