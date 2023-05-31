@@ -36,6 +36,14 @@ from rest_framework.response import Response
 # Create your views here.
 def index(request):
     products = Product.objects.all()
+    if request.user.is_authenticated:
+        username = request.user.username
+    if request.user.groups.filter(name="Costumers"):
+        customer = Customer.objects.get(name=username)
+        if Order.objects.filter(customer=customer).exists():
+            return render(request, 'index.html', {'products' : products})
+        else:
+            Order.objects.create(customer=customer)
     return render(request, 'index.html', {'products' : products})
 
 def login(request):
@@ -66,6 +74,8 @@ def registar(request):
                     serializer.save()
                     user = User.objects.create_user(name, email, password)
                     user.save()
+                    my_group = Group.objects.get(name='Costumers') 
+                    my_group.user_set.add(user)
                     return render(request, 'registration_success.html')
 
             else:
@@ -93,16 +103,13 @@ def shop(request):
 def product(request, slug):
     if request.user.is_authenticated:
         username = request.user.username
-    if request.user.groups.filter(name='Costumers').exists():
+    product = Product.objects.get(slug=slug)
+    if request.user.groups.filter(name="Costumers"):
         customer = Customer.objects.get(name=username)
         if request.method == "POST":
-            if Order.objects.get(customer=customer):
-                o = Order.objects.get(customer=customer)
-                o.products1.add(product)
-            else:
-                Order.objects.create(customer=customer)
-            #o.products1.add(Product.objects.get(slug=slug))
-    product = Product.objects.get(slug=slug)
+            o = Order.objects.get(customer=customer)
+            o.products1.add(product)
+                #o.products1.add(Product.objects.get(slug=slug))
     return render(request, 'product.html', {'product': product})
 
 def add_to_cart(request, product_slug):
@@ -224,6 +231,8 @@ def carrinho(request):
     if request.user.is_authenticated:
         username = request.user.username
     customer = Customer.objects.get(name=username)
+    if not Order.objects.filter(customer=customer):
+        Order.objects.create(customer=customer)
     o = Order.objects.get(customer=customer)
     return render(request, 'carrinho.html',{'orders' : o})
 
