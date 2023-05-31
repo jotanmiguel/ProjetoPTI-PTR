@@ -11,3 +11,7 @@ def has_group(user, group_name):
         return False
 
     return group in user.groups.all()
+
+@register.filter()
+def to_float(value):
+    return float(value)

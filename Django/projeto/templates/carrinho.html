@@ -1,4 +1,5 @@
 {% load static %}
+{% load auth_extras %}
 <!DOCTYPE html>
 
 <html lang="en">
@@ -39,50 +40,24 @@
             <div class="col-md-7" style="background-color: lightgray;padding:10px 15px;border-radius: 5px;margin-left: 20px;">
               <div class="card mb-4">
                 <div class="card-body">
-                  <!-- Single item -->
-                  <div class="row">
-                    <div class="col-lg-3 col-md-5 mb-4 mb-lg-0">
-                      <!-- Image -->
-                      <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/12a.webp"
-                          class="w-100" alt="Blue Jeans Jacket" />
-                      </div>
-                      <!-- Image -->
+                  
+                  {% for product in orders.products1.all %}
+                  <div class="d-flex align-items-center">
+                    <div class="product-item col-md-3" style="margin:7px 0px 7px 20px; border: 3px solid rgb(212, 217, 223);border-radius: 10px;">
+                      <div class="product-thumb">
+                          <img class="img-responsive" src="{{ product.file.url }}" alt="product-img" style="height: auto;object-fit: contain;" />
+                      </div>      
                     </div>
-      
-                    <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                      <!-- Data -->
-                      <p><strong>EXEMPLO</strong></p>
-                      <p>Categoria: Roupa</p>
-                      <p>Preço: 9.99€</p>
-                      <br>
-                      <button type="button" class="btn btn-danger btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
-                        title="Remove item">
-                        <i class="tf-ion-ios-trash"></i> Remover
-                      </button>
-                    </div>
-      
-                    <div class="col-lg-4 col-md-6 mb-2 mb-lg-0">
-                      <!-- Quantity -->
-                      <div class="d-flex mb-2" style="max-width: 300px">
-                        <button class="btn btn-primary px-3 me-2"
-                          onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                          <i class="tf-ion-minus"></i>
-                        </button>
-                        <div class="col-xs-12" style="height:10px;"></div> 
-      
-                        <div class="form-outline">
-                          <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control" />
-                          <label class="form-label" for="form1">Quantidade</label>
-                        </div>
-      
-                        <button class="btn btn-primary px-3 ms-2"
-                          onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                          <i class="tf-ion-plus"></i>
-                        </button>
-                      </div>
-                    </div>
+                    <span class="d-flex p-2 me-auto"><a href="{% url 'product' product.slug %}">{{ product.name }}</a></span>
+                  
+                    <strong class="mt-1">{{ product.price }}€</strong>
                   </div>
+
+                  {% endfor %}
+    
+
+
+
                 </div>
               </div>
 
@@ -97,7 +72,9 @@
                         <li
                           class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                           Sub-Total
-                          <span>9.99€</span>
+                          {% for product in orders.products1.all %}
+                          <span>{{ product.price }}</span>
+                          {% endfor %}
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center px-0">
                           Custo de envio estimado:

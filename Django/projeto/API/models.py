@@ -45,6 +45,12 @@ class Order(models.Model):
     #created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ["status"]
+
+    def __str__(self):
+        return self.status
+
 #class OrderProduct(models.Model):
  #   order = models.ForeignKey(Order, on_delete=models.CASCADE)
   #  product = models.ForeignKey(Product, on_delete=models.CASCADE)

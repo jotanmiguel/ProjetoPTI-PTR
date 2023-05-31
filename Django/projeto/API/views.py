@@ -91,6 +91,17 @@ def shop(request):
     return render(request, 'shop.html', {'products' : products})
 
 def product(request, slug):
+    if request.user.is_authenticated:
+        username = request.user.username
+    if request.user.groups.filter(name='Costumers').exists():
+        customer = Customer.objects.get(name=username)
+        if request.method == "POST":
+            if Order.objects.get(customer=customer):
+                o = Order.objects.get(customer=customer)
+                o.products1.add(product)
+            else:
+                Order.objects.create(customer=customer)
+            #o.products1.add(Product.objects.get(slug=slug))
     product = Product.objects.get(slug=slug)
     return render(request, 'product.html', {'product': product})
 
@@ -210,7 +221,11 @@ def roupa(request):
     return render(request, 'roupa.html', {'products' : products})
 
 def carrinho(request):
-    return render(request, 'carrinho.html')
+    if request.user.is_authenticated:
+        username = request.user.username
+    customer = Customer.objects.get(name=username)
+    o = Order.objects.get(customer=customer)
+    return render(request, 'carrinho.html',{'orders' : o})
 
 def mPagamento(request):
     return render(request, 'mPagamento.html')
