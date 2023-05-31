@@ -80,8 +80,8 @@
                             <div class="d-flex justify-content-center">
                             <button type="submit"
                                 class="btn btn-success btn-block btn-lg gradient-custom-4 text-body mx-1">Alterar Palavra-passe</button>
-                            <button type="submit"
-                                class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body mx-1">Alterar dados da conta</button>
+                            <a href="{% url 'alterar_dados' %}"
+                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body mx-1">Alterar Dados da Conta</a>
                             </div>
 <br>
                             <div class="d-flex justify-content-center">                      
@@ -127,8 +127,13 @@
                             <div class="d-flex justify-content-center">
                             <button type="submit"
                                 class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Alterar Palavra-passe</button>
-                            <button type="submit"
-                                class="btn btn-danger btn-block btn-lg gradient-custom-4 text-body">Eliminar Conta</button>
+                            <a href="{% url 'alterar_dados' %}"
+                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body mx-1">Alterar Dados da Conta</a>
+                            </div>
+                            <br>
+                            <div class="d-flex justify-content-center">                      
+                            <a href="{% url 'eliminar_conta' %}"
+                                class="btn btn-danger btn-block btn-lg gradient-custom-4 text-body">Eliminar Conta</a>
                             </div>
                             {% endif %}
                             {% endfor %}                        

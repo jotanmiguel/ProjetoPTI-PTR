@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import include, path
-from .views import index, search, login, registar, shop, product, add_to_cart, adicionar_produto, conta, eliminar_conta, hist_encomendas, PasswordsChangeView, password_success, login_success, registration_success, desporto, matEscritorio, informatica, roupa, carrinho, mPagamento, base, delete, CustomerList, CustomerDetail, ProductList, ProductDetail, OrderList, OrderDetail, StockList, StockDetail, CartList, CartDetail, SuplierList, SuplierDetail, CategoryDetail, CategoryList
+from .views import index, search, alterar_dados, login, registar, shop, product, add_to_cart, adicionar_produto, conta, eliminar_conta, hist_encomendas, PasswordsChangeView, password_success, login_success, registration_success, desporto, matEscritorio, informatica, roupa, carrinho, mPagamento, base, delete, CustomerList, CustomerDetail, ProductList, ProductDetail, OrderList, OrderDetail, StockList, StockDetail, CartList, CartDetail, SuplierList, SuplierDetail, CategoryDetail, CategoryList
 from . import views
 
 
@@ -49,4 +49,5 @@ urlpatterns = [
     path('carts/<int:pk>', CartDetail.as_view(), name='cart-detail'),
     path('categories/', CategoryList.as_view(), name='category-list'),
     path('categories/<int:pk>', CategoryDetail.as_view(), name='category-detail'),
+    path('alterar_dados/', alterar_dados ,name="alterar_dados")
 ]

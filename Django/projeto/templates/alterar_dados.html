@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Loja10</title>
+
+
+    <!-- theme meta -->
+    <meta name="theme-name" content="aviato" />
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.png" />
+    
+    <!-- Themefisher Icon font -->
+    <link rel="stylesheet" href="/static/plugins/themefisher-font/style.css">
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
+    
+    <!-- Animate css -->
+    <link rel="stylesheet" href="/static/plugins/animate/animate.css">
+    <link rel="stylesheet" href="/static/plugins/slick/slick-theme.css">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+    <body id="body">
+    {% include 'navbar.html' %}
+
+        <div>
+            <div class="col-md-12 col-md-offset-3">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-5">
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body p-5">
+                    <h2 class="text-uppercase text-center mb-5">Dados da Conta</h2>
+
+                    <form action="http://127.0.0.1:8000/alterar_dados/" method="post">
+                        {% csrf_token %}
+                        {% for supplier in Suppliers %}
+                        {% if supplier.name == user.username %}
+
+                        <div class="form-outline mb-4">
+
+                            <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" value="{{ supplier.name }}" readonly />
+                            <label class="form-label" for="form3Example1cg">Nome de Utilizador</label>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="text" name="phone_number" id="form3Example1cg" class="form-control form-control-lg" value="{{ supplier.phone_number }}" />
+                                <label class="form-label" for="form3Example1cg">Número de telemovel</label>
+                            </div>
+    
+                            <div class="form-outline mb-4">
+                                <input type="text" name="address" id="form3Example1cg" class="form-control form-control-lg" value="{{ supplier.address }}" />
+                                <label class="form-label" for="form3Example1cg">Morada</label>
+                            </div>
+    
+                            <div class="form-outline mb-4">
+                                <input type="text" name="zipCode" id="form3Example1cg" class="form-control form-control-lg" value="{{ supplier.zipCode }}" />
+                                <label class="form-label" for="form3Example1cg">Código Postal</label>
+                            </div>
+
+    
+                            <div class="d-flex justify-content-center">
+                                <button type="submit"
+                                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Alterar Dados</button>
+                                    
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        {% for customer in Customers %}
+                        {% if customer.name == user.username %}
+                        <div class="form-outline mb-4">
+
+                            <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" value="{{ customer.name }}" readonly />
+                            <label class="form-label" for="form3Example1cg">Nome de Utilizador</label>
+                            </div>    
+
+                            <div class="form-outline mb-4">
+                                <input type="text" name="phone_number" id="form3Example1cg" class="form-control form-control-lg" value="{{ customer.phone_number }}" />
+                                <label class="form-label" for="form3Example1cg">Número de telemovel</label>
+                            </div>
+    
+                            <div class="form-outline mb-4">
+                                <input type="text" name="address" id="form3Example1cg" class="form-control form-control-lg" value="{{ customer.address }}" />
+                                <label class="form-label" for="form3Example1cg">Morada</label>
+                            </div>
+    
+                            <div class="form-outline mb-4">
+                                <input type="text" name="zipCode" id="form3Example1cg" class="form-control form-control-lg" value="{{ customer.zipCode }}" />
+                                <label class="form-label" for="form3Example1cg">Código Postal</label>
+                            </div>
+
+    
+                            <div class="d-flex justify-content-center">
+                            <button type="submit"
+                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Alterar Dados</button>
+
+                            {% endif %}
+                            {% endfor %}                        
+
+
+                    </form>
+
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        
+    
+    
+    </body>
+
+
+
+
+</html>

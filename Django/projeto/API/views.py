@@ -151,6 +151,39 @@ def eliminar_conta(request):
 
     return render(request, 'eliminar_conta.html')
 
+def alterar_dados(request):
+    if request.method == "POST":
+
+        username = request.POST.get('name')
+
+        phone_number = request.POST.get("phone_number")
+        address = request.POST.get("address")
+        zipCode = request.POST.get("zipCode")
+
+        clientes = Customer.objects.values_list("name", flat=True)
+        fornecedores = Suplier.objects.values_list("name", flat=True)
+
+        if username in clientes:
+            cliente = Customer.objects.get(name = username)
+            cliente.phone_number = phone_number
+            cliente.address = address
+            cliente.zipCode = zipCode
+            cliente.save()
+        if username in fornecedores:
+            fornecedor = Suplier.objects.get(name = username)
+            fornecedor.phone_number = phone_number
+            fornecedor.address = address
+            fornecedor.zipCode = zipCode
+            fornecedor.save()
+
+        Suppliers = Suplier.objects.all()
+        Customers = Customer.objects.all()
+        return render(request,'conta.html', {"Suppliers":Suppliers,"Customers":Customers})
+    
+    Suppliers = Suplier.objects.all()
+    Customers = Customer.objects.all()    
+    return render(request,'alterar_dados.html', {"Suppliers":Suppliers,"Customers":Customers})
+
 def registration_success(request):
     return render(request, 'registration_success.html')
 
