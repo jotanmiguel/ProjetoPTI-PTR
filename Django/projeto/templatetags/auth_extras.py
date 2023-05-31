@@ -1,5 +1,6 @@
 from django import template
 from django.contrib.auth.models import Group
+import re
 
 register = template.Library()
 
@@ -12,6 +13,17 @@ def has_group(user, group_name):
 
     return group in user.groups.all()
 
-@register.filter()
+@register.filter(name='to_float')
 def to_float(value):
     return float(value)
+
+@register.filter
+def total_sum(value):
+    value = str(value)
+    temp_val = value.split(' ')
+    sum = 0.00
+    
+    for val in temp_val:
+        sum += float(val[:-1])
+
+    return sum

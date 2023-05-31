@@ -25,7 +25,7 @@ class Product(models.Model):
     category = models.CharField(max_length=200)
     slug = models.CharField(max_length=200)
     description = models.TextField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.FloatField()
     file = models.FileField()
     #suplier = models.ForeignKey('Suplier', on_delete=models.CASCADE)
     #category = models.ForeignKey('Category', on_delete=models.CASCADE)
@@ -44,6 +44,10 @@ class Order(models.Model):
     status = models.CharField(max_length=50, default='Created')
     #created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    @property
+    def get_total_price(self):
+        return sum([product.price for product in self.products1.all()])
 
     class Meta:
         ordering = ["status"]

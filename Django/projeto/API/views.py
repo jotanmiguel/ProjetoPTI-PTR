@@ -40,10 +40,13 @@ def index(request):
         username = request.user.username
     if request.user.groups.filter(name="Costumers"):
         customer = Customer.objects.get(name=username)
-        if Order.objects.filter(customer=customer).exists():
-            return render(request, 'index.html', {'products' : products})
-        else:
-            Order.objects.create(customer=customer)
+        try:
+            if Order.objects.filter(customer=customer).exists():
+                return render(request, 'index.html', {'products' : products})
+            else:
+                Order.objects.create(customer=customer)
+        except:
+            print("Erro")
     return render(request, 'index.html', {'products' : products})
 
 def login(request):
