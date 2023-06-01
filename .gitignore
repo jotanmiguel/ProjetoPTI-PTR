@@ -11,3 +11,4 @@ netlify
 Django/PGP/__pycache__/*
 Django/projeto/migrations/__pycache__/*
 *.pyc
+VirtualEnv/pyvenv.cfg
