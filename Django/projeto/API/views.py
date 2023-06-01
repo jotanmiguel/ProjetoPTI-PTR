@@ -237,10 +237,20 @@ def carrinho(request):
     if not Order.objects.filter(customer=customer):
         Order.objects.create(customer=customer)
     o = Order.objects.get(customer=customer)
+    if request.method == 'POST':
+        order = Order.objects.get(id=o.id).delete()
+        return render(request,'carrinho.html', {'orders': o})
     return render(request, 'carrinho.html',{'orders' : o})
 
 def mPagamento(request):
-    return render(request, 'mPagamento.html')
+    if request.user.is_authenticated:
+        username = request.user.username
+    customer = Customer.objects.get(name=username)
+    if not Order.objects.filter(customer=customer):
+        Order.objects.create(customer=customer)
+    o = Order.objects.get(customer=customer)
+
+    return render(request,'mPagamento.html',{'orders' : o})
 
 def search(request):
     if request.method == "POST":
@@ -266,7 +276,6 @@ def delete(request, id):
         return redirect('shop')
 
   return render(request, 'delete.html', {'product': product})
-
 
 class CustomerList(generics.ListCreateAPIView):
     queryset = Customer.objects.all()

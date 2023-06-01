@@ -51,6 +51,13 @@
                       </div>      
                     </div>
                     <span class="d-flex p-2 me-auto"><a href="{% url 'product' product.slug %}">{{ product.name }}</a></span>
+                    <form method="POST" id="form1">
+                      {% csrf_token %}
+                      <input type="hidden" name="order" value="{{ product }}">
+                    </form>
+                    <div class="d-flex flex-wrap align-content-center content me-auto">
+                      <button type="submit" form="form1" value="Submit" class="btn btn-danger">Remover Produto</button>
+                    </div>
                   
                     <strong class="mt-1">{{ product.price }}€</strong>
                   </div>
