@@ -209,7 +209,16 @@ def registration_success(request):
     return render(request, 'registration_success.html')
 
 def hist_encomendas(request):
-    return render(request,'historicoEncomendas.html')
+    if request.user.is_authenticated:
+        username = request.user.username
+    if request.user.groups.filter(name="Costumers"):
+        customer = Customer.objects.get(name=username)
+        o = Order.objects.filter(customer=customer)
+    #So para nao dar erros com suppliers, que ainda nao esta previsto encomendas do lado dos fornecedores
+    else:
+        supplier = Suplier.objects.filter(name=username)
+        o = None
+    return render(request,'historicoEncomendas.html',{'orders':o})
 
 def login_success(request):
     return render(request, 'login_success.html')

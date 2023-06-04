@@ -33,6 +33,50 @@
         {% include 'navbar.html' %}
         <div class="title text-center">
             <h2>Aqui pode verificar o seu histórico de encomendas</h2>
+        </div>
+        <div class="col-md-10 offset-md-1 table-responsive">
+            <table class="table table-hover table-align-middle text-center">
+                <tr>
+                    <th class="table-info" scope="col">Número da encomenda</th>
+                    <th class="table-info" scope="col">Estado</th>
+                    <th class="table-info" scope="col">Data de entrega prevista</th>
+                </tr>
+                <!-- Exemplos de cores para a tabela (Pago/Entregue//Por pagar/A ser entregue//Cancelada/Erro)
+                <tr>
+                    <td class="table-success" scope="row">--</td>
+                    <td class="table-success" scope="row">Sucesso</td>
+                    <td class="table-success" scope="row">DD/MM/YYYY</td>
+                </tr>
+                <tr>
+                    <td class="table-warning" scope="row">--</td>
+                    <td class="table-warning" scope="row">Em espera</td>
+                    <td class="table-warning" scope="row">DD/MM/YYYY</td>
+                </tr>
+                <tr>
+                    <td class="table-danger" scope="row">--</td>
+                    <td class="table-danger" scope="row">Erro</td>
+                    <td class="table-danger" scope="row">DD/MM/YYYY</td>
+                </tr>
+                -->
+                {% for order in orders %}
+                <tr>
+                    <td class="table-warning" scope="row">{{ order.id }}</td>
+                    {% if order.status == "Created" %}
+                    <td class="table-warning" scope="row">Por pagar</td>
+                    {% else %}
+                    <td class="table-warning" scope="row">--</td>
+                    {% endif %}
+                    <td class="table-warning" scope="row">{{ order.updated_at }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+
+
+
+
+
         <script src="https://unpkg.com/htmx.org@1.7.0"></script>
     </body>
 </html>
