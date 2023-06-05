@@ -59,14 +59,17 @@
                 </tr>
                 -->
                 {% for order in orders %}
-                <tr>
+                <tr>{% if order.status == "Created" %}
                     <td class="table-warning" scope="row">{{ order.id }}</td>
-                    {% if order.status == "Created" %}
                     <td class="table-warning" scope="row">Por pagar</td>
-                    {% else %}
-                    <td class="table-warning" scope="row">--</td>
-                    {% endif %}
                     <td class="table-warning" scope="row">{{ order.updated_at }}</td>
+
+                    {% else %}
+                    <td class="table-success" scope="row">{{ order.id }}</td>
+                    <td class="table-success" scope="row">Pago</td>
+                    <td class="table-success" scope="row">{{ order.updated_at }}</td>
+                    {% endif %}
+                    
                 </tr>
                 {% endfor %}
             </table>

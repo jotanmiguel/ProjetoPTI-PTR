@@ -41,10 +41,10 @@ def index(request):
     if request.user.groups.filter(name="Costumers"):
         customer = Customer.objects.get(name=username)
         try:
-            if Order.objects.filter(customer=customer).exists():
+            if Order.objects.filter(customer=customer, status="Created").exists():
                 return render(request, 'index.html', {'products' : products})
             else:
-                Order.objects.create(customer=customer)
+                Order.objects.create(customer=customer, status="Created")
         except:
             print("Erro")
     return render(request, 'index.html', {'products' : products})
@@ -110,7 +110,7 @@ def product(request, slug):
     if request.user.groups.filter(name="Costumers"):
         customer = Customer.objects.get(name=username)
         if request.method == "POST":
-            o = Order.objects.get(customer=customer)
+            o = Order.objects.get(customer=customer, status="Created")
             o.products1.add(product)
                 #o.products1.add(Product.objects.get(slug=slug))
     return render(request, 'product.html', {'product': product})
@@ -243,9 +243,9 @@ def carrinho(request):
     if request.user.is_authenticated:
         username = request.user.username
     customer = Customer.objects.get(name=username)
-    if not Order.objects.filter(customer=customer):
-        Order.objects.create(customer=customer)
-    o = Order.objects.get(customer=customer)
+    if not Order.objects.filter(customer=customer, status="Created"):
+        Order.objects.create(customer=customer, status="Created")
+    o = Order.objects.get(customer=customer, status="Created")
     if request.method == 'POST':
         order = Order.objects.get(id=o.id).delete()
         return render(request,'carrinho.html', {'orders': o})
@@ -255,9 +255,12 @@ def mPagamento(request):
     if request.user.is_authenticated:
         username = request.user.username
     customer = Customer.objects.get(name=username)
-    if not Order.objects.filter(customer=customer):
+    if not Order.objects.filter(customer=customer,status="Created"):
         Order.objects.create(customer=customer)
-    o = Order.objects.get(customer=customer)
+    o = Order.objects.get(customer=customer,status="Created")
+    if request.method == "POST":
+        o.status = "Paid"
+        o.save()
 
     return render(request,'mPagamento.html',{'orders' : o})
 

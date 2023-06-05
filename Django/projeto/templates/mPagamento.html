@@ -158,8 +158,10 @@
                             <span><strong>{{ orders.get_total_price }}€</strong></span>
                           </li>
                         </ul>
-        
-                    <button type="button" class="btn btn-success btn-lg btn-block">
+                    <form method="POST" id="form2">
+                      {% csrf_token %}
+                    </form>
+                    <button type="submit" form="form2" class="btn btn-success btn-lg btn-block">
                       Comprar
                     </button>
                   </div>
