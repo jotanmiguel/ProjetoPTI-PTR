@@ -10,6 +10,7 @@ from . import views
 urlpatterns = [
     path('', index, name="index"),
     path('search/', search, name = 'search'),
+    path('create-session/', views.create_session, name='create-session'),
     #path('login/', views.LoginView.as_view()),
     path('accounts/', include("django.contrib.auth.urls")),
     path('login/', login, name = 'login'),

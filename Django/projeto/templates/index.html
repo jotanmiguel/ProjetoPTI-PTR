@@ -4,6 +4,7 @@
 
 
 <html lang="en">
+
 <head>
 
     <!-- Basic Page Needs
@@ -14,19 +15,19 @@
 
     <!-- theme meta -->
     <meta name="theme-name" content="aviato" />
-    
+
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.png" />
-    
+
     <!-- Themefisher Icon font -->
     <link rel="stylesheet" href="/static/plugins/themefisher-font/style.css">
     <!-- bootstrap.min css -->
     <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
-    
+
     <!-- Animate css -->
     <link rel="stylesheet" href="/static/plugins/animate/animate.css">
     <link rel="stylesheet" href="/static/plugins/slick/slick-theme.css">
-    
+
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
 
@@ -35,98 +36,113 @@
 <body id="body">
 
     {% include 'navbar.html' %}
-    
+
     <br>
 
     <div class="hero-slider">
-      <div class="slider-item th-fullpage hero-area" style="background-image: url(/static/images/slider/slider-1.png);">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 text-center">
-              <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">PRODUTOS</p>
-              <h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">Sabores do Ano <br> 2023</h1>
-                        <h5 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">22 produtos LOJA10, provados e aprovados pelos consumidores.</h5>
+        <div class="slider-item th-fullpage hero-area"
+            style="background-image: url(/static/images/slider/slider-1.png);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 text-center">
+                        <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">PRODUTOS</p>
+                        <h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">Sabores do Ano <br>
+                            2023</h1>
+                        <h5 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">22 produtos LOJA10,
+                            provados e aprovados pelos consumidores.</h5>
                         <p> <br> </p>
-              <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".8" class="btn" href="{% url 'shop' %}">Ver produtos</a>
+                        <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".8" class="btn"
+                            href="{% url 'shop' %}">Ver produtos</a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
 
 
-      {% block content %}
+        {% block content %}
 
-      <section class="products section bg-gray">
-          <div class="container">
-              <div class="row">
-                  <div class="title text-center">
-                      <h2>Categorias</h2>
-                  </div>
-              </div>
-              <div class="col-md-12 d-flex flex-wrap justify-content-center">
-                  <div class="product-item col-md-1" style="margin-right: 40px;">
-                  <div class="">
-                      <a href="{% url 'matEscritorio' %}"><img class="img-responsive" src="cadeiraEscritorio.jpg" alt="product-img" style="width: 100px;height: auto;object-fit: contain;padding:10px;border: 3px solid rgb(212, 217, 223);border-radius: 50px;" /></a>
-                  </div>
-                  <div class="text-center">
-                  <span>Material de Escritório</span></div>
-                  </div>
-                  <div class="product-item col-md-1" style="margin-right: 40px;">
-                  <div class="">
-                      <a href="{% url 'desporto' %}"><img class="img-responsive" src="bolaFutebol.jpg" alt="product-img"  style="width: 100px;height: auto;object-fit: contain;padding:10px;border: 3px solid rgb(212, 217, 223);border-radius: 50px;" /></a>
-                  </div>
-                  <div class="text-center">
-                      <span>Desporto</span></div>
-                  </div>
-                  <div class="product-item col-md-1" style="margin-right: 40px;">
-                  <div class="">
-                      <a href="{% url 'informatica' %}"><img class="img-responsive" src="laptop.jpg" alt="product-img"  style="width: 100px;height: auto;object-fit: contain;padding:10px;border: 3px solid rgb(212, 217, 223);border-radius: 50px;" /></a>
-                  </div>
-                  <div class="text-center">
-                      <span>Informática</span></div>
-                  </div>
-                  <div class="product-item col-md-1" style="margin-right: 40px;">
-                  <div class="">
-                      <a href="{% url 'roupa' %}"><img class="img-responsive" src="roupa.jpg" alt="product-img"  style="width: 100px;height: auto;object-fit: contain;padding:10px;border: 3px solid rgb(212, 217, 223);border-radius: 50px;" /></a>
-                  </div>
-                  <div class="text-center">
-                      <span>Roupa</span></div>
-                  </div>
-  
-          </div>
-      </section>
-      {% endblock %}
+        <section class="products section bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="title text-center">
+                        <h2>Categorias</h2>
+                    </div>
+                </div>
+                <div class="col-md-12 d-flex flex-wrap justify-content-center">
+                    <div class="product-item col-md-1" style="margin-right: 40px;">
+                        <div class="">
+                            <a href="{% url 'matEscritorio' %}"><img class="img-responsive" src="cadeiraEscritorio.jpg"
+                                    alt="product-img"
+                                    style="width: 100px;height: auto;object-fit: contain;padding:10px;border: 3px solid rgb(212, 217, 223);border-radius: 50px;" /></a>
+                        </div>
+                        <div class="text-center">
+                            <span>Material de Escritório</span>
+                        </div>
+                    </div>
+                    <div class="product-item col-md-1" style="margin-right: 40px;">
+                        <div class="">
+                            <a href="{% url 'desporto' %}"><img class="img-responsive" src="bolaFutebol.jpg"
+                                    alt="product-img"
+                                    style="width: 100px;height: auto;object-fit: contain;padding:10px;border: 3px solid rgb(212, 217, 223);border-radius: 50px;" /></a>
+                        </div>
+                        <div class="text-center">
+                            <span>Desporto</span>
+                        </div>
+                    </div>
+                    <div class="product-item col-md-1" style="margin-right: 40px;">
+                        <div class="">
+                            <a href="{% url 'informatica' %}"><img class="img-responsive" src="laptop.jpg"
+                                    alt="product-img"
+                                    style="width: 100px;height: auto;object-fit: contain;padding:10px;border: 3px solid rgb(212, 217, 223);border-radius: 50px;" /></a>
+                        </div>
+                        <div class="text-center">
+                            <span>Informática</span>
+                        </div>
+                    </div>
+                    <div class="product-item col-md-1" style="margin-right: 40px;">
+                        <div class="">
+                            <a href="{% url 'roupa' %}"><img class="img-responsive" src="roupa.jpg" alt="product-img"
+                                    style="width: 100px;height: auto;object-fit: contain;padding:10px;border: 3px solid rgb(212, 217, 223);border-radius: 50px;" /></a>
+                        </div>
+                        <div class="text-center">
+                            <span>Roupa</span>
+                        </div>
+                    </div>
 
+                </div>
+        </section>
+        {% endblock %}
 
-
-
-
-
-
-      <div class="slider-item th-fullpage hero-area" style="background-image: url(/static/images/slider/slider-3.jpg);">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 text-left">
-              <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">PRODUCTS</p>
-              <h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">The beauty of nature <br> is hidden in details.</h1>
-              <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".8" class="btn" href="shop.html">Shop Now</a>
+        <div class="slider-item th-fullpage hero-area"
+            style="background-image: url(/static/images/slider/slider-3.jpg);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 text-left">
+                        <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">PRODUCTS</p>
+                        <h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">The beauty of nature
+                            <br> is hidden in details.</h1>
+                        <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".8" class="btn"
+                            href="shop.html">Shop Now</a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <div class="slider-item th-fullpage hero-area" style="background-image: url(/static/images/slider/slider-2.jpg);">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 text-right">
-              <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">PRODUCTS</p>
-              <h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">The beauty of nature <br> is hidden in details.</h1>
-              <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".8" class="btn" href="shop.html">Shop Now</a>
+        <div class="slider-item th-fullpage hero-area"
+            style="background-image: url(/static/images/slider/slider-2.jpg);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 text-right">
+                        <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">PRODUCTS</p>
+                        <h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">The beauty of nature
+                            <br> is hidden in details.</h1>
+                        <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".8" class="btn"
+                            href="shop.html">Shop Now</a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-    
+
     <section class="product-category section">
         <div class="container">
             <div class="row">
@@ -143,7 +159,7 @@
                                 <h3>Clothes Sales</h3>
                                 <p>Shop New Season Clothing</p>
                             </div>
-                        </a>	
+                        </a>
                     </div>
                     <div class="category-box">
                         <a href="#!">
@@ -152,7 +168,7 @@
                                 <h3>Smart Casuals</h3>
                                 <p>Get Wide Range Selection</p>
                             </div>
-                        </a>	
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -163,15 +179,13 @@
                                 <h3>Jewellery</h3>
                                 <p>Special Design Comes First</p>
                             </div>
-                        </a>	
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    
-    
     <!--
     Start Call To Action
     ==================================== -->
@@ -181,22 +195,23 @@
                 <div class="col-md-12 text-center">
                     <div class="title">
                         <h2>SUBSCRIBE TO NEWSLETTER</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, <br> facilis numquam impedit ut sequi. Minus facilis vitae excepturi sit laboriosam.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, <br> facilis numquam
+                            impedit ut sequi. Minus facilis vitae excepturi sit laboriosam.</p>
                     </div>
                     <div class="col-lg-6 col-md-offset-3">
                         <div class="input-group subscription-form">
-                          <input type="text" class="form-control" placeholder="Enter Your Email Address">
-                          <span class="input-group-btn">
-                            <button class="btn btn-main" type="button">Subscribe Now!</button>
-                          </span>
+                            <input type="text" class="form-control" placeholder="Enter Your Email Address">
+                            <span class="input-group-btn">
+                                <button class="btn btn-main" type="button">Subscribe Now!</button>
+                            </span>
                         </div><!-- /input-group -->
-                  </div><!-- /.col-lg-6 -->
-    
+                    </div><!-- /.col-lg-6 -->
+
                 </div>
-            </div> 		<!-- End row -->
-        </div>   	<!-- End container -->
-    </section>   <!-- End section -->
-    
+            </div> <!-- End row -->
+        </div> <!-- End container -->
+    </section> <!-- End section -->
+
     <section class="section instagram-feed">
         <div class="container">
             <div class="row">
@@ -206,13 +221,15 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <div class="instagram-slider" id="instafeed" data-accessToken="IGQVJYeUk4YWNIY1h4OWZANeS1wRHZARdjJ5QmdueXN2RFR6NF9iYUtfcGp1NmpxZA3RTbnU1MXpDNVBHTzZAMOFlxcGlkVHBKdjhqSnUybERhNWdQSE5hVmtXT013MEhOQVJJRGJBRURn"></div>
+                    <div class="instagram-slider" id="instafeed"
+                        data-accessToken="IGQVJYeUk4YWNIY1h4OWZANeS1wRHZARdjJ5QmdueXN2RFR6NF9iYUtfcGp1NmpxZA3RTbnU1MXpDNVBHTzZAMOFlxcGlkVHBKdjhqSnUybERhNWdQSE5hVmtXT013MEhOQVJJRGJBRURn">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    
+
+
     <footer class="footer section text-center">
         <div class="container">
             <div class="row">
@@ -253,27 +270,68 @@
                             <a href="contact.html">PRIVACY POLICY</a>
                         </li>
                     </ul>
-                    <p class="copyright-text">Copyright &copy;2021, Designed &amp; Developed by <a href="https://themefisher.com/">Themefisher</a></p>
+                    <p class="copyright-text">Copyright &copy;2021, Designed &amp; Developed by <a
+                            href="https://themefisher.com/">Themefisher</a></p>
                 </div>
             </div>
         </div>
     </footer>
-    
-        <!-- 
+
+    <!-- 
         Essential Scripts
-        =====================================-->
-        
-        <!-- Main jQuery -->
-        <script src="plugins/jquery/dist/jquery.min.js"></script>
-        <!-- Bootstrap 3.1 -->
-        <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-    
-        <!-- Main Js File -->
-        <script src="js/script.js"></script>
-        
-        
-    
-    
-      </body>
-      </html>
-    
+        =====================================
+    -->
+
+    <!-- Main jQuery -->
+    <script src="plugins/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.1 -->
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Main Js File -->
+    <script src="js/script.js"></script>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var fragment = window.location.hash.substring(1);  // Get the URL fragment without the '#'
+            var params = new URLSearchParams(fragment);  // Parse the fragment as URL parameters
+            var accessToken = params.get('access_token');
+
+            if (accessToken) {
+                var csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+
+                fetch('/create-session/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-CSRFToken': csrfToken
+                    },
+                    body: 'access_token=' + encodeURIComponent(accessToken)
+                })
+
+                
+                .then(function(response) {
+                    return response.json();
+                })
+
+
+
+                .then(function(data) {
+                    if (data.success) {
+                        // Redirect to a success page or perform other actions
+                    } else {
+                        // Handle authentication failure
+                    }
+                })
+                .catch(function(error) {
+                    // Handle the AJAX request error
+                });
+
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

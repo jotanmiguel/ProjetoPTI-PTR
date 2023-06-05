@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Customer, Product, Order, Stock, Suplier, Cart, CartItem, Category, Review
 from .serializers import CustomerSerializer, ProductSerializer, OrderSerializer, StockSerializer, SuplierSerializer, OrderProductSerializer, CategorySerializer, CartSerializer, CartItemSerializer, ReviewSerializer
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, authenticate
 from .forms import PasswordChangingForm
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
@@ -10,7 +10,7 @@ from django.contrib.auth.models import Group
 from django.shortcuts import redirect
 from rest_framework import generics
 from django.template import loader
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from rest_framework import permissions
 from rest_framework import status
@@ -33,6 +33,28 @@ from rest_framework.response import Response
 
 
 # Create your views here.
+
+def create_session(request):
+    if request.method == 'POST' and 'access_token' in request.POST:
+        access_token = request.POST['access_token']
+
+        print("hello")
+
+        # Store the access token in the session or perform further actions
+        request.session['access_token'] = access_token
+
+        # Create a Django session for the authenticated user
+        user = authenticate(request, access_token=access_token)
+
+        if user is not None:
+            login(request, user)
+            return JsonResponse({'success': True})
+        else:
+            return JsonResponse({'success': False, 'message': 'Authentication failed.'})
+    else:
+        return JsonResponse({'success': False, 'message': 'Access token missing.'})
+
+
 def index(request):
     products = Product.objects.all()
     return render(request, 'index.html', {'products' : products})
