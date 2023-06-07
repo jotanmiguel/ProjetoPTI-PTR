@@ -28,6 +28,17 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
 
+    <style>
+        .mgs-area {
+            color: red;
+            background-color: #c0b7b6;
+            text-align: center;
+            border-radius: 25em;
+            font-weight:bold;
+        }
+
+    </style>
+
 </head>
     <body id="body">
     {% include 'navbar.html' %}
@@ -42,6 +53,18 @@
 
                     <form action="{% url 'registar' %} "method="post">
                         {% csrf_token %}
+
+                        {% if messages %}
+                        <div class="mgs-area">
+                            <div class="mgs-item">
+                            {% for message in messages %}
+                            <span {% if message.tags %} class="nav_item message-{{ message.tags }} " {% endif %}> {{ message }} </span>
+                            {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <br>
 
                         <div class="form-outline mb-4">
                         <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" required />
@@ -64,7 +87,7 @@
                         </div>
 
                         <div class="form-outline mb-4">
-                        <input type="password" id="form3Example4cdg" class="form-control form-control-lg" required />
+                        <input type="password" name="pwconf" id="form3Example4cdg" class="form-control form-control-lg" required />
                         <label class="form-label" for="form3Example4cdg">Confirmar Palavra-Passe</label>
                         </div>
 
@@ -109,6 +132,7 @@
 
                         <p class="text-center text-muted mt-5 mb-0">Já tem uma conta? <a href="http://127.0.0.1:8000/accounts/login/"
                             class="fw-bold text-body"><u> Faça login aqui</u></a></p>
+
 
                     </form>
 

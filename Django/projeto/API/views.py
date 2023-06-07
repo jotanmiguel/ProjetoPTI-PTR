@@ -61,6 +61,7 @@ def registar(request):
         email = request.POST.get("email")
         phone_number = request.POST.get("phone_number")
         password = request.POST.get("password")
+        pwconf = request.POST.get("pwconf")
         address = request.POST.get("address")
         zipCode = request.POST.get("zipCode")
         tipo = request.POST.get("type")
@@ -69,7 +70,17 @@ def registar(request):
         fornecedores = Suplier.objects.values_list("name", flat=True)
 
         if name in clientes or name in fornecedores:
+           messages.info(request, 'Já existe um utilizador com este nome!')
            return render(request, 'registar.html')
+        
+        elif len(phone_number) != 9:
+           messages.info(request, 'Número de telefone inválido!')
+           return render(request, 'registar.html')
+        
+        elif pwconf != password:
+           messages.info(request, 'As passwords não coincidem!')
+           return render(request, 'registar.html')
+                                
         else:
             if tipo=="Cliente":
                 serializer = CustomerSerializer(data=request.data)
