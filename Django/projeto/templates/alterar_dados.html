@@ -28,6 +28,18 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
 
+    <style>
+        .mgs-area {
+            color: red;
+            background-color: #c0b7b6;
+            text-align: center;
+            border-radius: 25em;
+            font-weight:bold;
+        }
+
+
+    </style>
+
 </head>
     <body id="body">
     {% include 'navbar.html' %}
@@ -42,6 +54,24 @@
 
                     <form action="http://127.0.0.1:8000/alterar_dados/" method="post">
                         {% csrf_token %}
+
+                        {% if messages %}
+                        <div class="mgs-area">
+                            <div class="mgs-item">
+                            {% for message in messages %}
+                            <span {% if message.tags %} class="nav_item message-{{ message.tags }} " {% endif %}> {{ message }} </span>
+                            {% endfor %}
+                            </div>
+                        </div>
+
+                        <br>
+                        <a href="{% url 'alterar_dados' %}"
+                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body mx-1">Voltar</a>
+                        </div>
+                        {% endif %}
+
+
+
                         {% for supplier in Suppliers %}
                         {% if supplier.name == user.username %}
 

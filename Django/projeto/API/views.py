@@ -196,12 +196,18 @@ def alterar_dados(request):
         fornecedores = Suplier.objects.values_list("name", flat=True)
 
         if username in clientes:
+            if len(phone_number) != 9:
+                messages.info(request, 'Número de telefone inválido!')
+                return render(request, 'alterar_dados.html')
             cliente = Customer.objects.get(name = username)
             cliente.phone_number = phone_number
             cliente.address = address
             cliente.zipCode = zipCode
             cliente.save()
-        if username in fornecedores:
+        elif username in fornecedores:
+            if len(phone_number) != 9:
+                messages.info(request, 'Número de telefone inválido!')
+                return render(request, 'alterar_dados.html')
             fornecedor = Suplier.objects.get(name = username)
             fornecedor.phone_number = phone_number
             fornecedor.address = address

@@ -27,6 +27,17 @@
         
         <!-- Main Stylesheet -->
         <link rel="stylesheet" href="{% static 'style.css' %}">
+
+        <style>
+            .mgs-area {
+                color: red;
+                background-color: #c0b7b6;
+                text-align: center;
+                border-radius: 25em;
+                font-weight:bold;
+            }
+    
+        </style>
     
     </head>
 
@@ -44,9 +55,20 @@
 
                 <form method="post">
                     {% csrf_token %}
+
+                    {% if messages %}
+                    <div class="mgs-area">
+                        <div class="mgs-item">
+                        {% for message in messages %}
+                        <span {% if message.tags %} class="nav_item message-{{ message.tags }} " {% endif %}> {{ message }} </span>
+                        {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
                     <div class="form-outline mb-4">
                         <!--
-                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                    <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" />
                     <label class="form-label" for="form3Example1cg">Nome de utilizador</label>-->
 
                     {{ form.username }}
@@ -56,7 +78,7 @@
 
                     <div class="form-outline mb-4">
                         <!--
-                    <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                    <input type="password" name="password" id="form3Example4cg" class="form-control form-control-lg" />
                     <label class="form-label" for="form3Example4cg">Palavra-passe</label>-->
                         
                         {{ form.password }}
