@@ -21,7 +21,7 @@ urlpatterns = [
     path('add_to_cart/<slug:slug>/', add_to_cart, name='add_to_cart'),
     path('adicionar_produto/', adicionar_produto, name='adicionar_produto'),
     path('conta', conta, name='conta'),
-    path('password/', PasswordsChangeView.as_view(template_name='registration/change-password.html')),
+    path('password/', PasswordsChangeView.as_view(template_name='registration/change-password.html'), name='password'),
     path('registration_success/', registration_success, name='registration_success'),
     path('login_success/', login_success, name='login_success'),
     path('password_success', password_success, name="password_success"),

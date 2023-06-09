@@ -52,7 +52,7 @@
                     <div class="card-body p-5">
                     <h2 class="text-uppercase text-center mb-5">Dados da Conta</h2>
 
-                    <form action="http://127.0.0.1:8000/alterar_dados/" method="post">
+                    <form action="{% url 'alterar_dados' %}" method="post">
                         {% csrf_token %}
 
                         {% if messages %}
@@ -100,6 +100,9 @@
                             <div class="d-flex justify-content-center">
                                 <button type="submit"
                                     class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Alterar Dados</button>
+                                <a href="{% url 'conta' %}"
+                                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body mx-1">Voltar</a>
+                            </div>
                                     
                         </div>
                         {% endif %}
@@ -129,9 +132,11 @@
 
     
                             <div class="d-flex justify-content-center">
-                            <button type="submit"
-                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Alterar Dados</button>
-
+                                <button type="submit"
+                                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Alterar Dados</button>
+                                <a href="{% url 'conta' %}"
+                                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body mx-1">Voltar</a>
+                            </div>
                             {% endif %}
                             {% endfor %}                        
 

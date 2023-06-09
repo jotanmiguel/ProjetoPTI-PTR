@@ -40,7 +40,7 @@
                     <div class="card-body p-5">
                     <h2 class="text-uppercase text-center mb-5">Utilizador</h2>
 
-                    <form action="http://127.0.0.1:8000/password/" method="post">
+                    <form action="{% url 'password' %}" method="post">
                         {% csrf_token %}
                         {% for supplier in Suppliers %}
                         {% if supplier.name == user.username %}
