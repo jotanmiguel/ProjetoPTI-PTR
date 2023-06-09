@@ -12,7 +12,7 @@ urlpatterns = [
     path('search/', search, name = 'search'),
     #path('login/', views.LoginView.as_view()),
     path('accounts/', include("django.contrib.auth.urls")),
-    path('login/', login, name = 'login'),
+    path('accounts/login/', login, name = 'login'),
     path('registar/', registar, name='registar'),
     path('shop/', shop, name='shop'),
     path('product/', product, name='product'),

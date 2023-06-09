@@ -45,10 +45,10 @@
                     <div class="form-outline mb-4">
                         <select onchange="if (this.value) window.location.href=this.value;" name="category" class="form-control form-control-lg">
                           <option value="#">Escolha a categoria...</option>
-                          <option value="http://127.0.0.1:8000/materialEscritorio">Material de Escritório</option>
-                          <option value="http://127.0.0.1:8000/desporto">Desporto</option>
-                          <option value="http://127.0.0.1:8000/informatica">Informática</option>
-                          <option value="http://127.0.0.1:8000/roupa">Roupa</option>
+                          <option value="{% url 'materialEscritorio' %}">Material de Escritório</option>
+                          <option value="{% url 'desporto' %}">Desporto</option>
+                          <option value="{% url 'informatica' %}">Informática</option>
+                          <option value="{% url 'roupa' %}">Roupa</option>
                         </select>
                         </div>
                 </div>
