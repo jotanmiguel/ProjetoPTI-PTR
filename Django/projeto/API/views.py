@@ -256,6 +256,10 @@ def roupa(request):
     products = Product.objects.all()
     return render(request, 'roupa.html', {'products' : products})
 
+def details(request, id):
+    o = Order.objects.get(id=id)
+    return render(request,'details.html',{'order':o})
+
 def carrinho(request):
     if request.user.is_authenticated:
         username = request.user.username

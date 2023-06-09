@@ -40,6 +40,7 @@
                     <th class="table-info" scope="col">Número da encomenda</th>
                     <th class="table-info" scope="col">Estado</th>
                     <th class="table-info" scope="col">Data de entrega prevista</th>
+                    <th class="table-info" scope="col">Detalhes</th>
                 </tr>
                 <!-- Exemplos de cores para a tabela (Pago/Entregue//Por pagar/A ser entregue//Cancelada/Erro)
                 <tr>
@@ -63,11 +64,13 @@
                     <td class="table-warning" scope="row">{{ order.id }}</td>
                     <td class="table-warning" scope="row">Por pagar</td>
                     <td class="table-warning" scope="row">{{ order.updated_at }}</td>
+                    <td class="table-warning" scope="row"><a href="{% url 'carrinho' %}" class="btn btn-warning">Ver carrinho</a></td>
 
                     {% else %}
                     <td class="table-success" scope="row">{{ order.id }}</td>
                     <td class="table-success" scope="row">Pago</td>
                     <td class="table-success" scope="row">{{ order.updated_at }}</td>
+                    <td class="table-success" scope="row"><a href="{% url 'details' order.id %}" class="btn btn-success">Ver detalhes</a></td>
                     {% endif %}
                     
                 </tr>

@@ -1,0 +1,68 @@
+{% load static %}
+<html>
+    <head>
+
+        <!-- Basic Page Needs
+        ================================================== -->
+        <meta charset="utf-8">
+        <title>Loja10</title>
+
+
+        <!-- theme meta -->
+        <meta name="theme-name" content="aviato" />
+        
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.png" />
+        
+        <!-- Themefisher Icon font -->
+        <link rel="stylesheet" href="/static/plugins/themefisher-font/style.css">
+        <!-- bootstrap.min css -->
+        <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
+        
+        <!-- Animate css -->
+        <link rel="stylesheet" href="/static/plugins/animate/animate.css">
+        <link rel="stylesheet" href="/static/plugins/slick/slick-theme.css">
+        
+        <!-- Main Stylesheet -->
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    </head>
+
+
+    <body>
+        {% include 'navbar.html' %}
+        <div class="title text-center">
+            <h2>Detalhes da encomenda</h2>
+        </div>
+        <div class="col-md-10 offset-md-1 table-responsive">
+            <table class="table table-hover table-align-middle text-center">
+                <tr>
+                    <th class="table-info" scope="col">Número da encomenda</th>
+                    <th class="table-info" scope="col">Estado</th>
+                    <th class="table-info" scope="col">Data de entrega prevista</th>
+                </tr>
+                <tr>
+                    <td class="table-info" scope="row">{{ order.id }}</td>
+                    <td class="table-info" scope="row">Pago</td>
+                    <td class="table-info" scope="row">{{ order.updated_at }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="title text-left"><h2>Produtos na encomenda</h2></div>
+            {% for product in order.products1.all %}
+            <div class="d-flex align-items-center">
+                <div class="product-item col-md-1" style="margin:7px 0px 7px 20px; border: 3px solid rgb(212, 217, 223);border-radius: 10px;">
+                  <div class="product-thumb">
+                      <img class="img-responsive" src="{{ product.file.url }}" alt="product-img" style="height: auto;object-fit: contain;" />
+                  </div>      
+                </div>
+                <span class="d-flex p-2 me-auto"><a href="{% url 'product' product.slug %}">{{ product.name }}</a></span>
+            </div>
+            {% endfor %}
+
+
+
+
+        <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+    </body>
+</html>
