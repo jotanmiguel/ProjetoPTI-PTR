@@ -134,6 +134,10 @@ def add_to_cart(request, product_slug):
 @api_view(['GET','POST'])
 @requires_csrf_token
 def adicionar_produto(request):
+    if request.user.is_authenticated:
+        username = request.user.username
+    if request.user.groups.filter(name="Supliers"):
+        supplier = Suplier.objects.get(name=username)
     if request.method == "POST":
         name = request.POST.get("name")
         category = request.POST.get("category")
@@ -142,7 +146,7 @@ def adicionar_produto(request):
         description = request.POST.get("description")
         price = request.POST.get("price")
         date = request.POST.get("proDate")
-        produto = Product.objects.create(name=name, category=category, slug=slug, file=image, description=description, price=price, date=date)
+        produto = Product.objects.create(name=name, category=category, slug=slug, file=image, supplier=supplier, description=description, price=price, date=date)
         product_path = produto.file.path
 
         

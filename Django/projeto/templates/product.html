@@ -42,6 +42,7 @@
                 <span class="d-flex justify-content-center"><a href="{% url 'product' product.slug %}">{{ product.name }}</a></span>
             
                 <p class="d-flex justify-content-center">{{ product.price }}€</p>
+                <p class="d-flex justify-content-center">Fornecedor: {{ product.supplier }}</p>
                 
 
             </div>
@@ -70,9 +71,9 @@
         </div>
         {% endblock %}
         <div>
-            <button onclick="window.location.href='{% url 'shop' %}';" type="button" class="btn btn-primary btn-lg btn-block">
+            <a href="{% url 'shop' %}" class="btn btn-primary btn-lg btn-block">
                 Voltar
-            </button>
+            </a>
         </div>
     </body>
 </html>

@@ -1,4 +1,5 @@
 {% load static %}
+{% load auth_extras %}
 <html>
     <head>
 
@@ -55,7 +56,14 @@
                 <div class="col-md-12 d-flex flex-wrap justify-content-center">
                     {% for product in products %}
                     {% if product.category == "desporto" %}
-                    {% include 'product_list_item.html' %}
+                        {% if request.user|has_group:"Supliers" %} 
+                            {% if product.supplier.name == user.username %}
+                            
+                                {% include 'product_list_item.html' %}                 
+                            {% endif %}
+                        {% else %}
+                            {% include 'product_list_item.html' %}
+                        {% endif %}
                     {% endif %}
                     {% endfor %}
 

@@ -18,6 +18,33 @@ class Customer(models.Model):
     def __str__(self):
         return self.name
 
+# Categorias de produtos    
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+    parent_category = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
+    
+    def __str__(self):
+        return self.name
+    
+    def get_children(self):
+        return Category.objects.filter(parent_category=self)
+
+# Fornecedores de produtos
+class Suplier(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=200, blank=True)
+    email = models.EmailField(max_length=254, blank=True)
+    phone_number = models.CharField(max_length=20, blank=True)
+    address = models.CharField(max_length=200, blank=True)
+    zipCode = models.CharField(max_length=200, blank=True)
+    password = models.CharField(max_length=200, blank=True) 
+    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)     
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)   
+
+    def __str__(self):
+        return self.name
+    
 # Produtos
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
@@ -27,14 +54,15 @@ class Product(models.Model):
     description = models.TextField()
     price = models.FloatField()
     file = models.FileField()
-    #suplier = models.ForeignKey('Suplier', on_delete=models.CASCADE)
-    #category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    supplier = models.ForeignKey(Suplier, on_delete=models.CASCADE)
     date = models.DateField(auto_now_add = True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return self.name
+
+
     
 # Pedidos de produtos
 class Order(models.Model):
@@ -67,33 +95,6 @@ class Stock(models.Model):
     location = models.CharField(max_length=200)
     updated_at = models.DateTimeField(auto_now=True)
  
-# Categorias de produtos    
-class Category(models.Model):
-    name = models.CharField(max_length=255)
-    parent_category = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
-    
-    def __str__(self):
-        return self.name
-    
-    def get_children(self):
-        return Category.objects.filter(parent_category=self)
-
-# Fornecedores de produtos
-class Suplier(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=200, blank=True)
-    email = models.EmailField(max_length=254, blank=True)
-    phone_number = models.CharField(max_length=20, blank=True)
-    address = models.CharField(max_length=200, blank=True)
-    zipCode = models.CharField(max_length=200, blank=True)
-    password = models.CharField(max_length=200, blank=True) 
-    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)     
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)   
-
-    def __str__(self):
-        return self.name
-    
 # Carrinho de compras
 class Cart(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
