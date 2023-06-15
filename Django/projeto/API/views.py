@@ -39,6 +39,7 @@ from rest_framework.response import Response
 # Create your views here.
 def index(request):
     products = Product.objects.all()
+    numProds = len(products)
     if request.user.is_authenticated:
         username = request.user.username
     if request.user.groups.filter(name="Costumers"):
@@ -50,7 +51,7 @@ def index(request):
                 Order.objects.create(customer=customer, status="Created")
         except:
             print("Erro")
-    return render(request, 'index.html', {'products' : products})
+    return render(request, 'index.html', {'products' : products, "numProds" : numProds})
 
 def login(request):
     return render(request, 'login.html')
