@@ -80,9 +80,13 @@
                             {% else %}
                             <a></a>
                             {% endif %}
-
                         </li>
-
+                        {% if request.user|has_group:"Supliers" %} 
+                        <li class="list-inline-item">
+                        <a href="{% url 'shop' %}" class="toggle">
+                            <i class="tf-ion-android-cart"></i>Meus Produtos</a>
+                        </li>                      
+                        {% endif %}
     
                                 </ul>
                             </div>

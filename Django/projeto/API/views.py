@@ -23,6 +23,9 @@ from .cart import Carrinho
 from django.contrib.auth.models import User
 import requests
 import json
+import datetime
+
+
 
 from django.utils.text import slugify
 from django.core.files.storage import FileSystemStorage
@@ -134,6 +137,9 @@ def add_to_cart(request, product_slug):
 @api_view(['GET','POST'])
 @requires_csrf_token
 def adicionar_produto(request):
+
+    today = str(datetime.date.today())
+
     if request.user.is_authenticated:
         username = request.user.username
     if request.user.groups.filter(name="Supliers"):
@@ -142,19 +148,36 @@ def adicionar_produto(request):
         name = request.POST.get("name")
         category = request.POST.get("category")
         slug = request.POST.get("slug")
-        image = request.FILES["image"]
+        try:       
+            image = request.FILES["image"]
+        except:
+            messages.info(request, 'O produto não tem imagem!')
+            return render(request, 'add_produto.html')
+        
         description = request.POST.get("description")
         price = request.POST.get("price")
         date = request.POST.get("proDate")
-        produto = Product.objects.create(name=name, category=category, slug=slug, file=image, supplier=supplier, description=description, price=price, date=date)
-        product_path = produto.file.path
+        if name == None or name == "":
+            messages.info(request, 'O produto não tem nome!')
+            return render(request, 'add_produto.html')
+        elif description == None or description == "":
+            messages.info(request, 'O produto não tem descrição!')
+            return render(request, 'add_produto.html')
+        elif price == None or price == "" or price == 0:
+            messages.info(request, 'Preço Inválido!')
+            return render(request, 'add_produto.html')
+        else:
+            produto = Product.objects.create(name=name, category=category, slug=slug, file=image, supplier=supplier, description=description, price=price, date=date)
+            product_path = produto.file.path
 
+            
+            serializer = ProductSerializer(data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+            return render(request, "add_success.html")
+            #return render(request, "add_produto.html", {"product_path":product_path})
         
-        serializer = ProductSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-        return render(request, "add_produto.html", {"product_path":product_path})
-    return render(request, 'add_produto.html')
+    return render(request, 'add_produto.html',{"today": today})
 
 def conta(request):
     Suppliers = Suplier.objects.all()
@@ -228,6 +251,9 @@ def alterar_dados(request):
 
 def registration_success(request):
     return render(request, 'registration_success.html')
+
+def add_success(request):
+    return render(request, 'add_success.html')
 
 def hist_encomendas(request):
     if request.user.is_authenticated:

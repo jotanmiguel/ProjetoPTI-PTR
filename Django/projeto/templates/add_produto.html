@@ -28,6 +28,17 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
 
+    <style>
+      .mgs-area {
+          color: red;
+          background-color: #c0b7b6;
+          text-align: center;
+          border-radius: 25em;
+          font-weight:bold;
+      }
+
+    </style>
+
 </head>
     <body id="body">
     {% include 'navbar.html' %}
@@ -42,6 +53,18 @@
 
                     <form action="{% url 'adicionar_produto' %}" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
+
+                        {% if messages %}
+                        <div class="mgs-area">
+                            <div class="mgs-item">
+                            {% for message in messages %}
+                            <span {% if message.tags %} class="nav_item message-{{ message.tags }} " {% endif %}> {{ message }} </span>
+                            {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <br>
 
                         <div class="form-outline mb-4">
                         <input type="text" name="name" id="textString" class="name-produto form-control form-control-lg" />
@@ -83,7 +106,7 @@
                         <div class="form-outline mb-4">
                         <input type="date" id="start" name="proDate"
                         value="2023-07-22"
-                        min="2023-01-01" max="2030-12-31">
+                        min="0000-01-01" max= "{{ today }}">
                         <label class="form-label" for="form3Example7cg">Data de Produção</label>
                         </div>
                         
