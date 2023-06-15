@@ -40,7 +40,7 @@
     <br>
 
     <div class="hero-slider">
-      <div class="slider-item th-fullpage hero-area" style="background-image: url(/static/images/slider/slider-1.png);">
+      <div class="slider-item th-fullpage hero-area" style="background-image: url(loja.jpg);">
         {% if user.is_authenticated %}
         <div class="col-md-2 offset-md-10 text-right pt-5">
             <a href="{% url 'historico' %}" class="px-2" style="border: 1px solid black;border-radius: 30px;padding:5px;background-color: rgb(170, 185, 185);">
@@ -53,8 +53,8 @@
           <div class="row">
             <div class="col-lg-8 text-center">
               <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">PRODUTOS</p>
-              <h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">Sabores do Ano <br> 2023</h1>
-                        <h5 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">{{ products.length }} produtos LOJA10, provados e aprovados pelos consumidores.</h5>
+              <h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">Tendências do Ano <br> 2023</h1>
+                        <h5 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">{{ products.length }}22 produtos LOJA10, provados e aprovados pelos consumidores.</h5>
                         <p> <br> </p>
               <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".8" class="btn" href="{% url 'shop' %}">Ver produtos</a>
             </div>
@@ -173,6 +173,17 @@
                             <div class="content">
                                 <h3>Desporto</h3>
                                 <p>Porque O Exercício É Importante</p>
+                            </div>
+                        </a>	
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="category-box">
+                        <a href="{% url 'informatica' %}">
+                            <img src="informatica.jpg" alt="" />
+                            <div class="content">
+                                <h3>Informática</h3>
+                                <p>Para Os Mais "Online"</p>
                             </div>
                         </a>	
                     </div>
