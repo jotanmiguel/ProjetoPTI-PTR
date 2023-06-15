@@ -46,7 +46,7 @@
             <a href="{% url 'historico' %}" class="px-2" style="border: 1px solid black;border-radius: 30px;padding:5px;background-color: rgb(170, 185, 185);">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
                     <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
-                  </svg> Encomendas</a>
+                  </svg> As Suas Encomendas</a>
         </div>
         {% endif %}
         <div class="container">
@@ -70,40 +70,15 @@
               <div class="row">
                   <div class="title text-center">
                       <h2>Categorias</h2>
+                    <p> <br> </p>
+                    <div class="text-center">
+                        <h5 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">Múltiplas categorias para escolher em baixo!</h5>
+                    </div>
                   </div>
               </div>
-              <div class="col-md-12 d-flex flex-wrap justify-content-center">
-                  <div class="product-item col-md-1" style="margin-right: 40px;">
-                  <div class="">
-                      <a href="{% url 'matEscritorio' %}"><img class="img-responsive" src="cadeiraEscritorio.jpg" alt="product-img" style="width: 100px;height: auto;object-fit: contain;padding:10px;border: 3px solid rgb(212, 217, 223);border-radius: 50px;" /></a>
-                  </div>
-                  <div class="text-center">
-                  <span>Material de Escritório</span></div>
-                  </div>
-                  <div class="product-item col-md-1" style="margin-right: 40px;">
-                  <div class="">
-                      <a href="{% url 'desporto' %}"><img class="img-responsive" src="bolaFutebol.jpg" alt="product-img"  style="width: 100px;height: auto;object-fit: contain;padding:10px;border: 3px solid rgb(212, 217, 223);border-radius: 50px;" /></a>
-                  </div>
-                  <div class="text-center">
-                      <span>Desporto</span></div>
-                  </div>
-                  <div class="product-item col-md-1" style="margin-right: 40px;">
-                  <div class="">
-                      <a href="{% url 'informatica' %}"><img class="img-responsive" src="laptop.jpg" alt="product-img"  style="width: 100px;height: auto;object-fit: contain;padding:10px;border: 3px solid rgb(212, 217, 223);border-radius: 50px;" /></a>
-                  </div>
-                  <div class="text-center">
-                      <span>Informática</span></div>
-                  </div>
-                  <div class="product-item col-md-1" style="margin-right: 40px;">
-                  <div class="">
-                      <a href="{% url 'roupa' %}"><img class="img-responsive" src="roupa.jpg" alt="product-img"  style="width: 100px;height: auto;object-fit: contain;padding:10px;border: 3px solid rgb(212, 217, 223);border-radius: 50px;" /></a>
-                  </div>
-                  <div class="text-center">
-                      <span>Roupa</span></div>
-                  </div>
-  
-          </div>
+            </div>
       </section>
+      
       {% endblock %}
 
 
