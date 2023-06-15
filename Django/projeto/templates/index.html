@@ -30,6 +30,7 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
 
+
 </head>
 
 <body id="body">
@@ -115,24 +116,26 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-8 text-left">
-              <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">PRODUCTS</p>
-              <h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">The beauty of nature <br> is hidden in details.</h1>
-              <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".8" class="btn" href="shop.html">Shop Now</a>
+              <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">PRODUTOS</p>
+              <h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">A beleza da natureza <br> está escondida nos detalhes.</h1>
+              <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".8" class="btn" href="shop.html">Loja</a>
             </div>
           </div>
         </div>
       </div>
+      <!--
       <div class="slider-item th-fullpage hero-area" style="background-image: url(/static/images/slider/slider-2.jpg);">
         <div class="container">
           <div class="row">
             <div class="col-lg-8 text-right">
-              <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">PRODUCTS</p>
+              <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">PRODUTOS</p>
               <h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">The beauty of nature <br> is hidden in details.</h1>
               <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".8" class="btn" href="shop.html">Shop Now</a>
             </div>
           </div>
         </div>
       </div>
+    -->
     </div>
     
     <section class="product-category section">
@@ -140,36 +143,36 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="title text-center">
-                        <h2>Product Category</h2>
+                        <h2>Escolhe a tua categoria</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="category-box">
-                        <a href="#!">
-                            <img src="/static/images/shop/category/category-1.jpg" alt="" />
+                        <a href="{% url 'matEscritorio' %}">
+                            <img src="escritorio.jpg" alt="" />
                             <div class="content">
-                                <h3>Clothes Sales</h3>
-                                <p>Shop New Season Clothing</p>
+                                <h3>Material de Escritório</h3>
+                                <p>Ideal Para O Seu Trabalho</p>
                             </div>
                         </a>	
                     </div>
                     <div class="category-box">
-                        <a href="#!">
-                            <img src="/static/images/shop/category/category-2.jpg" alt="" />
+                        <a href="{% url 'roupa' %}">
+                            <img src="roupa2.jpg" alt="" />
                             <div class="content">
-                                <h3>Smart Casuals</h3>
-                                <p>Get Wide Range Selection</p>
+                                <h3>Roupa</h3>
+                                <p>Melhores Itens Para Todas as Épocas</p>
                             </div>
                         </a>	
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="category-box category-box-2">
-                        <a href="#!">
-                            <img src="/static/images/shop/category/category-3.jpg" alt="" />
+                        <a href="{% url 'desporto' %}">
+                            <img src="desporto.jpg" alt="" />
                             <div class="content">
-                                <h3>Jewellery</h3>
-                                <p>Special Design Comes First</p>
+                                <h3>Desporto</h3>
+                                <p>Porque O Exercício É Importante</p>
                             </div>
                         </a>	
                     </div>
@@ -188,14 +191,14 @@
             <div class="row">
                 <div class="col-md-12 text-center">
                     <div class="title">
-                        <h2>SUBSCRIBE TO NEWSLETTER</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, <br> facilis numquam impedit ut sequi. Minus facilis vitae excepturi sit laboriosam.</p>
+                        <h2>SUBSCREVE A NOSSA NEWSLETTER</h2>
+                        <p>Terás a oportunidade de acompanhar as nossas notícias <br> e ser notificado quando acontece algo!</p>
                     </div>
                     <div class="col-lg-6 col-md-offset-3">
                         <div class="input-group subscription-form">
-                          <input type="text" class="form-control" placeholder="Enter Your Email Address">
+                          <input type="text" class="form-control" placeholder="O teu E-Mail">
                           <span class="input-group-btn">
-                            <button class="btn btn-main" type="button">Subscribe Now!</button>
+                            <button class="btn btn-main" type="button">Inscreve-te!</button>
                           </span>
                         </div><!-- /input-group -->
                   </div><!-- /.col-lg-6 -->
@@ -209,7 +212,7 @@
         <div class="container">
             <div class="row">
                 <div class="title">
-                    <h2>View us on instagram</h2>
+                    <h2>Segue-nos nas redes sociais!</h2>
                 </div>
             </div>
             <div class="row">
@@ -249,16 +252,16 @@
                     </ul>
                     <ul class="footer-menu text-uppercase">
                         <li>
-                            <a href="contact.html">CONTACT</a>
+                            <a href="contact.html">CONTACTO</a>
                         </li>
                         <li>
-                            <a href="shop.html">SHOP</a>
+                            <a href="shop.html">LOJA</a>
                         </li>
                         <li>
-                            <a href="pricing.html">Pricing</a>
+                            <a href="pricing.html">Preçário</a>
                         </li>
                         <li>
-                            <a href="contact.html">PRIVACY POLICY</a>
+                            <a href="contact.html">Política de privacidade</a>
                         </li>
                     </ul>
                     <p class="copyright-text">Copyright &copy;2021, Designed &amp; Developed by <a href="https://themefisher.com/">Themefisher</a></p>
