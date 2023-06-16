@@ -33,108 +33,20 @@
 
     <body id="body">
     {% include 'navbar.html' %}
+    <div class="title text-center">
+      <h2>Escolha o Método de Pagamento</h2>
+  </div>
     <div class="col-xs-12" style="height:50px;"></div> 
 
-    <div class="container d-flex justify-content-center mt-5 mb-5">
+    <div class="container d-flex justify-content-center">
 
+          <div class="col-md-4 pt-5 mx-2" style="margin-left:50px;background-color: lightgray;padding:10px 15px;border-radius: 5px;">  
             
+    <!-- Set up a container element for the button -->
+          <div id="paypal-button-container"></div>
+          </div>
 
-        <div class="row g-3">
-
-          <div class="col-md-5" style="margin-left:50px;background-color: lightgray;padding:10px 15px;border-radius: 5px;">  
-            <div class="card">
-
-              <div class="accordion" id="accordionExample">
-                
-                <div class="card">
-                  <div class="card-header p-0" id="headingTwo">
-                    <h2 class="mb-0">
-                      <a href="#" class="btn btn-block text-left collapsed p-3 rounded-0 border-bottom-custom">
-                        <div class="d-flex align-items-center justify-content-between">
-
-                          <span>Paypal</span>
-                          <img src="https://i.imgur.com/7kQEsHU.png" width="30">
-                          
-                        </div>
-                      </a>
-                    </h2>
-                  </div>
-                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                    <div class="card-body">
-                      <input type="text" class="form-control" placeholder="Paypal email">
-                    </div>
-                  </div>
-                </div>
-
-                <div class="card">
-                  <div class="card-header p-0">
-                    <h2 class="mb-0">
-                      <button class="accordion-button btn btn-light btn-block text-left p-3 rounded-0" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        <div class="d-flex align-items-center justify-content-between">
-
-                          <span>Credit card</span>
-                          <div class="icons">
-                            <img src="https://i.imgur.com/2ISgYja.png" width="30">
-                            <img src="https://i.imgur.com/W1vtnOV.png" width="30">
-                            <img src="https://i.imgur.com/35tC99g.png" width="30">
-                            <img src="https://i.imgur.com/2ISgYja.png" width="30">
-                          </div>
-                          
-                        </div>
-                      </button>
-                    </h2>
-                  </div>
-
-                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                    <div class="card-body payment-card-body">
-                      
-                      <span class="font-weight-normal card-text">Card Number</span>
-                      <div class="input">
-
-                        <i class="fa fa-credit-card"></i>
-                        <input type="text" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="16" placeholder="0000 0000 0000 0000">
-                        
-                      </div> 
-
-                      <div class="row mt-3 mb-3">
-
-                        <div class="col-md-6">
-
-                          <span class="font-weight-normal card-text">Expiry Date</span>
-                          <div class="input">
-
-                            <i class="fa fa-calendar"></i>
-                            <input type="text" class="form-control" placeholder="MM/YY" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="4">
-                            
-                          </div> 
-                          
-                        </div>
-
-
-                        <div class="col-md-6">
-
-                          <span class="font-weight-normal card-text">CVC/CVV</span>
-                          <div class="input">
-
-                            <i class="fa fa-lock"></i>
-                            <input type="text" class="form-control" placeholder="000" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="3">
-                            
-                          </div> 
-                          
-                        </div>
-                        
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-              </div>
-              
-            </div>
-
-            </div>
-            <div class="col-md-4" style="float: right;background-color: lightgray;padding:10px 15px;border-radius: 5px;margin: 20px 20px 0px 0px; ">
+            <div class="col-md-4" style="float: right;background-color: lightgray;padding:10px 15px;border-radius: 5px;">
                 <div class="card mb-4">
                   <div class="card-header py-3">
                     <h5 class="mb-0">Sumário</h5>
@@ -158,12 +70,6 @@
                             <span><strong>{{ orders.get_total_price }}€</strong></span>
                           </li>
                         </ul>
-                    <form method="POST" id="form2">
-                      {% csrf_token %}
-                    </form>
-                    <button type="submit" form="form2" class="btn btn-success btn-lg btn-block">
-                      Comprar
-                    </button>
                   </div>
                 </div>
               </div>
@@ -173,9 +79,9 @@
 
       </div>
       <div class="col-md-1">
-        <button onclick="window.location.href='{% url 'carrinho' %}';" type="button" class="btn btn-primary btn-lg btn-block">
+        <a href="{% url 'carrinho' %}" type="button" class="btn btn-primary btn-lg btn-block">
             Voltar
-        </button>
+        </a>
        </div>
 
 
@@ -187,15 +93,28 @@
 
 
 
-
-
-
-
-
-
-
-
-
+       <script src="https://www.paypal.com/sdk/js?client-id=AUGtYSC-2ts6AylTtJJSQVlYXlyzCJhdUgTrGD2koFONgetjQwhFndOLXgVI9-6BLWvNwkdnJn8GsQfN&currency=EUR"></script>
+       <script>
+        paypal.Buttons({
+            // Sets up the transaction when a payment button is clicked
+            createOrder: function (data, actions) {
+              return actions.order.create({
+                  purchase_units: [{
+                      amount: {
+                          value: '0.01'
+                      }
+                  }]
+              });
+            },
+            // Finalize the transaction after payer approval
+            onApprove: function (data, actions) {
+              return actions.order.capture().then(function(details) {
+                  alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                });
+            }
+          })
+          .render("#paypal-button-container");
+      </script>
 
     </body>
 </html>

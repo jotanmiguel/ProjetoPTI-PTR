@@ -135,6 +135,9 @@ def add_to_cart(request, product_slug):
     cart.add(product_slug)
     return render(request, 'menu_cart.html')
 
+def teste(request):
+    return render(request, 'teste.html')
+
 @api_view(['GET','POST'])
 @requires_csrf_token
 def adicionar_produto(request):

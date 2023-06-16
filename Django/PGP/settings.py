@@ -92,6 +92,7 @@ MEDIA_ROOT =  BASE_DIR / 'media'
 
 WSGI_APPLICATION = 'PGP.wsgi.application'
 
+SECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
