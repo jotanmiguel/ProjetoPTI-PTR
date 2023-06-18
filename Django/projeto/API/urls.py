@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import include, path
-from .views import index, search, add_success, alterar_dados, teste, login, registar, shop, product, add_to_cart, adicionar_produto, conta, details, eliminar_conta, hist_encomendas, PasswordsChangeView, password_success, login_success, registration_success, desporto, matEscritorio, informatica, roupa, carrinho, mPagamento, base, delete, CustomerList, CustomerDetail, ProductList, ProductDetail, OrderList, OrderDetail, StockList, StockDetail, CartList, CartDetail, SuplierList, SuplierDetail, CategoryDetail, CategoryList
+from .views import index, search, add_success, alterar_dados, teste, login, notificacoes, registar, shop, product, add_to_cart, adicionar_produto, conta, details, eliminar_conta, hist_encomendas, PasswordsChangeView, password_success, login_success, registration_success, desporto, matEscritorio, informatica, roupa, carrinho, mPagamento, base, delete, CustomerList, CustomerDetail, ProductList, ProductDetail, OrderList, OrderDetail, StockList, StockDetail, CartList, CartDetail, SuplierList, SuplierDetail, CategoryDetail, CategoryList
 from . import views
 
 
@@ -39,6 +39,7 @@ urlpatterns = [
     path('historico/<str:id>', details, name='details'),
     path('delete/<str:id>', delete, name='delete'),
     path('customers/', CustomerList.as_view(), name='customer-list'),
+    path('notificacoes/', notificacoes, name="notificacoes"),
     path('customers/<str:pk>/', CustomerDetail.as_view(), name='customer-detail'),
     path('products/', ProductList.as_view(), name='product-list'),
     path('products/<int:pk>/', ProductDetail.as_view(), name='product-detail'),

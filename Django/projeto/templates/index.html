@@ -42,11 +42,19 @@
     <div class="hero-slider">
       <div class="slider-item th-fullpage hero-area" style="background-image: url(loja.jpg);">
         {% if user.is_authenticated %}
-        <div class="col-md-2 offset-md-10 text-right pt-5">
-            <a href="{% url 'historico' %}" class="px-2" style="border: 1px solid black;border-radius: 30px;padding:5px;background-color: rgb(170, 185, 185);">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
-                    <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
-                  </svg> As Suas Encomendas</a>
+        <div class="row">
+            <div class="col-md-2 text-left pt-5">
+                <a href="{% url 'notificacoes' %}" class="px-2" style="border: 1px solid black;border-radius: 30px;padding:5px;background-color: rgb(170, 185, 185);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                      </svg> Notificações</a>
+            </div>
+            <div class="col-md-2 offset-md-8 text-right pt-5">
+                <a href="{% url 'historico' %}" class="px-2" style="border: 1px solid black;border-radius: 30px;padding:5px;background-color: rgb(170, 185, 185);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+                        <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                    </svg> Encomendas</a>
+            </div>
         </div>
         {% endif %}
         <div class="container">
@@ -61,57 +69,6 @@
           </div>
         </div>
       </div>
-
-
-      {% block content %}
-
-      <section class="products section bg-gray">
-          <div class="container">
-              <div class="row">
-                  <div class="title text-center">
-                      <h2>Categorias</h2>
-                    <p> <br> </p>
-                    <div class="text-center">
-                        <h5 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">Múltiplas categorias para escolher em baixo!</h5>
-                    </div>
-                  </div>
-              </div>
-            </div>
-      </section>
-
-      {% endblock %}
-
-
-
-
-
-
-
-      <div class="slider-item th-fullpage hero-area" style="background-image: url(/static/images/slider/slider-3.jpg);">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 text-left">
-              <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">PRODUTOS</p>
-              <h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">A beleza da natureza <br> está escondida nos detalhes.</h1>
-              <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".8" class="btn" href="shop.html">Loja</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--
-      <div class="slider-item th-fullpage hero-area" style="background-image: url(/static/images/slider/slider-2.jpg);">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 text-right">
-              <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">PRODUTOS</p>
-              <h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">The beauty of nature <br> is hidden in details.</h1>
-              <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".8" class="btn" href="shop.html">Shop Now</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    -->
-    </div>
     
     <section class="product-category section">
         <div class="container">
@@ -166,33 +123,6 @@
             </div>
         </div>
     </section>
-
-    
-    
-    <!--
-    Start Call To Action
-    ==================================== -->
-    <section class="call-to-action bg-gray section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <div class="title">
-                        <h2>SUBSCREVE A NOSSA NEWSLETTER</h2>
-                        <p>Terás a oportunidade de acompanhar as nossas notícias <br> e ser notificado quando acontece algo!</p>
-                    </div>
-                    <div class="col-md-12 text-center">
-                        <div class="input-group subscription-form">
-                          <input type="text" class="form-control" placeholder="O teu E-Mail">
-                          <span class="input-group-btn">
-                            <button class="btn btn-main" type="button">Inscreve-te!</button>
-                          </span>
-                        </div><!-- /input-group -->
-                  </div><!-- /.col-lg-6 -->
-    
-                </div>
-            </div> 		<!-- End row -->
-        </div>   	<!-- End container -->
-    </section>   <!-- End section -->
     
     <section class="section instagram-feed">
         <div class="container">
