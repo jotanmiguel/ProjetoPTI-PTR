@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Loja10</title>
+
+
+    <!-- theme meta -->
+    <meta name="theme-name" content="aviato" />
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.png" />
+    
+    <!-- Themefisher Icon font -->
+    <link rel="stylesheet" href="/static/plugins/themefisher-font/style.css">
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
+    
+    <!-- Animate css -->
+    <link rel="stylesheet" href="/static/plugins/animate/animate.css">
+    <link rel="stylesheet" href="/static/plugins/slick/slick-theme.css">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <style>
+        .mgs-area {
+            color: red;
+            background-color: #c0b7b6;
+            text-align: center;
+            border-radius: 25em;
+            font-weight:bold;
+        }
+
+
+    </style>
+
+</head>
+    <body id="body">
+        {% include 'navbar.html' %}
+
+        <div>
+            <div class="col-md-12 col-md-offset-3">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-12 col-lg-7 col-xl-5">
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body p-5">
+                    <h2 class="text-uppercase text-center mb-5">Dados do Produto</h2>
+
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        {% if messages %}
+                        <div class="mgs-area">
+                            <div class="mgs-item">
+                            {% for message in messages %}
+                            <span {% if message.tags %} class="nav_item message-{{ message.tags }} " {% endif %}> {{ message }} </span>
+                            {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <br>
+
+                        <div class="form-outline mb-4">
+                        <input type="text" name="name" value="{{ product.name }}" id="textString" class="name-produto form-control form-control-lg" readonly />
+                        <label class="form-label" for="form3Example1cg">Nome</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                        <input type="text" name="category" value="{{ product.category }}" class="form-control form-control-lg" readonly/>
+                        <label class="form-label" for="form3Example2cg">Categoria</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                        <input type="text" name="slug" value="{{ product.slug }}" id="textSlug" class="form-control form-control-lg" readonly />
+                        <label class="form-label" for="form3Example3cg">Slug</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                        <input type="file" name="image" accept="image/png, image/jpeg" id="file" class="form-control-sm"/>
+                        <label class="form-label" for="form3Example4cg">Imagem do Produto</label>
+                        </div>
+
+
+                        <div class="form-outline mb-4">
+                        <input type="text" name="description" value="{{ product.description }}" id="form3Example4cg" class="form-control form-control-lg" />
+                        <label class="form-label" for="form3Example5cg">Descrição</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                        <input type="text" name="price" value="{{ product.price }}" id="form3Example5cdg" class="form-control form-control-lg" />
+                        <label class="form-label" for="form3Example6cdg">Preço</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                        <input type="text" name="proDate" value="{{ product.updated_at }}" class="form-control form-control-lg" readonly>
+                        <label class="form-label" for="form3Example7cg">Data de Produção</label>
+                        </div>
+                        
+
+                        <div class="d-flex justify-content-center">
+                            <button type="submit"
+                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Alterar Dados</button>
+                            <a href="{% url 'shop' %}"
+                                class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body mx-1">Voltar</a>
+                        </div>
+                    </form>
+
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </body>
+
+
+
+
+</html>

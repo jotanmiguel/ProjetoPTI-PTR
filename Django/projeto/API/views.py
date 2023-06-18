@@ -141,6 +141,20 @@ def teste(request):
 def notificacoes(request):
     return render(request, 'notificacoes.html')
 
+def alterar_produto(request):
+    slug = request.POST['slug']
+    produto = Product.objects.get(slug=slug)
+    if request.method == "POST":
+        print(produto.description)
+        descricao = request.POST.get('description')
+        preco = request.POST.get('price')
+
+        produto.description = descricao
+        produto.price = preco
+        produto.save()
+
+    return render(request, 'alterar_produto.html',{'product':produto})
+
 @api_view(['GET','POST'])
 @requires_csrf_token
 def adicionar_produto(request):

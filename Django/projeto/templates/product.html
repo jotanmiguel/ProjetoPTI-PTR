@@ -56,6 +56,12 @@
             </div>
             {% if request.user|has_group:"Supliers" %}
             <div class="col-md-2 d-flex flex-wrap align-content-center content">
+                <form method = "POST" action="{% url 'alterar_produto' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="slug" value="{{ product.slug }}">
+                    <button type="submit" name="productSlug" value="{{ product.slug }}" class="btn btn-warning mb-1">Editar Produto</button>
+                </form>
+
                 <a href="/delete/{{ product.id }}" class="btn btn-danger">Remover Produto</a>
            </div>
             {% else %}
