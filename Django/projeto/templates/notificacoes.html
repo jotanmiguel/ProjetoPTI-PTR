@@ -1,4 +1,5 @@
 {% load static %}
+{% load auth_extras %}
 <html>
     <head>
 
@@ -33,26 +34,27 @@
         {% include 'navbar.html' %}
         <div class="title text-center">
             <h2>Centro de Notificações</h2>
+            <div class="col-md-1 offset-md-10"><a href="{% url 'historico' %}" class="btn btn-success">Encomendas</a></div>
         </div>
+        
+        <div class="row">
         <div class="col-md-10 offset-md-1 table-responsive">
+            {% if request.user|has_group:"Supliers" %}
             <table class="table table-hover table-align-middle text-center">
                 <tr>
-                    <th class="table-info" scope="col">Número da encomenda</th>
-                    <th class="table-info" scope="col">Estado</th>
-                    <th class="table-info" scope="col">Detalhes</th>
+                    <th class="table-info" scope="col">Notificação</th>
+                    <th class="table-info" scope="col">Aviso</th>
                 </tr>
+                {% for notification in notifications %}
                 <tr>
-                    <td class="table-warning" scope="row">4WFtSbo2T+Ktwk4hLEem2A</td>
-                    <td class="table-warning" scope="row">Por ler</td>
-                    <td class="table-warning" scope="row"><a href="{% url 'notificacoes' %}" class="btn btn-warning">Ver detalhes</a></td>
+                    <td class="table-success" scope="row">{{ notification.id }}</td>
+                    <td class="table-success" scope="row">Tem uma nova encomenda</td>
                 </tr>
-                <tr>
-                    <td class="table-success" scope="row">AOtqfdtUQSq95sDnNXbg5Q</td>
-                    <td class="table-success" scope="row">Lida</td>
-                    <td class="table-success" scope="row"><a href="{% url 'notificacoes' %}" class="btn btn-success">Ver detalhes</a></td>
-                    
-                </tr>
+                {% endfor %}
             </table>
+            {% endif %}
+        </div>
+        </div>
 
 
 

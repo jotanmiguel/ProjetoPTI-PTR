@@ -36,7 +36,7 @@
             <h2>Aqui pode verificar o seu histórico de encomendas</h2>
         </div>
         <div class="col-md-10 offset-md-1 table-responsive">
-            {% if request.user|has_group:"Customers" %}
+            {% if request.user|has_group:"Costumers" %}
             <table class="table table-hover table-align-middle text-center">
                 <tr>
                     <th class="table-info" scope="col">Número da encomenda</th>
@@ -44,6 +44,7 @@
                     <th class="table-info" scope="col">Data de entrega prevista</th>
                     <th class="table-info" scope="col">Detalhes</th>
                 </tr>
+                {% endif %}
                 <!-- Exemplos de cores para a tabela (Pago/Entregue//Por pagar/A ser entregue//Cancelada/Erro)
                 <tr>
                     <td class="table-success" scope="row">--</td>
@@ -78,7 +79,6 @@
                 </tr>
                 {% endfor %}
             </table>
-            {% endif %}
             {% if request.user|has_group:"Supliers" %}
             <table class="table table-hover table-align-middle text-center">
                 <tr>

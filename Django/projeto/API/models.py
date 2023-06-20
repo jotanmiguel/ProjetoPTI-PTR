@@ -88,6 +88,14 @@ class Order(models.Model):
   #  product = models.ForeignKey(Product, on_delete=models.CASCADE)
    # quantity = models.IntegerField()
 
+class Notifications(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    supplier = models.ForeignKey(Suplier, on_delete=models.CASCADE)
+    status = models.CharField(max_length=50, default='Por ler')
+
+    def __str__(self):
+        return self.status
+    
 # Inventário de produtos
 class Stock(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

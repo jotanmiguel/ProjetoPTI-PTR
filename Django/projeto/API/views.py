@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Customer, Product, Order, Stock, Suplier, Cart, CartItem, Category, Review
+from .models import Customer, Product, Order, Notifications, Stock, Suplier, Cart, CartItem, Category, Review
 from .serializers import CustomerSerializer, ProductSerializer, OrderSerializer, StockSerializer, SuplierSerializer, CategorySerializer, CartSerializer, CartItemSerializer, ReviewSerializer
 from django.contrib.auth import login, logout
 from .forms import PasswordChangingForm
@@ -139,7 +139,17 @@ def teste(request):
     return render(request, 'teste.html')
 
 def notificacoes(request):
-    return render(request, 'notificacoes.html')
+    n = ''
+    if request.user.is_authenticated:
+        username = request.user.username
+    if request.user.groups.filter(name="Supliers"):
+        supplier = Suplier.objects.get(name=username)
+        n = Notifications.objects.filter(supplier=supplier)
+        print(supplier)
+        print(supplier.id)
+        print(n)
+
+    return render(request, 'notificacoes.html',{'notifications':n})
 
 def alterar_produto(request):
     slug = request.POST['slug']
@@ -339,6 +349,11 @@ def mPagamento(request):
     if request.method == "POST":
         o.status = "Paid"
         o.save()
+        products = o.products1.all()
+        for product in products:
+            p = Product.objects.get(id=product.id)
+            sup = p.supplier
+            Notifications.objects.create(supplier=sup)
 
     return render(request,'mPagamento.html',{'orders' : o})
 
