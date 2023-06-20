@@ -1,4 +1,5 @@
 {% load static %}
+{% load auth_extras %}
 <html>
     <head>
 
@@ -35,6 +36,7 @@
             <h2>Aqui pode verificar o seu histórico de encomendas</h2>
         </div>
         <div class="col-md-10 offset-md-1 table-responsive">
+            {% if request.user|has_group:"Customers" %}
             <table class="table table-hover table-align-middle text-center">
                 <tr>
                     <th class="table-info" scope="col">Número da encomenda</th>
@@ -76,6 +78,27 @@
                 </tr>
                 {% endfor %}
             </table>
+            {% endif %}
+            {% if request.user|has_group:"Supliers" %}
+            <table class="table table-hover table-align-middle text-center">
+                <tr>
+                    <th class="table-info" scope="col">Número da encomenda</th>
+                    <th class="table-info" scope="col">Estado</th>
+                    <th class="table-info" scope="col">Detalhes</th>
+                </tr>
+               
+                {% for orders in sOrders %}
+                {% for order in orders %}
+                <tr>
+                <td class="table-success" scope="row">{{ order.id }}</td>
+                <td class="table-success" scope="row">Pago</td>
+                <td class="table-success" scope="row"><a href="{% url 'details' order.id %}" class="btn btn-success">Ver detalhes</a></td>
+                </tr>
+                {% endfor %}
+                {% endfor %}
+            </table>
+            {% endif %}
+
         </div>
 
 
