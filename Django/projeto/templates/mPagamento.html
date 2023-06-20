@@ -84,6 +84,8 @@
         </a>
        </div>
 
+       <form name="myForm" method="POST">{% csrf_token %}<input type="hidden" value="1"/></form>
+
 
 
 
@@ -109,7 +111,8 @@
             // Finalize the transaction after payer approval
             onApprove: function (data, actions) {
               return actions.order.capture().then(function(details) {
-                  alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                  document.forms["myForm"].submit();
+                  alert('Transaction completed by ' + '{{ orders.customer }}' + '!');
                 });
             }
           })
