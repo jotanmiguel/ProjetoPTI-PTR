@@ -277,16 +277,22 @@ def add_success(request):
     return render(request, 'add_success.html')
 
 def hist_encomendas(request):
+    sOrders = []
+    o = None
     if request.user.is_authenticated:
         username = request.user.username
     if request.user.groups.filter(name="Costumers"):
         customer = Customer.objects.get(name=username)
         o = Order.objects.filter(customer=customer)
     #So para nao dar erros com suppliers, que ainda nao esta previsto encomendas do lado dos fornecedores
-    else:
-        supplier = Suplier.objects.filter(name=username)
-        o = None
-    return render(request,'historicoEncomendas.html',{'orders':o})
+    elif request.user.groups.filter(name="Supliers"):
+        supplier = Suplier.objects.get(name=username)
+        supProducts = Product.objects.filter(supplier=supplier)
+        for product in supProducts:
+            products = Order.objects.filter(products1=product)
+            sOrders.append(products)
+       
+    return render(request,'historicoEncomendas.html',{'orders':o,'sOrders':sOrders})
 
 def login_success(request):
     return render(request, 'login_success.html')
