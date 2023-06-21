@@ -11,19 +11,19 @@
 
         <!-- theme meta -->
         <meta name="theme-name" content="aviato" />
-        
+
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.png" />
-        
+
         <!-- Themefisher Icon font -->
         <link rel="stylesheet" href="/static/plugins/themefisher-font/style.css">
         <!-- bootstrap.min css -->
         <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
-        
+
         <!-- Animate css -->
         <link rel="stylesheet" href="/static/plugins/animate/animate.css">
         <link rel="stylesheet" href="/static/plugins/slick/slick-theme.css">
-        
+
         <!-- Main Stylesheet -->
         <link rel="stylesheet" href="{% static 'style.css' %}">
         <script src="https://unpkg.com/htmx.org@1.7.0"></script>
@@ -40,10 +40,10 @@
                     <img class="img-responsive" src="{{ product.file.url }}" alt="product-img" style="border-bottom: 1px solid grey;height: auto;object-fit: contain;" />
                 </div>
                 <span class="d-flex justify-content-center"><a href="{% url 'product' product.slug %}">{{ product.name }}</a></span>
-            
+
                 <p class="d-flex justify-content-center">{{ product.price }}€</p>
-                <p class="d-flex justify-content-center">Fornecedor: {{ product.supplier }}</p>
-                
+                <p class="d-flex justify-content-center">Fornecedor: {{ product.supplier.name }}</p>
+
 
             </div>
             <div class="col-md-6" style="margin: 60px 0px 36px 0px;background-color: rgb(212, 217, 223);border-radius: 10px;">
@@ -51,7 +51,7 @@
                     <h2>Caracteristicas</h2>
                 </div>
                 <div class="content">
-                    <p>{{ product.description }}</p>                    
+                    <p>{{ product.description }}</p>
                 </div>
             </div>
             {% if request.user|has_group:"Supliers" %}
