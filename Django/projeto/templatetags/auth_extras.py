@@ -27,7 +27,3 @@ def total_sum(value):
         sum += float(val[:-1])
 
     return sum
-
-@register.filter
-def to_bytes(value, encoding='utf-8'):
-    return value.encode(encoding)
