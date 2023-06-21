@@ -121,14 +121,15 @@ def shop(request):
 def product(request, slug):
     if request.user.is_authenticated:
         username = request.user.username
-    product = Product.objects.filter(slug=slug)
+    products = Product.objects.filter(slug=slug)
     if request.user.groups.filter(name="Costumers"):
         customer = Customer.objects.get(name=username)
         if request.method == "POST":
             o = Order.objects.get(customer=customer, status="Created")
-            o.products1.add(product)
+            for product in products:
+              o.products1.add(product)
                 #o.products1.add(Product.objects.get(slug=slug))
-    return render(request, 'product.html', {'product': product})
+    return render(request, 'product.html', {'products': products})
 
 def add_to_cart(request, product_slug):
     cart = Carrinho(request)

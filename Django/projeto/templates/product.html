@@ -34,7 +34,7 @@
     <body>
         {% include 'navbar.html' %}
         {% block content %}
-        <div class="row">
+        <div class="row">{% for product in products %}
             <div class="product-item col-md-3" style="margin:7px 0px 7px 20px; border: 3px solid rgb(212, 217, 223);border-radius: 10px;">
                 <div class="product-thumb">
                     <img class="img-responsive" src="{{ product.file.url }}" alt="product-img" style="border-bottom: 1px solid grey;height: auto;object-fit: contain;" />
@@ -54,6 +54,7 @@
                     <p>{{ product.description }}</p>
                 </div>
             </div>
+            {% endfor %}
             {% if request.user|has_group:"Supliers" %}
             <div class="col-md-2 d-flex flex-wrap align-content-center content">
                 <form method = "POST" action="{% url 'alterar_produto' %}">
