@@ -61,7 +61,7 @@ def login(request):
 @requires_csrf_token
 def registar(request):
     if request.method == "POST":
-        name = request.POST.get("name") 
+        name = request.POST.get("name")
         email = request.POST.get("email")
         phone_number = request.POST.get("phone_number")
         password = request.POST.get("password")
@@ -76,15 +76,15 @@ def registar(request):
         if name in clientes or name in fornecedores:
            messages.info(request, 'Já existe um utilizador com este nome!')
            return render(request, 'registar.html')
-        
+
         elif len(phone_number) != 9:
            messages.info(request, 'Número de telefone inválido!')
            return render(request, 'registar.html')
-        
+
         elif pwconf != password:
            messages.info(request, 'As passwords não coincidem!')
            return render(request, 'registar.html')
-                                
+
         else:
             if tipo=="Cliente":
                 serializer = CustomerSerializer(data=request.data)
@@ -92,7 +92,7 @@ def registar(request):
                     serializer.save()
                     user = User.objects.create_user(name, email, password)
                     user.save()
-                    my_group = Group.objects.get(name='Costumers') 
+                    my_group = Group.objects.get(name='Costumers')
                     my_group.user_set.add(user)
                     return render(request, 'registration_success.html')
 
@@ -102,7 +102,7 @@ def registar(request):
                     serializer.save()
                     user = User.objects.create_user(name, email, password)
                     user.save()
-                    my_group = Group.objects.get(name='Supliers') 
+                    my_group = Group.objects.get(name='Supliers')
                     my_group.user_set.add(user)
                     return render(request, 'registration_success.html')
 
@@ -121,7 +121,7 @@ def shop(request):
 def product(request, slug):
     if request.user.is_authenticated:
         username = request.user.username
-    product = Product.objects.get(slug=slug)
+    product = Product.objects.filter(slug=slug)
     if request.user.groups.filter(name="Costumers"):
         customer = Customer.objects.get(name=username)
         if request.method == "POST":
@@ -179,12 +179,12 @@ def adicionar_produto(request):
         name = request.POST.get("name")
         category = request.POST.get("category")
         slug = request.POST.get("slug")
-        try:       
+        try:
             image = request.FILES["image"]
         except:
             messages.info(request, 'O produto não tem imagem!')
             return render(request, 'add_produto.html')
-        
+
         description = request.POST.get("description")
         price = request.POST.get("price")
         date = request.POST.get("proDate")
@@ -201,13 +201,13 @@ def adicionar_produto(request):
             produto = Product.objects.create(name=name, category=category, slug=slug, file=image, supplier=supplier, description=description, price=price, date=date)
             product_path = produto.file.path
 
-            
+
             serializer = ProductSerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save()
             return render(request, "add_success.html")
             #return render(request, "add_produto.html", {"product_path":product_path})
-        
+
     return render(request, 'add_produto.html',{"today": today})
 
 def conta(request):
@@ -229,13 +229,13 @@ def eliminar_conta(request):
         try:
             u = User.objects.get(username = username)
             u.delete()
-            messages.success(request, "The user is deleted")            
+            messages.success(request, "The user is deleted")
 
         except User.DoesNotExist:
-            messages.error(request, "User does not exist")    
+            messages.error(request, "User does not exist")
             return render(request, 'eliminar_conta.html')
 
-        except Exception as e: 
+        except Exception as e:
             return render(request, 'eliminar_conta.html',{'err':e.message})
         return render(request,'index.html')
 
@@ -275,9 +275,9 @@ def alterar_dados(request):
         Suppliers = Suplier.objects.all()
         Customers = Customer.objects.all()
         return render(request,'conta.html', {"Suppliers":Suppliers,"Customers":Customers})
-    
+
     Suppliers = Suplier.objects.all()
-    Customers = Customer.objects.all()    
+    Customers = Customer.objects.all()
     return render(request,'alterar_dados.html', {"Suppliers":Suppliers,"Customers":Customers})
 
 def registration_success(request):
@@ -301,7 +301,7 @@ def hist_encomendas(request):
         for product in supProducts:
             products = Order.objects.filter(products1=product)
             sOrders.append(products)
-       
+
     return render(request,'historicoEncomendas.html',{'orders':o,'sOrders':sOrders})
 
 def login_success(request):
@@ -419,21 +419,21 @@ class SuplierList(generics.ListCreateAPIView):
     serializer_class = SuplierSerializer
 
 class SuplierDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Suplier.objects.all()    
+    queryset = Suplier.objects.all()
     serializer_class = SuplierSerializer
-    
+
 class CartList(generics.ListCreateAPIView):
     queryset = Cart.objects.all()
     serializer_class = CartSerializer
-    
+
 class CartDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Cart.objects.all()
     serializer_class = CartSerializer
-    
+
 class CategoryList(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    
+
 class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
