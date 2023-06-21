@@ -41,7 +41,7 @@
                 <span class="d-flex justify-content-center"><a href="{% url 'product' product.slug %}">{{ product.name }}</a></span>
 
                 <p class="d-flex justify-content-center">{{ product.price }}€</p>
-                <p class="d-flex justify-content-center">Fornecedor: {{ product.supplier.name|bytes }}</p>
+                <p class="d-flex justify-content-center">Fornecedor: {{ product.supplier.name|to_bytes }}</p>
 
 
             </div>
