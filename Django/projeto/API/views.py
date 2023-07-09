@@ -7,6 +7,7 @@ from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import Group
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import redirect
 from rest_framework import generics
@@ -327,10 +328,13 @@ def details(request, id):
     o = Order.objects.get(id=id)
     return render(request,'details.html',{'order':o})
 
+@login_required(login_url='/accounts/login/')
 def carrinho(request):
     if request.user.is_authenticated:
-        username = request.user.username
-    customer = Customer.objects.get(name=username)
+      username = request.user.username
+      customer = Customer.objects.get(name=username)
+    else:
+      return render(request, 'accounts/login.html')
     if not Order.objects.filter(customer=customer, status="Created"):
         Order.objects.create(customer=customer, status="Created")
     o = Order.objects.get(customer=customer, status="Created")
