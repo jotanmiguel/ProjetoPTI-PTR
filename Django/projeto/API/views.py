@@ -131,9 +131,9 @@ def product(request, slug):
                 #o.products1.add(Product.objects.get(slug=slug))
     return render(request, 'product.html', {'product': product})
 
-def add_to_cart(request, product_slug):
+def add_to_cart(request, slug):
     cart = Carrinho(request)
-    cart.add(product_slug)
+    cart.add(slug)
     return render(request, 'menu_cart.html')
 
 def teste(request):

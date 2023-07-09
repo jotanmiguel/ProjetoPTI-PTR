@@ -12,19 +12,19 @@
 
     <!-- theme meta -->
     <meta name="theme-name" content="aviato" />
-    
+
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.png" />
-    
+
     <!-- Themefisher Icon font -->
     <link rel="stylesheet" href="/static/plugins/themefisher-font/style.css">
     <!-- bootstrap.min css -->
     <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
-    
+
     <!-- Animate css -->
     <link rel="stylesheet" href="/static/plugins/animate/animate.css">
     <link rel="stylesheet" href="/static/plugins/slick/slick-theme.css">
-    
+
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -36,14 +36,19 @@
     <div class="title text-center">
       <h2>Escolha o Método de Pagamento</h2>
   </div>
-    <div class="col-xs-12" style="height:50px;"></div> 
+    <div class="col-xs-12" style="height:50px;"></div>
 
     <div class="container d-flex justify-content-center">
 
-          <div class="col-md-4 pt-5 mx-2" style="margin-left:50px;background-color: lightgray;padding:10px 15px;border-radius: 5px;">  
-            
+          <div class="col-md-4 pt-5 mx-2" style="margin-left:50px;background-color: lightgray;padding:10px 15px;border-radius: 5px;">
+
     <!-- Set up a container element for the button -->
           <div id="paypal-button-container"></div>
+          <div class="col-md-1">
+            <a href="{% url 'carrinho' %}" type="button" class="btn btn-primary btn-lg btn-block">
+                Voltar
+            </a>
+           </div>
           </div>
 
             <div class="col-md-4" style="float: right;background-color: lightgray;padding:10px 15px;border-radius: 5px;">
@@ -73,16 +78,11 @@
                   </div>
                 </div>
               </div>
-          
+
         </div>
-        
+
 
       </div>
-      <div class="col-md-1">
-        <a href="{% url 'carrinho' %}" type="button" class="btn btn-primary btn-lg btn-block">
-            Voltar
-        </a>
-       </div>
 
        <form name="myForm" method="POST">{% csrf_token %}<input type="hidden" value="1"/></form>
 

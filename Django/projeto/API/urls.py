@@ -55,5 +55,5 @@ urlpatterns = [
     path('categories/', CategoryList.as_view(), name='category-list'),
     path('categories/<int:pk>', CategoryDetail.as_view(), name='category-detail'),
     path('alterar_dados/', alterar_dados ,name="alterar_dados"),
-    path('add_success/', add_success, name='add_success')   
+    path('add_success/', add_success, name='add_success')
 ]
