@@ -7,7 +7,11 @@
                     <a href="{% url 'product' product.slug %}"><i class="tf-ion-ios-search-strong"></i></a>
                 </li>
                 <li>
-                    <a href="#!"><i class="tf-ion-android-cart"></i></a>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="slug" value="{{ product.slug }}">
+                        <button type="submit" class="btn bg-gray btn-lg" style="border-radius: 0px;margin-bottom: 5px;height:40px;"><i class="tf-ion-android-cart"></i></button>
+                    </form>
                 </li>
 
             </ul>

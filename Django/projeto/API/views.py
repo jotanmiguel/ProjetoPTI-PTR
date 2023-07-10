@@ -117,6 +117,15 @@ def registar(request):
 
 def shop(request):
     products = Product.objects.all()
+    if request.user.is_authenticated:
+        username = request.user.username
+    if request.user.groups.filter(name="Costumers"):
+        customer = Customer.objects.get(name=username)
+        if request.method == "POST":
+            slug = request.POST.get("slug")
+            product = Product.objects.get(slug=slug)
+            o = Order.objects.get(customer=customer, status="Created")
+            o.products1.add(product)
     return render(request, 'shop.html', {'products' : products})
 
 def product(request, slug):
