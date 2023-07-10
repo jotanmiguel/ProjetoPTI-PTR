@@ -75,7 +75,7 @@ class Order(models.Model):
 
     @property
     def get_total_price(self):
-        return sum([product.price for product in self.products1.all()])
+        return round((sum([product.price for product in self.products1.all()])),2)
 
     class Meta:
         ordering = ["status"]
