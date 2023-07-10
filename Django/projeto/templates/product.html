@@ -1,84 +1,109 @@
 {% load static %}
 {% load auth_extras %}
 <html>
-    <head>
+<head>
+    <!-- Basic Page Needs ================================================== -->
+    <title>Loja10</title>
 
-        <!-- Basic Page Needs
-        ================================================== -->
-        <title>Loja10</title>
+    <!-- theme meta -->
+    <meta name="theme-name" content="aviato" />
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.png" />
 
-        <!-- theme meta -->
-        <meta name="theme-name" content="aviato" />
+    <!-- Themefisher Icon font -->
+    <link rel="stylesheet" href="/static/plugins/themefisher-font/style.css">
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
 
-        <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.png" />
+    <!-- Animate css -->
+    <link rel="stylesheet" href="/static/plugins/animate/animate.css">
+    <link rel="stylesheet" href="/static/plugins/slick/slick-theme.css">
 
-        <!-- Themefisher Icon font -->
-        <link rel="stylesheet" href="/static/plugins/themefisher-font/style.css">
-        <!-- bootstrap.min css -->
-        <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="https://unpkg.com/htmx.org@1.7.0"></script>
 
-        <!-- Animate css -->
-        <link rel="stylesheet" href="/static/plugins/animate/animate.css">
-        <link rel="stylesheet" href="/static/plugins/slick/slick-theme.css">
+    <style>
+      .product-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin: 7px 0;
+          border: 3px solid rgb(212, 217, 223);
+          border-radius: 10px;
+          padding: 20px;
+      }
 
-        <!-- Main Stylesheet -->
-        <link rel="stylesheet" href="{% static 'style.css' %}">
-        <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+      .image-container {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 20px;
+      }
 
-    </head>
+      .button-container .btn {
+          flex-basis: 48%;
+          width: 100%; /* Added to make the buttons the same size */
+          margin-right: 20;
+      }
 
+      .caracteristicas {
+          margin-bottom: 20px;
+          background-color: rgb(212, 217, 223);
+          border-radius: 10px;
+          padding: 20px;
+      }
 
-    <body>
-        {% include 'navbar.html' %}
-        {% block content %}
-        <div class="row">
-            <div class="product-item col-md-3" style="margin:7px 0px 7px 20px; border: 3px solid rgb(212, 217, 223);border-radius: 10px;">
-                <div class="product-thumb">
-                    <img class="img-responsive" src="{{ product.file.url }}" alt="product-img" style="border-bottom: 1px solid grey;height: auto;object-fit: contain;" />
-                </div>
-                <span class="d-flex justify-content-center"><a href="{% url 'product' product.slug %}">{{ product.name }}</a></span>
+      .row-with-margin {
+        margin: auto;
+    }
+  </style>
+</head>
 
-                <p class="d-flex justify-content-center">{{ product.price }}€</p>
-                <p class="d-flex justify-content-center">Fornecedor: {{ product.supplier.name }}</p>
+<body>
+    {% include 'navbar.html' %}
+    {% block content %}
+    <div class="row row-with-margin">
+      <div class="col-md-6">
+          <div class="product-item" style="margin:7px 20px; border: 3px solid rgb(212, 217, 223);border-radius: 10px;">
+              <div class="image-container">
+                  <img class="img-responsive" src="{{ product.file.url }}" alt="product-img" style="border-bottom: 1px solid grey;height: auto;object-fit: contain;" />
+              </div>
+              <span class="d-flex justify-content-center"><a href="{% url 'product' product.slug %}">{{ product.name }}</a></span>
 
-
-            </div>
-            <div class="col-md-6" style="margin: 60px 0px 36px 0px;background-color: rgb(212, 217, 223);border-radius: 10px;">
-                <div class="title text-center">
-                    <h2>Caracteristicas</h2>
-                </div>
-                <div class="content">
-                    <p>{{ product.description }}</p>
-                </div>
-            </div>
-            {% if request.user|has_group:"Supliers" %}
-            <div class="col-md-2 d-flex flex-wrap align-content-center content">
-                <form method = "POST" action="{% url 'alterar_produto' %}">
+              <p class="d-flex justify-content-center">{{ product.price }}€</p>
+              <p class="d-flex justify-content-center">Fornecedor: {{ product.supplier.name }}</p>
+          </div>
+      </div>
+      <div class="col-md-6">
+          <div class="caracteristicas" style="margin: 60px 20px 36px 0px;border-radius: 10px;">
+              <div class="title text-center">
+                  <h2>Caracteristicas</h2>
+              </div>
+              <div class="content">
+                  <p>{{ product.description }}</p>
+              </div>
+          </div>
+          <div class="button-container">
+            <div>
+                {% if request.user|has_group:"Supliers" %}
+                <form method="POST" action="{% url 'alterar_produto' %}">
                     {% csrf_token %}
                     <input type="hidden" name="slug" value="{{ product.slug }}">
                     <button type="submit" name="productSlug" value="{{ product.slug }}" class="btn btn-warning mb-1">Editar Produto</button>
                 </form>
-
                 <a href="/delete/{{ product.id }}" class="btn btn-danger">Remover Produto</a>
-           </div>
-            {% else %}
-            <div class="col-md-2 d-flex flex-wrap align-content-center content">
-            <form method="POST">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-success">
-                Adicionar ao Carrinho</button>
-            </form>
+                {% else %}
+                <form method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success">Adicionar ao Carrinho</button>
+                </form>
+                {% endif %}
             </div>
-           {% endif %}
-
+            <a href="{% url 'shop' %}" class="btn btn-primary">Voltar</a>
         </div>
-        {% endblock %}
-        <div>
-            <a href="{% url 'shop' %}" class="btn btn-primary btn-lg btn-block">
-                Voltar
-            </a>
-        </div>
-    </body>
+      </div>
+  </div>
+    {% endblock %}
+</body>
 </html>
