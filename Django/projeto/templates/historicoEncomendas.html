@@ -11,19 +11,19 @@
 
         <!-- theme meta -->
         <meta name="theme-name" content="aviato" />
-        
+
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.png" />
-        
+
         <!-- Themefisher Icon font -->
         <link rel="stylesheet" href="/static/plugins/themefisher-font/style.css">
         <!-- bootstrap.min css -->
         <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
-        
+
         <!-- Animate css -->
         <link rel="stylesheet" href="/static/plugins/animate/animate.css">
         <link rel="stylesheet" href="/static/plugins/slick/slick-theme.css">
-        
+
         <!-- Main Stylesheet -->
         <link rel="stylesheet" href="{% static 'style.css' %}">
 
@@ -75,7 +75,7 @@
                     <td class="table-success" scope="row">{{ order.updated_at }}</td>
                     <td class="table-success" scope="row"><a href="{% url 'details' order.id %}" class="btn btn-success">Ver detalhes</a></td>
                     {% endif %}
-                    
+
                 </tr>
                 {% endfor %}
             </table>
@@ -87,13 +87,14 @@
                     <th class="table-info" scope="col">Detalhes</th>
                     <th class="table-info" scope="col">Data</th>
                 </tr>
-               
+
                 {% for orders in sOrders %}
                 {% for order in orders %}
                 <tr>
                 <td class="table-success" scope="row">{{ order.id }}</td>
                 <td class="table-success" scope="row">Pago</td>
                 <td class="table-success" scope="row"><a href="{% url 'details' order.id %}" class="btn btn-success">Ver detalhes</a></td>
+                <td class="table-success" scope="row">{{order.updated_at}}</td>
                 </tr>
                 {% endfor %}
                 {% endfor %}
