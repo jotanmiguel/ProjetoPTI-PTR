@@ -15,19 +15,19 @@
 
     <!-- theme meta -->
     <meta name="theme-name" content="aviato" />
-    
+
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.png" />
-    
+
     <!-- Themefisher Icon font -->
     <link rel="stylesheet" href="/static/plugins/themefisher-font/style.css">
     <!-- bootstrap.min css -->
     <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
-    
+
     <!-- Animate css -->
     <link rel="stylesheet" href="/static/plugins/animate/animate.css">
     <link rel="stylesheet" href="/static/plugins/slick/slick-theme.css">
-    
+
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
 
@@ -36,19 +36,20 @@
     {% include 'navbar.html' %}
 
         <h2 class="text-center">Carrinho</h2>
-        <div class="col-xs-12" style="height:30px;"></div> 
+        <div class="col-xs-12" style="height:30px;"></div>
         <div class="container py-5">
           <div class="row d-flex justify-content-center my-4">
             <div class="col-md-7" style="background-color: lightgray;padding:10px 15px;border-radius: 5px;margin-left: 20px;">
               <div class="card mb-4">
                 <div class="card-body">
-                  
+
+                  {% if orders.products1.all %}
                   {% for product in orders.products1.all %}
                   <div class="d-flex align-items-center">
                     <div class="product-item col-md-3" style="margin:7px 0px 7px 20px; border: 3px solid rgb(212, 217, 223);border-radius: 10px;">
                       <div class="product-thumb">
                           <img class="img-responsive" src="{{ product.file.url }}" alt="product-img" style="height: auto;object-fit: contain;" />
-                      </div>      
+                      </div>
                     </div>
                     <span class="d-flex p-2 me-auto"><a href="{% url 'product' product.slug %}">{{ product.name }}</a></span>
                     <form method="POST" id="form1">
@@ -58,12 +59,14 @@
                     <div class="d-flex flex-wrap align-content-center content me-auto">
                       <button type="submit" form="form1" value="Submit" class="btn btn-danger">Remover Produto</button>
                     </div>
-                  
+
                     <strong class="mt-1">{{ product.price }}€</strong>
                   </div>
 
                   {% endfor %}
-    
+                  {% else %}
+                  <h3 class="text-center">Não tem produtos no carrinho</h3>
+                  {% endif %}
 
 
 
@@ -95,10 +98,11 @@
                           <span><strong>{{ orders.get_total_price }}€</strong></span>
                         </li>
                       </ul>
-      
-                  <a href="{% url 'mPagamento' %}" class="btn btn-primary btn-lg btn-block">
-                    Comprar
-                  </a>
+                      {% if orders.products1.all %}
+                      <a href="{% url 'mPagamento' %}" class="btn btn-primary btn-lg btn-block">
+                        Comprar
+                      </a>
+                    {% endif %}
                 </div>
               </div>
             </div>
