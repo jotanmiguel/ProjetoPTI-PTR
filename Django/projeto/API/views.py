@@ -311,8 +311,9 @@ def hist_encomendas(request):
         for product in supProducts:
             products = Order.objects.filter(products1=product)
             sOrders.append(products)
-
-    return render(request,'historicoEncomendas.html',{'orders':o,'sOrders':sOrders})
+    p = len(o[0].products1.all())
+    print(p)
+    return render(request,'historicoEncomendas.html',{'orders':o,'sOrders':sOrders, 'nproducts':p})
 
 def login_success(request):
     return render(request, 'login_success.html')
@@ -348,7 +349,12 @@ def carrinho(request):
         Order.objects.create(customer=customer, status="Created")
     o = Order.objects.get(customer=customer, status="Created")
     if request.method == 'POST':
-        order = Order.objects.get(id=o.id).delete()
+        order = Order.objects.get(id=o.id)
+        product = request.POST.get("product")
+        product2 = Product.objects.get(slug = product)
+        for produto in order.products1.all():
+            if product2 == produto:
+                order.products1.get(name = product2).delete()
         return render(request,'carrinho.html', {'orders': o})
     return render(request, 'carrinho.html',{'orders' : o})
 

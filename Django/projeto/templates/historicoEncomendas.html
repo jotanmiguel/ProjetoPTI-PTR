@@ -64,21 +64,26 @@
                 </tr>
                 -->
                 {% for order in orders %}
-                <tr>{% if order.status == "Created" %}
-                    <td class="table-warning" scope="row">{{ order.id }}</td>
-                    <td class="table-warning" scope="row">Por pagar</td>
-                    <td class="table-warning" scope="row">{{ order.updated_at }}</td>
-                    <td class="table-warning" scope="row"><a href="{% url 'carrinho' %}" class="btn btn-warning">Ver carrinho</a></td>
-                    <td class="table-warning" scope="row">{{order.updated_at}}</td>
+                <tr> 
+                        {% if order.status == "Created" %}
 
-                    {% else %}
-                    <td class="table-success" scope="row">{{ order.id }}</td>
-                    <td class="table-success" scope="row">Pago</td>
-                    <td class="table-success" scope="row">{{ order.updated_at }}</td>
-                    <td class="table-success" scope="row"><a href="{% url 'details' order.id %}" class="btn btn-success">Ver detalhes</a></td>
-                    <td class="table-success" scope="row">{{order.updated_at}}</td>
-                    {% endif %}
-                    
+                            {% if nproducts == 0 %} </tr>
+
+                            {% else %}
+                            <td class="table-warning" scope="row">{{ order.id }}</td>
+                            <td class="table-warning" scope="row">Por pagar</td>
+                            <td class="table-warning" scope="row">{{ order.updated_at }}</td>
+                            <td class="table-warning" scope="row"><a href="{% url 'carrinho' %}" class="btn btn-warning">Ver carrinho</a></td>
+                            <td class="table-warning" scope="row">{{order.updated_at}}</td>
+                            {% endif %}
+                            
+                            {% else %}
+                            <td class="table-success" scope="row">{{ order.id }}</td>
+                            <td class="table-success" scope="row">Pago</td>
+                            <td class="table-success" scope="row">{{ order.updated_at }}</td>
+                            <td class="table-success" scope="row"><a href="{% url 'details' order.id %}" class="btn btn-success">Ver detalhes</a></td>
+                            <td class="table-success" scope="row">{{order.updated_at}}</td>
+                        {% endif %}
                 </tr>
                 {% endfor %}
             </table>

@@ -55,6 +55,7 @@
                     <form method="POST" id="form1">
                       {% csrf_token %}
                       <input type="hidden" name="order" value="{{ product }}">
+                      <input type="hidden" name="product" value="{{ product.slug }}">
                     </form>
                     <div class="d-flex flex-wrap align-content-center content me-auto">
                       <button type="submit" form="form1" value="Submit" class="btn btn-danger">Remover Produto</button>
