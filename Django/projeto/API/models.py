@@ -1,4 +1,3 @@
-from datetime import timezone
 from django.db import models
 import uuid
 
@@ -11,22 +10,22 @@ class Customer(models.Model):
     phone_number = models.CharField(max_length=20, blank=True)
     address = models.CharField(max_length=200, blank=True)
     zipCode = models.CharField(max_length=200, blank=True)
-    password = models.CharField(max_length=200, blank=True)
-    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
+    password = models.CharField(max_length=200, blank=True) 
+    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)     
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)   
 
     def __str__(self):
         return self.name
 
-# Categorias de produtos
+# Categorias de produtos    
 class Category(models.Model):
     name = models.CharField(max_length=255)
     parent_category = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
-
+    
     def __str__(self):
         return self.name
-
+    
     def get_children(self):
         return Category.objects.filter(parent_category=self)
 
@@ -38,14 +37,14 @@ class Suplier(models.Model):
     phone_number = models.CharField(max_length=20, blank=True)
     address = models.CharField(max_length=200, blank=True)
     zipCode = models.CharField(max_length=200, blank=True)
-    password = models.CharField(max_length=200, blank=True)
-    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
+    password = models.CharField(max_length=200, blank=True) 
+    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)     
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)   
 
     def __str__(self):
         return self.name
-
+    
 # Produtos
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
@@ -59,20 +58,20 @@ class Product(models.Model):
     date = models.DateField(auto_now_add = True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    
     def __str__(self):
         return self.name
 
 
-
+    
 # Pedidos de produtos
 class Order(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)    
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     products1 = models.ManyToManyField(Product)
     status = models.CharField(max_length=50, default='Created')
-    created_at = models.DateTimeField(auto_now_add=True)
-    #updated_at = models.DateTimeField(auto_now=True)
+    #created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     @property
     def get_total_price(self):
@@ -96,14 +95,14 @@ class Notifications(models.Model):
 
     def __str__(self):
         return self.status
-
+    
 # Inventário de produtos
 class Stock(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()
     location = models.CharField(max_length=200)
     updated_at = models.DateTimeField(auto_now=True)
-
+ 
 # Carrinho de compras
 class Cart(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
@@ -116,7 +115,7 @@ class CartItem(models.Model):
     quantity = models.PositiveIntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    
 # Avaliações de produtos
 class Review(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
@@ -125,7 +124,7 @@ class Review(models.Model):
     comment = models.TextField(max_length=500, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    
 class ProductionUnit(models.Model):
     name = models.CharField(max_length=200)
     address = models.CharField(max_length=200, blank=True)
